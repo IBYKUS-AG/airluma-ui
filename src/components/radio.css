@@ -1,0 +1,165 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Radio (ibkRadio)
+ *  barrier free
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Radio Group - horizontal layout
+ * ***************************************************************************************/
+
+.ibkRadioGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ibk-spacing-8, 8px);
+}
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+.ibkRadio {
+    display: inline-flex;
+    align-items: center;
+    height: 20px;
+}
+
+.ibkRadio label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ibk-spacing-8, 8px);
+    cursor: pointer;
+    height: 20px;
+}
+
+/* outer line of the radio */
+
+.ibkRadio label input {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 0.125rem solid var(--ibk-red-41);
+    border-radius: 50%;
+    display: inline-grid;
+    place-content: center;
+    flex-shrink: 0;
+}
+
+/* the inner circle of the radio */
+
+.ibkRadio label input::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    transform: scale(0);
+    box-shadow: inset 1em 1em var(--ibk-red-41);
+}
+
+.ibkRadio label input:checked::before {
+    transform: scale(1);
+}
+
+.ibkRadio label input:focus {
+    outline: solid 2px var(--ibk-focusstroke);
+    outline-offset: 2px;
+}
+
+.ibkRadio label input:focus-visible {
+    outline: solid 2px var(--ibk-focusstroke);
+    outline-offset: 2px;
+}
+
+.ibkRadio label .ibk-radio-label {
+    font-weight: 500;
+    color: var(--standard-fontcolor);
+}
+
+/* ***************************************************************************************
+ *  ibkRadio variations
+ * ***************************************************************************************/
+
+/* ibkRadio | disabled */
+
+.ibkRadio label input[disabled],
+.ibkRadio:hover label input[disabled] {
+    border-color: var(--ibk-neutral-grey-82);
+}
+
+.ibkRadio label.ibkRadio-disabled .ibk-radio-label {
+    color: var(--ibk-neutral-grey-82);
+}
+
+.ibkRadio label input[disabled]::before,
+.ibkRadio:hover label input[disabled]::before {
+    box-shadow: inset 1em 1em var(--ibk-neutral-grey-82);
+}
+
+.ibkRadio label.ibkRadio-disabled {
+    cursor: not-allowed;
+}
+
+/* ibkRadio | enabled | hover */
+
+.ibkRadio:hover label input {
+    border-color: var(--ibk-red-49);
+}
+.ibkRadio:hover label input::before {
+    box-shadow: inset 1em 1em var(--ibk-red-49);
+}
+
+/* ibkRadio | enabled | active */
+
+.ibkRadio:active label input {
+    border-color: var(--ibk-red-33);
+}
+.ibkRadio:active label input::before {
+    box-shadow: inset 1em 1em var(--ibk-red-33);
+}
+
+/* ***************************************************************************************
+ *  ibkRadio | leading label (label on left, radio on right)
+ * ***************************************************************************************/
+
+/* No special styling needed - DOM order naturally places label before input */
+
+/* ***************************************************************************************
+ *  Supporting Text
+ * ***************************************************************************************/
+
+.supportingText {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ibk-spacing-8, 8px);
+}
+
+.supportingText {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    max-width: stretch !important;
+    color: var(--ibk-neutral-grey-42);
+}
+
+.supportingText.disabled {
+    color: var(--ibk-neutral-grey-82);
+}
+
+.supportingText.alert {
+    color: var(--ibk-alert-34);
+}
+
+.supportingText.warning {
+    color: var(--ibk-warning-34);
+}
+
+.supportingText.success {
+    color: var(--ibk-success-22);
+}

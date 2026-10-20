@@ -1,0 +1,193 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - Storybook only
+ *
+ *  Presentation helpers for the Layout stories: the dummy boxes, the outline that
+ *  makes a primitive's edges visible, and the viewport frames used for the 320px
+ *  reflow check.
+ *
+ *  Deliberately NOT part of ides.css. A layout primitive has no appearance of its
+ *  own - no colour, no border, no fill - so everything that makes it *visible* in
+ *  the docs lives here and never ships with the framework. Every class is prefixed
+ *  `lp-` (layout preview) so it can never be mistaken for a framework class.
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Dummy box - stands in for "any component" wherever the arrangement is the point
+ * ***************************************************************************************/
+
+.lp-box {
+    align-items: center;
+    background-color: var(--ibk-petrol-32);
+    border-radius: var(--ibk-radius-6, 0.375rem);
+    color: var(--white-100, #fff);
+    display: flex;
+    font-size: 0.875rem;
+    font-weight: 600;
+    justify-content: center;
+    min-block-size: 3rem;
+    padding: var(--ibk-spacing-8) var(--ibk-spacing-12);
+    text-align: center;
+}
+
+/* Second tone, so a Sidebar's two areas or a Stack's nested groups stay apart. */
+.lp-box-alt {
+    background-color: var(--ibk-neutral-grey-42, #6b6b6b);
+}
+
+/* Outline only - for the box that *contains* a primitive rather than sitting in it. */
+.lp-box-ghost {
+    background-color: transparent;
+    border: 1px dashed var(--ibk-neutral-grey-74);
+    color: var(--ibk-neutral-grey-42);
+    font-weight: 400;
+}
+
+/* Deliberately no .lp-box-tall helper.
+ *
+ * Where an example turns on a height difference, that difference comes from the
+ * box holding more lines of text - see `tallBox()` in Layout.stories.ts. A helper
+ * class setting min-block-size would put the mechanism of the example into a
+ * stylesheet the reader never sees, and the inspector hides `lp-` classes for
+ * exactly that reason: they are presentation, so they must never be the point.
+ */
+
+
+/* ***************************************************************************************
+ *  Frame - draws the edges of the primitive under inspection
+ * ***************************************************************************************/
+
+.lp-frame {
+    background-color: var(--ibk-neutral-grey-94, #f0f0f0);
+    border: 1px dashed var(--ibk-neutral-grey-74);
+    border-radius: var(--ibk-radius-6, 0.375rem);
+    padding: var(--ibk-spacing-12);
+}
+
+/* Caption above a frame or a matrix cell. */
+.lp-caption {
+    color: var(--ibk-neutral-grey-42);
+    font-family: ui-monospace, 'SFMono-Regular', 'Consolas', monospace;
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+.lp-title {
+    color: var(--ibk-neutral-grey-18);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.lp-note {
+    color: var(--ibk-neutral-grey-42);
+    font-size: 0.875rem;
+    margin: 0;
+    max-inline-size: 70ch;
+}
+
+
+/* ***************************************************************************************
+ *  Viewport frame - a fixed-width window for the 320px reflow check
+ *
+ *  resize: horizontal turns the frame into a handle the reader can drag, which is
+ *  the only honest way to show that no breakpoint is involved: the layout has to
+ *  react at every width, not at four of them.
+ * ***************************************************************************************/
+
+.lp-viewport {
+    border: 2px solid var(--ibk-neutral-grey-74);
+    border-radius: var(--ibk-radius-6, 0.375rem);
+    max-inline-size: 100%;
+    overflow: auto;
+    padding: var(--ibk-spacing-12);
+    resize: horizontal;
+}
+
+.lp-viewport-320 {
+    inline-size: 320px;
+}
+
+.lp-viewport-480 {
+    inline-size: 480px;
+}
+
+.lp-viewport-768 {
+    inline-size: 768px;
+}
+
+
+/* ***************************************************************************************
+ *  Matrix - one row per variant, caption on the left where there is room
+ * ***************************************************************************************/
+
+.lp-matrix {
+    display: grid;
+    gap: var(--ibk-spacing-24);
+    grid-template-columns: 1fr;
+}
+
+.lp-matrix-labelled {
+    align-items: start;
+}
+
+/* The caption column only appears once there is room for it; below that the
+   caption stacks above its example. A container query, not a media query - the
+   docs canvas is not the viewport. Needs `.ibk-query-container` on the wrapper. */
+@container (inline-size >= 45rem) {
+    .lp-matrix-labelled {
+        gap: var(--ibk-spacing-16) var(--ibk-spacing-24);
+        grid-template-columns: 12rem 1fr;
+    }
+}
+
+
+/* ***************************************************************************************
+ *  Ruler - marks a container's max-inline-size so the cap is visible, not implied
+ * ***************************************************************************************/
+
+.lp-ruler {
+    background-color: var(--ibk-petrol-32);
+    block-size: 0.25rem;
+    border-radius: 0.125rem;
+}
+
+
+/* ***************************************************************************************
+ *  Demo page chrome - the neutral header/footer bars of the example pages, so the
+ *  primitives are seen in a page and not floating on white
+ * ***************************************************************************************/
+
+.lp-page {
+    background-color: var(--ibk-neutral-grey-94, #f0f0f0);
+    padding-block: var(--ibk-spacing-24);
+}
+
+.lp-bar {
+    background-color: var(--white-100, #fff);
+    border-block-end: 1px solid var(--ibk-neutral-grey-74);
+    padding-block: var(--ibk-spacing-12);
+}
+
+.lp-surface {
+    background-color: var(--white-100, #fff);
+    border-radius: var(--ibk-radius-6, 0.375rem);
+    padding: var(--ibk-spacing-16);
+}
+
+.lp-brand {
+    color: var(--ibk-petrol-32);
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.lp-metric {
+    color: var(--ibk-petrol-32);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.lp-label {
+    color: var(--ibk-neutral-grey-42);
+    font-size: 0.875rem;
+}

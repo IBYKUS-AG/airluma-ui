@@ -1,0 +1,28 @@
+/* ***************************************************************************************
+ *	 IBYKUS-Iconset, woff2 only - a smaller <link> variant of iconset.css.
+ *
+ *	 Deliberately without the woff/ttf fallbacks: every browser that runs the IBYKUS
+ *	 Web Components supports woff2, and the fallbacks triple the bytes a consumer has
+ *	 to host for browsers that effectively no longer exist. Use iconset.css instead if
+ *	 you need the full chain.
+ * ***************************************************************************************/
+
+@font-face {
+	font-family: "IBYKUS-Iconset";
+	src: url('./assets/IBYKUS-Iconset.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+:root {
+	--ides-iconset-version: "2.0";
+}
+
+.ibkIcon {
+	font-family: "IBYKUS-Iconset" !important;
+	font-style: inherit;
+	line-height: 1.0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

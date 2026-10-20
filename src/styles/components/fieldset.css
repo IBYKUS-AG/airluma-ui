@@ -1,0 +1,83 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Fieldset (ibkFieldset)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+.ibkFieldset {
+	border: 0;
+	display: flex;
+	flex-direction: column;
+	gap: var(--ibk-spacing-12);
+	padding: 0.625rem;
+}
+
+.ibkFieldset legend {
+	color: var(--standard-fontcolor);
+	float: none;
+	display: block;
+	font-size: 1.3125rem;
+	font-weight: 600;
+	line-height: 1.50rem;
+	/* reset the 2px UA padding so the legend starts flush with the supporting text */
+	padding-left: 0;
+	width: 100%;
+}
+
+.ibkFieldset .supportingText {
+	width: 100%;
+}
+
+.ibkFieldsetContent {
+	display: flex;
+	flex-direction: column;
+	gap: var(--ibk-spacing-12);
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Disabled
+ * ***************************************************************************************/
+
+.ibkFieldset:disabled legend {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkFieldset:disabled * {
+  color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+  border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+
+
+/* ***************************************************************************************
+ *  Fieldset disabled
+ *  all input fields need to set disabled
+ *  but not for real - just its colors)
+ * ***************************************************************************************/
+
+.ibkFieldset:disabled .ibkInputText label, .ibkInputText label i {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+.ibkFieldset:disabled .ibkInputText input {
+	background-color: light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-6));
+	border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+.ibkFieldset:disabled .ibkInputText input ~ .ibkIcon,
+.ibkFieldset:disabled .ibkInputText input ~ .supportingText {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+.ibkFieldset:disabled .ibkInputText input ~ .first,
+.ibkFieldset:disabled .ibkInputText input ~ .second,
+.ibkFieldset:disabled .ibkInputText input ~ .third {
+	cursor: default !important;
+}

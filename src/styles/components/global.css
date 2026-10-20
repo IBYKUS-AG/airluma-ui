@@ -1,0 +1,570 @@
+/* ***************************************************************************************
+ * IBYKUS-Designsystem - IdesFramework
+ * Global defintions
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Global color variables
+ * ***************************************************************************************/
+
+:root {
+
+	/* ***************************************************************************************
+ *	 Color ramps
+ *
+ *	 The ramps are the single source of truth for every colour in the design system.
+ *	 The step number is the lightness, so --ibk-red-41 sits at 41 %.
+ *
+ *	 The semantic aliases (--brandPrimary, --ibk-alert, ...) are declared after the
+ *	 ramps at the end of this block and reference a ramp step with var(). Never repeat
+ *	 a literal colour in an alias - that is how the alias and its ramp step drift apart.
+ * ***************************************************************************************/
+
+	/* ***************************************************************************************
+ *	 IBYKUS Brand colors
+ * ***************************************************************************************/
+
+	/*
+	 *	 The variants of --brandPrimary
+	 */
+	--ibk-red-73: rgb(255, 117, 158);
+	--ibk-red-49: rgb(250, 0, 74);
+	--ibk-red-41: rgb(207, 0, 61);
+	/* please use: --brandPrimary instead of this one */
+	--ibk-red-33: rgb(168, 0, 50);
+	--ibk-red-18: rgb(92, 0, 27);
+	--ibk-red-14: rgb(71, 0, 21);
+	--ibk-red-10: rgb(51, 0, 15);
+	--ibk-red-6: rgb(31, 0, 9);
+
+	/*
+	 *	 The variants of --brandSecondary
+	 */
+	--ibk-sisal-98: rgb(251, 250, 249);
+	--ibk-sisal-94: rgb(243, 241, 236);
+	--ibk-sisal-90: rgb(236, 232, 224);
+	--ibk-sisal-86: rgb(228, 222, 211);
+	--ibk-sisal-82: rgb(220, 213, 198);
+	--ibk-sisal-80: rgb(216, 208, 192);
+	/* please use --brandSecondary instead of this one */
+	--ibk-sisal-78: rgb(212, 203, 186);
+	--ibk-sisal-18: rgb(57, 49, 35);
+	--ibk-sisal-14: rgb(44, 39, 27);
+	--ibk-sisal-10: rgb(32, 28, 19);
+	--ibk-sisal-6: rgb(19, 17, 12);
+
+	/*
+	 *	 The variants of --brandTertiary
+	 */
+	--ibk-petrol-98: rgb(249, 250, 251);
+	--ibk-petrol-94: rgb(237, 240, 243);
+	--ibk-petrol-90: rgb(224, 230, 235);
+	--ibk-petrol-86: rgb(212, 220, 226);
+	--ibk-petrol-82: rgb(200, 210, 218);
+	--ibk-petrol-78: rgb(188, 201, 210);
+	--ibk-petrol-40: rgb(82, 105, 122);
+	--ibk-petrol-32: rgb(66, 85, 99);
+	/* please use --brandTertiary instead of this one */
+	--ibk-petrol-26: rgb(53, 68, 79);
+	--ibk-petrol-18: rgb(37, 47, 55);
+	--ibk-petrol-14: rgb(29, 37, 43);
+	--ibk-petrol-10: rgb(20, 26, 31);
+	--ibk-petrol-6: rgb(12, 16, 18);
+
+
+
+	/* ***************************************************************************************
+ *	 IBYKUS Function colors
+ * ***************************************************************************************/
+
+	--ibk-alert-2: rgb(10, 3, 0);
+	--ibk-alert-6: rgb(31, 8, 0);
+	--ibk-alert-10: rgb(51, 14, 0);
+	--ibk-alert-14: rgb(71, 19, 0);
+	--ibk-alert-18: rgb(92, 24, 0);
+	--ibk-alert-22: rgb(112, 30, 0);
+	--ibk-alert-26: rgb(133, 35, 0);
+	--ibk-alert-34: rgb(173, 46, 0);
+	--ibk-alert-42: rgb(214, 57, 0);
+	--ibk-alert-50: rgb(255, 68, 0);
+	/* please use --ibk-alert instead of this one */
+	--ibk-alert-58: rgb(255, 98, 41);
+	--ibk-alert-66: rgb(255, 128, 82);
+	--ibk-alert-74: rgb(255, 158, 122);
+	--ibk-alert-78: rgb(255, 173, 143);
+	--ibk-alert-82: rgb(255, 188, 163);
+	--ibk-alert-86: rgb(255, 203, 184);
+	--ibk-alert-90: rgb(255, 218, 204);
+	--ibk-alert-94: rgb(255, 233, 224);
+	--ibk-alert-98: rgb(255, 248, 245);
+
+	--ibk-warning-2: rgb(10, 8, 0);
+	--ibk-warning-6: rgb(31, 23, 0);
+	--ibk-warning-10: rgb(51, 38, 0);
+	--ibk-warning-14: rgb(71, 54, 0);
+	--ibk-warning-18: rgb(92, 69, 0);
+	--ibk-warning-22: rgb(112, 84, 0);
+	--ibk-warning-26: rgb(133, 99, 0);
+	--ibk-warning-34: rgb(173, 130, 0);
+	--ibk-warning-42: rgb(214, 161, 0);
+	--ibk-warning-50: rgb(255, 191, 0);
+	/* please use --ibk-warning instead of this one */
+	--ibk-warning-58: rgb(255, 201, 41);
+	--ibk-warning-66: rgb(255, 212, 82);
+	--ibk-warning-74: rgb(255, 224, 122);
+	--ibk-warning-78: rgb(255, 229, 143);
+	--ibk-warning-82: rgb(255, 232, 163);
+	--ibk-warning-86: rgb(255, 237, 184);
+	--ibk-warning-90: rgb(255, 242, 204);
+	--ibk-warning-94: rgb(255, 247, 224);
+	--ibk-warning-98: rgb(255, 252, 245);
+
+	--ibk-success-2: rgb(1, 9, 4);
+	--ibk-success-6: rgb(3, 28, 13);
+	--ibk-success-10: rgb(5, 46, 22);
+	--ibk-success-14: rgb(7, 64, 31);
+	--ibk-success-18: rgb(9, 83, 40);
+	--ibk-success-22: rgb(11, 101, 19);
+	--ibk-success-26: rgb(13, 119, 57);
+	--ibk-success-34: rgb(17, 156, 75);
+	--ibk-success-42: rgb(21, 193, 93);
+	--ibk-success-50: rgb(25, 230, 111);
+	/* please use --ibk-success instead of this one */
+	--ibk-success-58: rgb(62, 234, 134);
+	--ibk-success-66: rgb(99, 238, 157);
+	--ibk-success-74: rgb(136, 242, 180);
+	--ibk-success-78: rgb(154, 244, 191);
+	--ibk-success-82: rgb(172, 246, 203);
+	--ibk-success-86: rgb(191, 248, 215);
+	--ibk-success-90: rgb(209, 250, 226);
+	--ibk-success-94: rgb(227, 252, 238);
+	--ibk-success-98: rgb(246, 254, 249);
+
+	--ibk-info-2: rgb(0, 6, 10);
+	--ibk-info-6: rgb(0, 18, 31);
+	--ibk-info-10: rgb(0, 30, 51);
+	--ibk-info-14: rgb(0, 42, 71);
+	--ibk-info-18: rgb(0, 54, 92);
+	--ibk-info-22: rgb(0, 65, 112);
+	--ibk-info-26: rgb(0, 77, 133);
+	--ibk-info-34: rgb(0, 101, 173);
+	--ibk-info-42: rgb(0, 125, 214);
+	--ibk-info-50: rgb(0, 149, 255);
+	/* please use --ibk-info instead of this one */
+	--ibk-info-58: rgb(41, 166, 255);
+	--ibk-info-66: rgb(82, 183, 255);
+	--ibk-info-74: rgb(122, 200, 255);
+	--ibk-info-78: rgb(143, 208, 255);
+	--ibk-info-82: rgb(163, 217, 255);
+	--ibk-info-86: rgb(184, 225, 255);
+	--ibk-info-90: rgb(204, 234, 255);
+	--ibk-info-94: rgb(224, 242, 255);
+	--ibk-info-98: rgb(245, 251, 255);
+
+	--ibk-neutral-grey-2: rgb(5, 5, 5);
+	--ibk-neutral-grey-6: rgb(15, 15, 15);
+	--ibk-neutral-grey-10: rgb(26, 26, 26);
+	--ibk-neutral-grey-14: rgb(36, 36, 36);
+	--ibk-neutral-grey-18: rgb(46, 46, 46);
+	--ibk-neutral-grey-22: rgb(56, 56, 56);
+	--ibk-neutral-grey-26: rgb(66, 66, 66);
+	--ibk-neutral-grey-34: rgb(87, 87, 87);
+	--ibk-neutral-grey-42: rgb(107, 107, 107);
+	--ibk-neutral-grey-50: rgb(127, 127, 127);
+	--ibk-neutral-grey-58: rgb(148, 148, 148);
+	--ibk-neutral-grey-66: rgb(168, 168, 168);
+	--ibk-neutral-grey-74: rgb(189, 189, 189);
+	--ibk-neutral-grey-78: rgb(199, 199, 199);
+	--ibk-neutral-grey-82: rgb(209, 209, 209);
+	--ibk-neutral-grey-86: rgb(219, 219, 219);
+	--ibk-neutral-grey-90: rgb(230, 230, 230);
+	--ibk-neutral-grey-94: rgb(240, 240, 240);
+	--ibk-neutral-grey-98: rgb(250, 250, 250);
+
+	--ibk-rich-grey-2: rgb(10, 0, 3);
+	--ibk-rich-grey-6: rgb(25, 4, 10);
+	--ibk-rich-grey-10: rgb(34, 15, 21);
+	--ibk-rich-grey-14: rgb(45, 26, 32);
+	--ibk-rich-grey-18: rgb(53, 39, 42);
+	--ibk-rich-grey-22: rgb(63, 49, 54);
+	--ibk-rich-grey-26: rgb(73, 60, 64);
+	--ibk-rich-grey-34: rgb(94, 81, 85);
+	--ibk-rich-grey-42: rgb(114, 101, 105);
+	--ibk-rich-grey-50: rgb(132, 122, 125);
+	--ibk-rich-grey-58: rgb(153, 143, 146);
+	--ibk-rich-grey-66: rgb(172, 164, 166);
+	--ibk-rich-grey-74: rgb(192, 185, 188);
+	--ibk-rich-grey-78: rgb(202, 196, 198);
+	--ibk-rich-grey-82: rgb(212, 206, 207);
+	--ibk-rich-grey-86: rgb(221, 217, 218);
+	--ibk-rich-grey-90: rgb(232, 227, 230);
+	--ibk-rich-grey-94: rgb(241, 238, 240);
+	--ibk-rich-grey-98: rgb(250, 248, 248);
+
+
+
+
+	/* ***************************************************************************************
+ *	 Color aliases
+ *
+ *	 Semantic names for a single step of a ramp above. Each one is a var() reference,
+ *	 so it always carries the current value of its ramp step.
+ * ***************************************************************************************/
+
+	/*
+	 *	 Fundamentals
+	 *	 --black-0 and --white-100 are absolute, they belong to no ramp.
+	 */
+	--standard-fontcolor: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+	--black-0: rgb(0, 0, 0);
+	--white-100: rgb(255, 255, 255);
+
+	/*
+	 *	 IBYKUS Brand colors
+	 *
+	 *	 Please note: 	Only the main color has its own identifier.
+	 *					To use the gradations, please use the variants of these
+	 *					color by using this format: --ibk-red-XX
+	 *												--ibk-sisal-XX
+	 *												--ibk-petrol-XX
+	 *					from the "IBYKUS Brand colors" ramps above.
+	 */
+	--brandPrimary: var(--ibk-red-41);
+	--brandSecondary: var(--ibk-sisal-80);
+	--brandTertiary: var(--ibk-petrol-32);
+
+	/*
+	 *	 Main function colors
+	 */
+	--ibk-alert: var(--ibk-alert-50);
+	--ibk-warning: var(--ibk-warning-50);
+	--ibk-success: var(--ibk-success-50);
+	--ibk-info: var(--ibk-info-50);
+	--ibk-focusstroke: light-dark(var(--ibk-info-34), var(--ibk-info-22));
+
+
+
+
+	/* ***************************************************************************************
+ *   Spacings - inner and outer spacings
+ * ***************************************************************************************/
+
+	--ibk-spacing-2: calc(1.0rem * 0.125);
+	--ibk-spacing-4: calc(1.0rem * 0.25);
+	--ibk-spacing-6: calc(1.0rem * 0.375);
+	--ibk-spacing-8: calc(1.0rem * 0.5);
+	--ibk-spacing-10: calc(1.0rem * 0.625);
+	--ibk-spacing-12: calc(1.0rem * 0.75);
+	--ibk-spacing-14: calc(1.0rem * 0.875);
+	--ibk-spacing-16: 1.0rem;
+	--ibk-spacing-24: calc(1.0rem * 1.5);
+	--ibk-spacing-32: calc(1.0rem * 2.0);
+	--ibk-spacing-40: calc(1.0rem * 2.5);
+	--ibk-spacing-48: calc(1.0rem * 3.0);
+
+	/* ***************************************************************************************
+ *	 Corner Radius
+ * ***************************************************************************************/
+
+	--ibk-radius-2: calc(1.0rem * 0.125);
+	--ibk-radius-4: calc(1.0rem * 0.25);
+	--ibk-radius-6: calc(1.0rem * 0.375);
+	--ibk-radius-8: calc(1.0rem * 0.5);
+	--ibk-radius-10: calc(1.0rem * 0.625);
+	--ibk-radius-14: calc(1.0rem * 0.875);
+	--ibk-radius-16: 1.0rem;
+	--ibk-radius-24: calc(1.0rem * 1.5);
+
+	/* ***************************************************************************************
+ *	 Shadows
+ * ***************************************************************************************/
+
+	--ibk-shadow-1: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+	/* ***************************************************************************************
+ *	 Transitions
+ * ***************************************************************************************/
+
+	--ibk-transition-default: 0.2s ease-in-out;
+}
+
+
+
+
+/* ***************************************************************************************
+ *	 Reduced motion
+ *
+ *	 Every component reads its timing from --ibk-transition-default, so overriding the
+ *	 token alone switches all of them off at once: the transition still runs, it just
+ *	 finishes in 0s. The easing stays in place so the value keeps its shape and a
+ *	 component can still override the token locally.
+ *
+ *	 Deliberately not a blanket `* { transition: none }`: a spinner that freezes stops
+ *	 communicating that something is loading. Components with a looping animation slow
+ *	 it down in their own stylesheet instead (see progress.css).
+ * ***************************************************************************************/
+
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		--ibk-transition-default: 0s ease-in-out;
+	}
+}
+
+
+
+
+/* ***************************************************************************************
+ *	 Global structural resets
+ *	 border-box for everything: width and height then include padding and border, so a
+ *	 utility class like .padding-spacing-16 adds inner spacing without growing the
+ *	 element. Components therefore never need to repeat box-sizing themselves.
+ * ***************************************************************************************/
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* The page surface belongs to the design system, not to the page using it: the component
+   colours are designed against the white sheet in light mode and the black one in dark, so
+   an application that imports ides.css gets the right canvas without writing any CSS of its
+   own. Stated in both modes on purpose - leaving light to the browser and only overriding
+   dark would make the two modes behave differently for a host that styles its own body. */
+html,
+body {
+	background-color: light-dark(var(--white-100), var(--black-0));
+	color: var(--standard-fontcolor);
+	margin: 0;
+	padding: 0;
+}
+
+
+
+
+/* ***************************************************************************************
+ *	 Focus indicator
+ *
+ *	 One ring for the whole design system. :focus-visible - not :focus - so the browser
+ *	 decides per element type whether a pointer interaction deserves a ring: clicking a
+ *	 button stays quiet, clicking a text field still shows the ring.
+ *
+ *	 A component only adds a rule of its own when it needs a different offset, a colour
+ *	 change on top, or when the ring has to be drawn on a sibling because the element
+ *	 that actually takes focus is visually hidden (switch, checkbox, range slider).
+ * ***************************************************************************************/
+
+:focus-visible {
+	outline: solid 2px var(--ibk-focusstroke);
+	outline-offset: 2px;
+}
+
+
+
+
+/* ***************************************************************************************
+ *	 Global font resets
+ *	 'Asap' is the document font and is inherited by every element. Italic text is the
+ *	 italic face of the same family (font-style: italic) - there is no separate
+ *	 'Asap italic' family, so no !important overrides are needed anywhere.
+ *	 Set font-family 'Iconset' for .ibkIcon
+ * ***************************************************************************************/
+
+:root {
+	font-family: 'Asap', sans-serif;
+	font-size: 1.0rem;
+	font-weight: 400;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Form controls do not inherit the document font from the UA stylesheet */
+button, input, select, textarea, optgroup { font: inherit; }
+
+/* <kbd> defaults to monospace in the UA stylesheet, but is styled as a key cap in Asap */
+kbd { font-family: inherit; }
+
+/* Only the size token lives here. What actually makes a glyph render -- the
+   font-family, the smoothing, the @font-face itself -- is in @ides/iconset's
+   iconset.css, so that a consumer who wants nothing but the icons gets a working
+   .ibkIcon from that package alone. The two halves are order-independent: they
+   do not overlap, and font-family carries !important there as it did here.
+   No display or float here either: every icon sits in a flex or grid container
+   (where float does not apply and inline boxes are blockified anyway) or carries
+   its own display/float in the component stylesheet. Layout belongs to the
+   component. */
+.ibkIcon {
+	font-size: 1.5rem;
+}
+
+
+
+
+/* ***************************************************************************************
+ *	 Spacings - inner and outer spacings
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Margin
+ * ***************************************************************************************/
+
+.margin-spacing-2 {
+	margin: var(--ibk-spacing-2)
+}
+
+.margin-spacing-4 {
+	margin: var(--ibk-spacing-4)
+}
+
+.margin-spacing-6 {
+	margin: var(--ibk-spacing-6)
+}
+
+.margin-spacing-8 {
+	margin: var(--ibk-spacing-8)
+}
+
+.margin-spacing-10 {
+	margin: var(--ibk-spacing-10)
+}
+
+.margin-spacing-12 {
+	margin: var(--ibk-spacing-12)
+}
+
+.margin-spacing-14 {
+	margin: var(--ibk-spacing-14)
+}
+
+.margin-spacing-16 {
+	margin: var(--ibk-spacing-16)
+}
+
+.margin-spacing-24 {
+	margin: var(--ibk-spacing-24)
+}
+
+.margin-spacing-32 {
+	margin: var(--ibk-spacing-32)
+}
+
+.margin-spacing-40 {
+	margin: var(--ibk-spacing-40)
+}
+
+.margin-spacing-48 {
+	margin: var(--ibk-spacing-48)
+}
+
+
+/* ***************************************************************************************
+ *	 Padding
+ * ***************************************************************************************/
+
+.padding-spacing-2 {
+	padding: var(--ibk-spacing-2)
+}
+
+.padding-spacing-4 {
+	padding: var(--ibk-spacing-4)
+}
+
+.padding-spacing-6 {
+	padding: var(--ibk-spacing-6)
+}
+
+.padding-spacing-8 {
+	padding: var(--ibk-spacing-8)
+}
+
+.padding-spacing-10 {
+	padding: var(--ibk-spacing-10)
+}
+
+.padding-spacing-12 {
+	padding: var(--ibk-spacing-12)
+}
+
+.padding-spacing-14 {
+	padding: var(--ibk-spacing-14)
+}
+
+.padding-spacing-16 {
+	padding: var(--ibk-spacing-16)
+}
+
+.padding-spacing-24 {
+	padding: var(--ibk-spacing-24)
+}
+
+.padding-spacing-32 {
+	padding: var(--ibk-spacing-32)
+}
+
+.padding-spacing-40 {
+	padding: var(--ibk-spacing-40)
+}
+
+.padding-spacing-48 {
+	padding: var(--ibk-spacing-48)
+}
+
+
+
+
+/* ***************************************************************************************
+ *	 Shadows
+ * ***************************************************************************************/
+
+.ibk-shadow-1 {
+	box-shadow: var(--ibk-shadow-1);
+}
+
+
+
+
+/* ***************************************************************************************
+ *	 Global font definitions
+ *	 The 'Asap' @font-face rules live in the @ides/fonts package, not here: they carry
+ *	 their own relative url()s and the font files' SIL OFL 1.1 license has to travel
+ *	 with them. Load them with `import '@ides/fonts/fonts.css'` (or the CDN
+ *	 stylesheet); :root below only *uses* the family and falls back to sans-serif.
+ * ***************************************************************************************/
+
+/* The IBYKUS-Iconset @font-face lives in the @ides/iconset package for the same
+   reason the Asap one lives in @ides/fonts: it owns its files and its relative
+   url()s. Load it with `import '@ides/iconset/iconset.css'` (or the CDN
+   stylesheet). */
+
+/* ***************************************************************************************
+ *	 Dark mode
+ *
+ *	 Every colour that differs between the modes is written as light-dark(light, dark)
+ *	 right where it is used - there are no separate dark rules and no
+ *	 prefers-color-scheme media queries anywhere in the design system. Which of the two
+ *	 values applies is decided by the color-scheme of the element alone.
+ *
+ *	 `color-scheme: light dark` on :root makes the OS setting the default, exactly like
+ *	 the media query used to. It also lets the browser paint the scrollbars and the
+ *	 native form widgets dark; the page surface is set explicitly on html/body above:
+ *	 every dark component colour was designed against the black page of the Figma dark
+ *	 sheets, so leaving the canvas to the browser (Chrome paints #121212) or to the host
+ *	 application would quietly change the contrast of every border and disabled state.
+ *
+ *	 An application can force a mode regardless of the OS - for a user-facing theme
+ *	 switch - by putting one class on the <html> element. Nothing else is needed, and
+ *	 removing the class returns to the OS setting.
+ * ***************************************************************************************/
+
+:root {
+	color-scheme: light dark;
+}
+
+html.isLight {
+	color-scheme: light;
+}
+
+html.isDark {
+	color-scheme: dark;
+}

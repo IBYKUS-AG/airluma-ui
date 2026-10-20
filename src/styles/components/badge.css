@@ -1,0 +1,119 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Badges (ibkBadge)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Initial settings
+ * ***************************************************************************************/
+
+ibk-badge {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ibkBadge {
+    --ibk-badge-size: 0.5rem;
+
+    display: inline-block;
+    line-height: 0;
+    position: relative;
+}
+
+.ibkBadgeContent {
+    display: inline-block;
+    line-height: 0;
+}
+
+.ibkBadgeContent > .ibkIcon {
+    align-items: center;
+    display: inline-flex;
+    height: 1em;
+    justify-content: center;
+    line-height: 1;
+    width: 1em;
+}
+
+.ibkBadge .badgeWrapper {
+    display: block;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+}
+
+.ibkBadge .indicator {
+    background: var(--ibk-red-49);
+    border-radius: 50%;
+    display: block;
+    font-style: inherit;
+    height: var(--ibk-badge-size);
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: var(--ibk-badge-size);
+}
+
+.ibkBadge.type-info .indicator {
+    background: light-dark(var(--ibk-info-34), var(--ibk-info-26));
+}
+
+.ibkBadge.type-success .indicator {
+    background: light-dark(var(--ibk-success-26), var(--ibk-success-18));
+}
+
+.ibkBadge.type-warning .indicator {
+    background: light-dark(var(--ibk-warning-34), var(--ibk-warning-22));
+}
+
+.ibkBadge.type-alert .indicator {
+    background: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+}
+
+/* ***************************************************************************************
+ *  Badge XS (Decent) = Size 0.25rem x 0.25rem
+ *  to use with Iconsize 12px - 23px
+ * ***************************************************************************************/
+
+.ibkBadge.decent .indicator {
+    --ibk-badge-size: 0.25rem;
+}
+
+/* ***************************************************************************************
+ *  Badge S (Regular) = Size 0.50rem x 0.50rem
+ *  to use with Iconsize 24px - 32px
+ * ***************************************************************************************/
+
+.ibkBadge.regular .indicator {
+    --ibk-badge-size: 0.5rem;
+}
+
+/* ***************************************************************************************
+ *  Badge Counter = Regular counter badge
+ * ***************************************************************************************/
+
+.ibkBadge.counter .indicator {
+    align-items: center;
+    background: var(--ibk-red-49);
+    border-radius: 1rem;
+    color: var(--white-100);
+    display: inline-flex;
+    font-family: 'Asap', sans-serif;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    height: 1rem;
+    justify-content: flex-start;
+    line-height: 1rem;
+    min-width: 1rem;
+    padding: 0 0.25rem;
+    right: -0.25rem;
+    text-align: left;
+    top: -0.4rem;
+    width: auto;
+}

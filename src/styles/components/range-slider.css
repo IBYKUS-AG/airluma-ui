@@ -1,0 +1,553 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+
+/* ***************************************************************************************
+ *	 Range Slider (ibkRangeSlider)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+ibk-range-slider {
+	display: block;
+	width: 100%;
+}
+
+.ibkRangeSlider {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	gap: var(--ibk-spacing-8, 0.5rem);
+	width: 100%;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Label
+ * ***************************************************************************************/
+
+.ibkRangeSlider .ibkLabel {
+	align-items: flex-end;
+	display: flex;
+	gap: var(--ibk-spacing-4, 0.25rem);
+	min-height: 1.5rem;
+}
+
+.ibkRangeSlider .ibkLabel .ibkLabelText {
+	color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+	font-size: var(--label-l, 1rem);
+	font-weight: 500;
+	letter-spacing: var(--label-l-ls, 0.01563rem);
+	line-height: var(--label-l-lh, 1.5rem);
+	white-space: nowrap;
+}
+
+.ibkRangeSlider .ibkLabel .ibkIcon.label-info {
+	align-items: center;
+	aspect-ratio: 1 / 1;
+	border-radius: var(--ibk-radius-2, 0.125rem);
+	color: light-dark(var(--ibk-info-34), var(--ibk-info-26));
+	cursor: pointer;
+	display: flex;
+	flex-shrink: 0;
+	font-size: var(--icon-button, 1.5rem);
+	height: 1.5rem;
+	justify-content: center;
+	user-select: none;
+	width: 1.5rem;
+}
+
+/* The ring itself comes from global. Only the offset differs: label.css pins every
+   .ibkLabel icon to 0, this one sits away from the glyph like the other slider parts. */
+.ibkRangeSlider .ibkLabel .ibkIcon.label-info:focus-visible {
+	outline-offset: 2px;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Control row - leading element, track, trailing element
+ * ***************************************************************************************/
+
+.ibkRangeSlider .ibkRangeSliderControl {
+	align-items: center;
+	display: flex;
+	gap: var(--ibk-spacing-8, 0.5rem);
+	min-height: 1.25rem;
+	width: 100%;
+}
+
+.ibkRangeSlider .ibkRangeSliderLeading,
+.ibkRangeSlider .ibkRangeSliderTrailing {
+	align-items: center;
+	display: flex;
+	flex-shrink: 0;
+	height: 1.25rem;
+	user-select: none;
+}
+
+.ibkRangeSlider .ibkRangeSliderTrailing {
+	justify-content: flex-end;
+}
+
+/* Leading and trailing elements are presentational only - they are not interactive. */
+
+.ibkRangeSlider .ibkRangeSliderLeading .ibkIcon,
+.ibkRangeSlider .ibkRangeSliderTrailing .ibkIcon {
+	color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+	font-size: var(--icon-support, 1.25rem);
+	height: 1.25rem;
+	line-height: var(--icon-support-lh, 1.25rem);
+	text-align: center;
+	width: 1.25rem;
+}
+
+.ibkRangeSlider .ibkRangeSliderBoundText {
+	color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+	font-size: var(--text-chip, 0.875rem);
+	font-weight: 500;
+	letter-spacing: var(--text-s-ls, 0.03125rem);
+	line-height: var(--text-badge-lh, 0.875rem);
+	white-space: nowrap;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Track - rail, progress and thumb are painted as siblings of the native input. The
+ *  native input stays fully transparent and only drives interaction, focus and keyboard
+ *  support. Its 0.75rem wide (invisible) thumb travels within a box that overhangs the
+ *  visible track by 0.1875rem on both sides, so the thumb centre runs from 0.1875rem to
+ *  100% - 0.1875rem exactly like in the design.
+ * ***************************************************************************************/
+
+.ibkRangeSlider .ibkRangeSliderTrack {
+	flex: 1 0 0;
+	height: 1.5rem;
+	min-width: 0;
+	position: relative;
+}
+
+.ibkRangeSlider .ibkRangeSliderInput {
+	appearance: none;
+	-webkit-appearance: none;
+	background: transparent;
+	border: 0;
+	bottom: 0.125rem;
+	cursor: pointer;
+	left: -0.1875rem;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: -0.1875rem;
+	top: 0.125rem;
+	width: auto;
+	z-index: 1;
+}
+
+.ibkRangeSlider .ibkRangeSliderInput:focus {
+	outline: none;
+}
+
+/* Firefox < 90 paints a dotted inner border on a focused range input */
+
+.ibkRangeSlider .ibkRangeSliderInput::-moz-focus-outer {
+	border: 0;
+}
+
+
+/* Native track and progress are hidden - the visible ones are the sibling elements */
+
+.ibkRangeSlider .ibkRangeSliderInput::-webkit-slider-runnable-track {
+	background: transparent;
+	border: 0;
+	height: 100%;
+}
+
+.ibkRangeSlider .ibkRangeSliderInput::-moz-range-track {
+	background: transparent;
+	border: 0;
+	height: 100%;
+}
+
+.ibkRangeSlider .ibkRangeSliderInput::-moz-range-progress {
+	background: transparent;
+}
+
+
+/* Native thumb is the (invisible) pointer target and defines the travel distance */
+
+.ibkRangeSlider .ibkRangeSliderInput::-webkit-slider-thumb {
+	appearance: none;
+	-webkit-appearance: none;
+	background: transparent;
+	border: 0;
+	height: 1.25rem;
+	width: 0.75rem;
+}
+
+.ibkRangeSlider .ibkRangeSliderInput::-moz-range-thumb {
+	background: transparent;
+	border: 0;
+	height: 1.25rem;
+	width: 0.75rem;
+}
+
+.ibkRangeSlider .ibkRangeSliderRail {
+	background: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-58));
+	border-radius: var(--ibk-radius-6, 0.375rem);
+	height: 0.375rem;
+	left: 0;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.ibkRangeSlider .ibkRangeSliderProgress {
+	background: var(--ibk-red-49);
+	border-radius: var(--ibk-radius-6, 0.375rem);
+	height: 0.375rem;
+	left: 0;
+	min-width: 0.375rem;
+	pointer-events: none;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.ibkRangeSlider .ibkRangeSliderThumb {
+	background: var(--white-100);
+	border: 2px solid var(--ibk-red-41);
+	border-radius: var(--ibk-radius-8, 0.5rem);
+	box-shadow: 0 0 0.14213rem 0 rgba(0, 0, 0, 0.25);
+	height: 1rem;
+	pointer-events: none;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 1rem;
+}
+
+.ibkRangeSlider .ibkRangeSliderInput:enabled:hover ~ .ibkRangeSliderThumb {
+	border-color: var(--ibk-red-49);
+	border-width: 4px;
+}
+
+.ibkRangeSlider .ibkRangeSliderInput:enabled:active ~ .ibkRangeSliderThumb {
+	border-color: var(--ibk-red-33);
+	border-width: 4px;
+}
+
+/* The focus ring sits on the thumb, so it follows the current value instead of framing
+   the whole track. An outline is used rather than a border because it does not take up
+   layout space and follows the thumb's border-radius. */
+
+.ibkRangeSlider .ibkRangeSliderInput:focus-visible ~ .ibkRangeSliderThumb {
+	outline: solid 2px var(--ibk-focusstroke);
+	outline-offset: 2px;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Supporting text
+ * ***************************************************************************************/
+
+.ibkRangeSlider .supportingText {
+	align-items: flex-start;
+	display: flex;
+	gap: var(--ibk-spacing-4, 0.25rem);
+	width: 100%;
+}
+
+.ibkRangeSlider .supportingText .ibkIcon {
+	color: inherit;
+	float: none !important;
+	margin: 0;
+}
+
+.ibkRangeSlider .supportingText .content {
+	flex: 1 0 0;
+	float: none;
+	max-width: none;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Dominance - Decent (2px rail, bar shaped thumb)
+ * ***************************************************************************************/
+
+.ibkRangeSlider-decent .ibkRangeSliderControl {
+	gap: 0.5625rem;
+}
+
+.ibkRangeSlider-decent .ibkRangeSliderInput {
+	bottom: 0;
+	top: 0;
+}
+
+.ibkRangeSlider-decent .ibkRangeSliderRail {
+	background: light-dark(var(--ibk-neutral-grey-86), var(--ibk-neutral-grey-58));
+	height: 0.125rem;
+}
+
+.ibkRangeSlider-decent .ibkRangeSliderProgress {
+	height: 0.125rem;
+	min-width: 0.125rem;
+}
+
+.ibkRangeSlider-decent .ibkRangeSliderThumb {
+	background: var(--ibk-red-41);
+	border-color: light-dark(var(--white-100), var(--black-0));
+	border-width: 2px;
+	box-shadow: none;
+	height: 0.875rem;
+	width: 0.375rem;
+}
+
+.ibkRangeSlider-decent .ibkRangeSliderInput:enabled:hover ~ .ibkRangeSliderThumb,
+.ibkRangeSlider-decent .ibkRangeSliderInput:enabled:active ~ .ibkRangeSliderThumb {
+	background: var(--white-100);
+	border-width: 4px;
+	box-shadow: 0 0 0.14213rem 0 rgba(0, 0, 0, 0.25);
+	height: 0.75rem;
+	width: 0.75rem;
+}
+
+.ibkRangeSlider-decent .ibkRangeSliderInput:enabled:hover ~ .ibkRangeSliderThumb {
+	border-color: var(--ibk-red-49);
+}
+
+.ibkRangeSlider-decent .ibkRangeSliderInput:enabled:active ~ .ibkRangeSliderThumb {
+	border-color: var(--ibk-red-33);
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Orientation - Vertical (runs bottom to top)
+ *
+ *  The control is reversed into a column so the leading element stays at the min end,
+ *  which is now the bottom. The native input is turned with `writing-mode`, so pointer
+ *  dragging and the arrow keys follow the vertical axis, and `direction: rtl` places its
+ *  minimum at the bottom. Label and supporting text move beside the track: the label is
+ *  bottom aligned in the upper row and the supporting text top aligned in the lower row,
+ *  so the pair meets at the middle of the track. The height comes from the host element
+ *  and can therefore be overridden with a plain `height` on `ibk-range-slider`.
+ *
+ *  FEATURE NOT READY YET - the whole section is commented out. To switch it back on,
+ *  remove the comment wrappers around the rules below and uncomment the `vertical`
+ *  property plus the two marked blocks in src/components/ibk-range-slider.ts and the
+ *  vertical parts of ibk-range-slider.stories.ts.
+ * ***************************************************************************************/
+
+/*
+ibk-range-slider[vertical] {
+	height: 9.75rem;
+	width: fit-content;
+}
+
+.ibkRangeSlider-vertical {
+	display: grid;
+	grid-template-areas:
+		'label track'
+		'support track';
+	grid-template-columns: auto auto;
+	grid-template-rows: 1fr 1fr;
+	height: 100%;
+	justify-content: start;
+	width: auto;
+}
+*/
+
+/* Spacing sits on the text elements, so no gutter is left when they are absent */
+
+/*
+.ibkRangeSlider-vertical .ibkLabel,
+.ibkRangeSlider-vertical .supportingText {
+	margin-right: var(--ibk-spacing-8, 0.5rem);
+}
+
+.ibkRangeSlider-vertical .ibkLabel {
+	align-self: end;
+	grid-area: label;
+}
+
+.ibkRangeSlider-vertical .supportingText {
+	align-self: start;
+	grid-area: support;
+	width: auto;
+}
+
+.ibkRangeSlider-vertical .ibkRangeSliderControl {
+	flex-direction: column-reverse;
+	grid-area: track;
+	height: 100%;
+	width: auto;
+}
+
+.ibkRangeSlider-vertical .ibkRangeSliderTrack {
+	height: auto;
+	width: 1.5rem;
+}
+
+.ibkRangeSlider-vertical .ibkRangeSliderInput {
+	bottom: -0.1875rem;
+	direction: rtl;
+	height: auto;
+	left: 0.125rem;
+	right: 0.125rem;
+	top: -0.1875rem;
+	width: auto;
+	writing-mode: vertical-rl;
+}
+
+.ibkRangeSlider-vertical .ibkRangeSliderInput::-webkit-slider-thumb {
+	height: 0.75rem;
+	width: 1.25rem;
+}
+
+.ibkRangeSlider-vertical .ibkRangeSliderInput::-moz-range-thumb {
+	height: 0.75rem;
+	width: 1.25rem;
+}
+
+.ibkRangeSlider-vertical .ibkRangeSliderRail {
+	bottom: 0;
+	height: auto;
+	left: 50%;
+	right: auto;
+	top: 0;
+	transform: translateX(-50%);
+	width: 0.375rem;
+}
+
+.ibkRangeSlider-vertical .ibkRangeSliderProgress {
+	bottom: 0;
+	left: 50%;
+	min-height: 0.375rem;
+	min-width: 0;
+	top: auto;
+	transform: translateX(-50%);
+	width: 0.375rem;
+}
+
+.ibkRangeSlider-vertical .ibkRangeSliderThumb {
+	left: 50%;
+	top: auto;
+	transform: translate(-50%, 50%);
+}
+*/
+
+/* Vertical dominance decent - the thin rail and the bar shaped thumb are turned too */
+
+/*
+.ibkRangeSlider-decent.ibkRangeSlider-vertical .ibkRangeSliderInput {
+	left: 0;
+	right: 0;
+}
+
+.ibkRangeSlider-decent.ibkRangeSlider-vertical .ibkRangeSliderRail {
+	height: auto;
+	width: 0.125rem;
+}
+
+.ibkRangeSlider-decent.ibkRangeSlider-vertical .ibkRangeSliderProgress {
+	min-height: 0.125rem;
+	width: 0.125rem;
+}
+
+.ibkRangeSlider-decent.ibkRangeSlider-vertical .ibkRangeSliderThumb {
+	height: 0.375rem;
+	width: 0.875rem;
+}
+
+.ibkRangeSlider-decent.ibkRangeSlider-vertical .ibkRangeSliderInput:enabled:hover ~ .ibkRangeSliderThumb,
+.ibkRangeSlider-decent.ibkRangeSlider-vertical .ibkRangeSliderInput:enabled:active ~ .ibkRangeSliderThumb {
+	height: 0.75rem;
+	width: 0.75rem;
+}
+*/
+
+
+
+
+/* ***************************************************************************************
+ *  ibkRangeSlider variations
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  warning
+ * ***************************************************************************************/
+
+.ibkRangeSlider.warning .supportingText,
+.ibkRangeSlider.warning .supportingText .ibkIcon {
+	color: var(--ibk-warning-34);
+}
+
+
+/* ***************************************************************************************
+ *  disabled
+ * ***************************************************************************************/
+
+.ibkRangeSlider.disabled .ibkLabel,
+.ibkRangeSlider.disabled .ibkLabel .ibkLabelText,
+.ibkRangeSlider.disabled .ibkLabel .ibkIcon {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkRangeSlider.disabled .ibkLabel .ibkIcon.label-info {
+	cursor: default;
+}
+
+.ibkRangeSlider.disabled .ibkLabel .ibkIcon:hover,
+.ibkRangeSlider.disabled .ibkLabel .ibkIcon:active {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+}
+
+.ibkRangeSlider.disabled .ibkRangeSliderLeading .ibkIcon,
+.ibkRangeSlider.disabled .ibkRangeSliderTrailing .ibkIcon,
+.ibkRangeSlider.disabled .ibkRangeSliderBoundText {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkRangeSlider.disabled .ibkRangeSliderInput {
+	cursor: default;
+}
+
+.ibkRangeSlider.disabled .ibkRangeSliderRail {
+	background: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-14));
+}
+
+.ibkRangeSlider.disabled .ibkRangeSliderProgress {
+	background: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18));
+}
+
+.ibkRangeSlider.disabled .ibkRangeSliderThumb {
+	background: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+	border-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+	box-shadow: none;
+}
+
+.ibkRangeSlider-decent.disabled .ibkRangeSliderThumb {
+	border-color: light-dark(var(--white-100), var(--black-0));
+}
+
+.ibkRangeSlider.disabled .supportingText,
+.ibkRangeSlider.disabled .supportingText .ibkIcon {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+}

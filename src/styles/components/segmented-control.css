@@ -1,0 +1,151 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Segmented Control (ibkSegmentedControl)
+ *	 A row of mutually exclusive segments inside a pill-shaped, bordered container.
+ *	 Exactly one segment is selected at a time; the dominance modifier picks its fill.
+ *	 Hover, pressed and disabled apply to unselected segments only - in Figma the
+ *	 selected segment keeps the same fill across enabled, hover and pressed, and it
+ *	 has no disabled state of its own.
+ * ***************************************************************************************/
+
+/* The host wraps the container; make it hug its content (no inline baseline gap). */
+ibk-segmented-control {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+/* ***************************************************************************************
+ *	 Container
+ *	 Height comes out of the content and matches the 48px the design exports: the 2.5rem
+ *	 segment, the 0.125rem padding that keeps a selected segment clear of the frame, and
+ *	 the 2px border on both sides.
+ * ***************************************************************************************/
+
+.ibkSegmentedControl {
+    align-items: center;
+    background: light-dark(var(--white-100), var(--black-0));
+    border: 2px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26));
+    /* Half the container's own 48px height (40 segment + 2x2 padding + 2x2 border),
+       spelled out instead of an oversized value the browser would clamp to the
+       same number - see the segment rule below for why that matters. */
+    border-radius: 1.5rem;
+    display: inline-flex;
+    /* 4px, not the tighter spacing tokens - the segment's focus ring below needs
+       exactly this much clearance on the sides adjacent to another segment, or it
+       paints over the neighbour instead of stopping at it. */
+    gap: var(--ibk-spacing-4, 0.25rem);
+    padding: var(--ibk-spacing-2, 0.125rem);
+    position: relative;
+}
+
+/* ***************************************************************************************
+ *	 Selection thumb
+ *	 The selected fill lives here rather than on the segment, so switching slides one
+ *	 pill across instead of repainting two. Width and horizontal offset are measured
+ *	 and written by the component; `inset-block` derives the height from the container
+ *	 padding. Timing comes from --ibk-transition-default, which global.css collapses to
+ *	 0s under prefers-reduced-motion.
+ * ***************************************************************************************/
+
+.ibkSegmentedControl .ibkSegmentedControl-thumb {
+    background: light-dark(var(--ibk-petrol-32), var(--ibk-petrol-26));
+    /* Half the thumb's own 40px height - see the segment rule below. */
+    border-radius: 1.25rem;
+    inset-block: var(--ibk-spacing-2, 0.125rem);
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    transition:
+        transform var(--ibk-transition-default, 0.2s ease-in-out),
+        width var(--ibk-transition-default, 0.2s ease-in-out);
+    z-index: 0;
+}
+
+.ibkSegmentedControl-prominent .ibkSegmentedControl-thumb {
+    background: var(--ibk-red-41);
+}
+
+/* ***************************************************************************************
+ *	 Single segment (<button>)
+ * ***************************************************************************************/
+
+.ibkSegmentedControl button.ibkSegmentedControl-segment {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    /* Half the segment's own 2.5rem/40px height, spelled out rather than an
+       oversized value (e.g. 6.25rem) the browser clamps to the same number at
+       paint time. The segment and the thumb underneath it need the exact same
+       rendered curve at the rounded ends - relying on two separate clamping
+       passes to agree by sub-pixel precision is exactly what let a sliver of
+       white show through there; specifying the already-clamped value directly
+       leaves nothing for the browser to compute or drift on. */
+    border-radius: 1.25rem;
+    color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+    cursor: pointer;
+    display: inline-flex;
+    font-size: var(--text-button, 1rem);
+    font-style: normal;
+    font-weight: 500;
+    gap: var(--ibk-spacing-4, 0.25rem);
+    height: 2.5rem;
+    justify-content: center;
+    line-height: var(--text-button-lh, 1.5rem);
+    padding: 0 var(--ibk-spacing-14, 0.875rem);
+    position: relative;
+    /* Same timing as the thumb: see the selected-segment block below. */
+    transition: color var(--ibk-transition-default, 0.2s ease-in-out);
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.ibkSegmentedControl button.ibkSegmentedControl-segment .ibkIcon {
+    color: currentColor;
+    display: block;
+    font-size: var(--text-button-lh, 1.5rem);
+    font-style: normal;
+    line-height: var(--text-button-lh, 1.5rem);
+    text-align: center;
+}
+
+/* ***************************************************************************************
+ *	 Unselected states
+ * ***************************************************************************************/
+
+.ibkSegmentedControl button.ibkSegmentedControl-segment:not(.selected):hover:not(:disabled) {
+    background: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+}
+
+.ibkSegmentedControl button.ibkSegmentedControl-segment:not(.selected):active:not(:disabled) {
+    background: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-14));
+}
+
+.ibkSegmentedControl button.ibkSegmentedControl-segment:disabled {
+    background: transparent;
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+    cursor: not-allowed;
+}
+
+/* ***************************************************************************************
+ *	 Segment focus on keyboard navigation
+ *	 Deliberately no rule here: the segment inherits the design system's shared
+ *	 `::focus-visible` ring from global.css (2px outline, 2px offset), the same as
+ *	 `ibk-step-button` and every other component - none of them override it either.
+ *	 The container gap above exists specifically to give that ring room.
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Selected segment
+ *	 Only the label colour lives here; the fill is the thumb sliding underneath. The
+ *	 colour is transitioned on the same timing on purpose - flipping it instantly would
+ *	 leave the incoming label white on white for the length of the slide, before the
+ *	 thumb has arrived under it.
+ * ***************************************************************************************/
+
+.ibkSegmentedControl button.ibkSegmentedControl-segment.selected {
+    color: var(--white-100);
+}

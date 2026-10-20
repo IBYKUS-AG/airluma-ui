@@ -1,0 +1,147 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+
+/* ***************************************************************************************
+ *	 Meter (ibkMeter)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+ibk-meter {
+	display: block;
+	width: 100%;
+}
+
+.ibkMeter {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	gap: var(--ibk-spacing-16, 1rem);
+	height: 2.875rem;
+	justify-content: center;
+	width: 100%;
+}
+
+.ibkMeter .ibkMeterLabel {
+	align-items: center;
+	display: flex;
+	gap: var(--ibk-spacing-4, 0.25rem);
+}
+
+.ibkMeter .ibkMeterLabelText {
+	color: light-dark(var(--standard-fontcolor, #2E2E2E), var(--ibk-neutral-grey-82, #D1D1D1));
+	font-family: 'Asap', sans-serif;
+	font-size: var(--label-l, 1rem);
+	font-style: normal;
+	font-weight: 500;
+	letter-spacing: var(--label-l-ls, 0.01563rem);
+	line-height: var(--label-l-lh, 1.25rem);
+}
+
+.ibkMeter .ibkIcon.label-info {
+	align-items: center;
+	aspect-ratio: 1 / 1;
+	border-radius: var(--ibk-radius-2, 0.125rem);
+	color: var(--ibk-info-34);
+	cursor: pointer;
+	display: flex;
+	flex-shrink: 0;
+	font-size: 1.5rem;
+	height: 1.5rem;
+	justify-content: center;
+	width: 1.5rem;
+}
+
+.ibkMeter .ibkMeterTrack {
+	background: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-58));
+	border-radius: 0.375rem;
+	display: block;
+	height: 0.375rem;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+.ibkMeter .ibkMeterFill {
+	background: var(--ibk-success-34);
+	border-radius: 0.375rem;
+	display: block;
+	height: 100%;
+	transition: width var(--ibk-transition-default, 0.2s ease-in-out);
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Variants — Decent (thinner track)
+ * ***************************************************************************************/
+
+.ibkMeter-decent .ibkMeterTrack {
+	background: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-58));
+	height: 0.125rem;
+}
+
+.ibkMeter-decent .ibkMeterFill {
+	height: 100%;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Level colors
+ * ***************************************************************************************/
+
+.ibkMeter.level-max .ibkMeterFill {
+	background: light-dark(var(--ibk-success-26), var(--ibk-success-18));
+}
+
+.ibkMeter.level-highPos .ibkMeterFill {
+	background: var(--ibk-success-34);
+}
+
+.ibkMeter.level-highNeg .ibkMeterFill {
+	background: var(--ibk-alert-42);
+}
+
+.ibkMeter.level-optimal .ibkMeterFill {
+	background: var(--ibk-success-34);
+}
+
+.ibkMeter.level-low .ibkMeterFill {
+	background: var(--ibk-warning-42);
+}
+
+.ibkMeter.level-min .ibkMeterFill {
+	background: transparent;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Disabled
+ * ***************************************************************************************/
+
+.ibkMeter.disabled .ibkMeterLabelText,
+.ibkMeter.disabled .ibkIcon.label-info {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkMeter.disabled .ibkIcon.label-info {
+	cursor: default;
+}
+
+.ibkMeter.disabled .ibkMeterTrack {
+	background: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-14));
+}
+
+.ibkMeter.disabled .ibkMeterFill {
+	background: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18));
+}

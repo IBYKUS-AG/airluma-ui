@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IBYKUS Design System - Component review (light / dark)</title>
+
+  <!-- Before the first paint: reapply the colour scheme the toggle persisted. No stored
+       choice means no class - the page then follows the operating system. -->
+  <script>
+    const storedScheme = localStorage.getItem('ibk-color-scheme');
+    if (storedScheme === 'dark' || storedScheme === 'light')
+      document.documentElement.classList.add(storedScheme === 'dark' ? 'isDark' : 'isLight');
+  </script>
+
+  <!-- Load the fonts, then the global CSS. The @font-face rules live in the
+       @ides/fonts and @ides/iconset packages and are no longer part of ides.css. -->
+  <link rel="stylesheet" href="./packages/fonts/fonts.css" />
+  <link rel="stylesheet" href="./packages/iconset/iconset.css" />
+  <link rel="stylesheet" href="./src/styles/ides.css" />
+  <script type="module" src="./src/index.ts"></script>
+
+  <style>
+    /* ***********************************************************************************
+     *  Layout of this review page - deliberately without a single colour.
+     *
+     *  Everything visible comes from the design system: the page surface from `html, body`
+     *  in global.css, the rules between the sections from `hr`, the metadata text from
+     *  `.supportingText`, the mode indicator from `ibk-chip`. A review page that painted
+     *  its own surfaces would judge the components against a background the design system
+     *  never defines - and it would hide exactly the kind of gap this page exists to find.
+     *
+     *  The media query at the bottom only switches which mode indicator and which toggle
+     *  icon is displayed. That is visibility, not colour - the colours themselves come
+     *  from the light-dark() pairs in the design system, driven by color-scheme.
+     * ***********************************************************************************/
+
+    /* `html body`, not `body`: a plain `vite build` re-injects the design system's bundled
+       stylesheet at the end of <head>, after this block, wherever the source `<link>` used
+       to sit - global.css's `html, body { margin: 0; padding: 0; }` would otherwise win the
+       cascade on load order alone and this page would render flush against the corner. */
+    html body {
+        display: grid;
+        gap: 0 var(--ibk-spacing-32, 2rem);
+        grid-template-areas:
+            'header header'
+            'rule rule'
+            'main nav';
+        grid-template-columns: minmax(0, 1fr) 15rem;
+        margin: 0 auto;
+        max-width: 78rem;
+        padding: var(--ibk-spacing-32, 2rem);
+    }
+
+    .review-header {
+        grid-area: header;
+    }
+
+    .review-title-row {
+        align-items: center;
+        display: flex;
+        gap: var(--ibk-spacing-16, 1rem);
+        justify-content: space-between;
+    }
+
+    /* Pinned to the viewport, not to the header: the header itself scrolls out of view
+       after the first section, so a toggle placed inside it would too. Fixed positioning
+       keeps the mode switch reachable for the whole length of the page. */
+    .review-scheme-toggle {
+        position: fixed;
+        right: var(--ibk-spacing-32, 2rem);
+        top: var(--ibk-spacing-16, 1rem);
+        z-index: 10;
+    }
+
+    /* The rule below the header - the ones between the sections live inside main. */
+    body > hr {
+        grid-area: rule;
+    }
+
+    main {
+        grid-area: main;
+        /* A grid column is min-content wide by default; without this a wide table would
+           push the section list off the page instead of scrolling inside its own box. */
+        min-width: 0;
+    }
+
+    .review-hint kbd {
+        font-size: inherit;
+    }
+
+    /* One column, pinned below the top edge of the viewport for the whole page.
+
+       No gap between the entries: .ibkLink carries a fixed 1.25rem line height, so 32
+       entries are 40rem tall and every bit of spacing on top decides whether the list
+       still fits a window. The max-height is a fallback, not the layout - on a window
+       shorter than ~44rem there is no way to show 32 entries at the design system's link
+       size at once, and a scrollbar is better than entries that cannot be reached.
+
+       `align-self: start` is what makes position: sticky work on a grid item: stretched to
+       the row height it would have nothing left to stick inside. */
+    .review-nav {
+        align-self: start;
+        display: flex;
+        flex-direction: column;
+        grid-area: nav;
+        max-height: calc(100vh - 4rem);
+        overflow-y: auto;
+        position: sticky;
+        top: var(--ibk-spacing-32, 2rem);
+    }
+
+    /* Narrow viewport: one column, the list back above the content in source order. */
+    @media (max-width: 64rem) {
+        /* Same specificity as the base rule above (html body, not body) - otherwise the
+           narrow-viewport override could never win regardless of the media query matching. */
+        html body {
+            grid-template-areas:
+                'header'
+                'rule'
+                'nav'
+                'main';
+            grid-template-columns: minmax(0, 1fr);
+        }
+
+        .review-nav {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: var(--ibk-spacing-8, 0.5rem) var(--ibk-spacing-16, 1rem);
+            margin-bottom: var(--ibk-spacing-32, 2rem);
+            position: static;
+        }
+    }
+
+    .review-section {
+        margin-bottom: var(--ibk-spacing-8, 0.5rem);
+        scroll-margin-top: var(--ibk-spacing-16, 1rem);
+    }
+
+    .review-section > h2 {
+        margin: 0 0 var(--ibk-spacing-4, 0.25rem) 0;
+    }
+
+    .review-file {
+        font-family: monospace;
+        margin-bottom: var(--ibk-spacing-16, 1rem);
+    }
+
+    .review-row {
+        align-items: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--ibk-spacing-16, 1rem) var(--ibk-spacing-24, 1.5rem);
+    }
+
+    .review-col {
+        display: flex;
+        flex-direction: column;
+        gap: var(--ibk-spacing-16, 1rem);
+    }
+
+    .review-item {
+        display: flex;
+        flex-direction: column;
+        gap: var(--ibk-spacing-8, 0.5rem);
+    }
+
+    .review-fixed-width {
+        max-width: 25rem;
+        width: 100%;
+    }
+
+    /* A code sample is one unbreakable line; keep it inside its column. */
+    .review-section pre {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    /* Room for the open dropdown panel, which is positioned out of the flow. */
+    .review-dropdown-room {
+        min-height: 16rem;
+    }
+
+    /* The eIB white family is white in light mode and black in dark mode, and FixWhite is white
+       in both - each one vanishes on this page's surface in one of the modes. The Figma sheet
+       shows them on a grey-50 patch that stays the same in both modes, so this page does too. */
+    .review-on-grey {
+        align-items: center;
+        background: var(--ibk-neutral-grey-50);
+        border-radius: var(--ibk-radius-6, 0.375rem);
+        display: inline-flex;
+        gap: var(--ibk-spacing-16, 1rem);
+        padding: var(--ibk-spacing-10, 0.625rem) var(--ibk-spacing-16, 1rem);
+    }
+
+    /* The active entry, and the one place this page has to name a colour.
+     *
+     * a.ibkLink.ibkLink-regular:visited (0,3,1) outranks a.ibkLink.ibkLink-regular (0,2,1)
+     * in link.css, and both link variants turn the same petrol when visited - so swapping
+     * the variant class marks nothing at all on an entry the reader has already jumped to,
+     * which is every entry after a while. Hence the two selectors below: 0,3,1 beats the
+     * unvisited variant colour, 0,4,1 beats the visited one. The values are the tokens the
+     * design system itself gives its regular link per mode, red-41 and red-73 - the page is
+     * re-asserting a design system colour it cannot reach, not inventing one.
+     *
+     * The proper fix belongs in link.css: a variant colour that any visited link overrides
+     * makes the variant meaningless after the first click. That is a separate ticket. */
+    .review-nav a.ibkLink[aria-current],
+    .review-nav a.ibkLink[aria-current]:visited {
+        color: light-dark(var(--ibk-red-41), var(--ibk-red-73));
+        font-weight: 600;
+    }
+
+    /* Exactly one of the two indicators - and one of the two toggle icons - is ever
+       displayed. Effective mode = the class on <html> when the toggle has forced one,
+       the OS setting otherwise: the same resolution color-scheme itself uses. */
+    .review-mode-dark,
+    .review-scheme-dark {
+        display: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        html:not(.isLight) .review-mode-light,
+        html:not(.isLight) .review-scheme-light {
+            display: none;
+        }
+
+        html:not(.isLight) .review-mode-dark,
+        html:not(.isLight) .review-scheme-dark {
+            display: inline-block;
+        }
+    }
+
+    html.isDark .review-mode-light,
+    html.isDark .review-scheme-light {
+        display: none;
+    }
+
+    html.isDark .review-mode-dark,
+    html.isDark .review-scheme-dark {
+        display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="review-header">
+    <div class="review-title-row">
+      <h1>Light / dark review</h1>
+    </div>
+    <div class="review-scheme-toggle">
+      <ibk-step-button id="scheme-toggle-dark" class="review-scheme-light" icon="Moon"
+        dominance="decent" shape="quad" label="Switch to dark mode"></ibk-step-button>
+      <ibk-step-button id="scheme-toggle-light" class="review-scheme-dark" icon="Sun"
+        dominance="decent" shape="quad" label="Switch to light mode"></ibk-step-button>
+    </div>
+    <p class="review-hint supportingText">
+      Every component of the design system, with every state the dark mode repaints. The colour
+      scheme follows the operating system until the button on the right forces one - the choice
+      is kept in <code>localStorage</code> and applied before the first paint on the next visit.
+    </p>
+    <p class="review-hint supportingText">
+      The dark colours cover 289 selectors that describe a state an element simply has, and
+      every one of them has an example below. The remaining 105 describe a state the pointer or
+      the keyboard has to create, and no markup can show them: force those per element in the
+      DevTools element state panel (<em>:hov</em>, <em>:act</em>, <em>:foc</em>). Four more need
+      one interaction each - open a dialog with its button, hover the dropdown row that carries a
+      submenu, hover a table cell for the column highlight, and select some text for
+      <code>::selection</code>.
+    </p>
+    <p class="review-hint supportingText">
+      <ibk-chip class="review-mode-light" label="Rendering in light mode" type="info"
+        variant="decent"></ibk-chip>
+      <ibk-chip class="review-mode-dark" label="Rendering in dark mode" type="info"
+        variant="decent"></ibk-chip>
+    </p>
+  </header>
+
+  <hr />
+
+  <nav class="review-nav" aria-label="Sections">
+    <a class="ibkLink ibkLink-decent" href="#typography">Typography</a>
+    <a class="ibkLink ibkLink-decent" href="#accordion">Accordion</a>
+    <a class="ibkLink ibkLink-decent" href="#badge">Badge</a>
+    <a class="ibkLink ibkLink-decent" href="#banner">Banner</a>
+    <a class="ibkLink ibkLink-decent" href="#breadcrumb">Breadcrumb</a>
+    <a class="ibkLink ibkLink-decent" href="#button">Button</a>
+    <a class="ibkLink ibkLink-decent" href="#card">Card</a>
+    <a class="ibkLink ibkLink-decent" href="#checkbox">Checkbox</a>
+    <a class="ibkLink ibkLink-decent" href="#chip">Chip</a>
+    <a class="ibkLink ibkLink-decent" href="#dialog">Dialog</a>
+    <a class="ibkLink ibkLink-decent" href="#dropdown">Dropdown</a>
+    <a class="ibkLink ibkLink-decent" href="#eib">Icon styles (eIB)</a>
+    <a class="ibkLink ibkLink-decent" href="#fieldset">Fieldset</a>
+    <a class="ibkLink ibkLink-decent" href="#input">Input</a>
+    <a class="ibkLink ibkLink-decent" href="#link">Link</a>
+    <a class="ibkLink ibkLink-decent" href="#meter">Meter</a>
+    <a class="ibkLink ibkLink-decent" href="#navigation-menu-item">Navigation menu item</a>
+    <a class="ibkLink ibkLink-decent" href="#pagination">Pagination</a>
+    <a class="ibkLink ibkLink-decent" href="#progress">Progress</a>
+    <a class="ibkLink ibkLink-decent" href="#radio">Radio</a>
+    <a class="ibkLink ibkLink-decent" href="#range-slider">Range slider</a>
+    <a class="ibkLink ibkLink-decent" href="#rating">Rating</a>
+    <a class="ibkLink ibkLink-decent" href="#segmented-control">Segmented control</a>
+    <a class="ibkLink ibkLink-decent" href="#select">Select</a>
+    <a class="ibkLink ibkLink-decent" href="#step-button">Step button</a>
+    <a class="ibkLink ibkLink-decent" href="#switch">Switch</a>
+    <a class="ibkLink ibkLink-decent" href="#table">Table</a>
+    <a class="ibkLink ibkLink-decent" href="#tabs">Tabs</a>
+    <a class="ibkLink ibkLink-decent" href="#textarea">Textarea</a>
+    <a class="ibkLink ibkLink-decent" href="#toast">Toast</a>
+    <a class="ibkLink ibkLink-decent" href="#tooltip">Tooltip</a>
+    <a class="ibkLink ibkLink-decent" href="#navigation-bars">Navigation bars</a>
+  </nav>
+
+  <main>
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="typography">
+      <h2>Typography and HTML elements</h2>
+      <span class="review-file supportingText">global.css, headlines.css, htmlelements.css, list.css, label.css,
+        supportingtext.css, overline.css</span>
+
+      <div class="review-item">
+        <span class="supportingText">Headlines - h1 to h6</span>
+        <div>
+          <h1>Headline 1</h1>
+          <h2>Headline 2</h2>
+          <h3>Headline 3</h3>
+          <h4>Headline 4</h4>
+          <h5>Headline 5</h5>
+          <h6>Headline 6</h6>
+        </div>
+      </div>
+
+      <div class="review-item review-fixed-width" style="margin-top: 1.5rem; max-width: 40rem;">
+        <span class="supportingText">Overline and body text - link, mark, code, kbd and q inside a paragraph</span>
+        <div>
+          <p class="ibkOverline">Overline</p>
+          <p>
+            Body copy with a <a class="ibkLink ibkLink-regular" href="#typography">link</a>, a
+            <mark>marked passage</mark>, some <code>inline code</code>, a keyboard hint
+            <kbd>Strg</kbd> + <kbd>S</kbd> and a <q>quotation</q>.
+          </p>
+        </div>
+      </div>
+
+      <div class="review-item review-fixed-width" style="margin-top: 1.5rem; max-width: 40rem;">
+        <span class="supportingText">Block elements - blockquote, figcaption, pre and hr</span>
+        <div>
+          <blockquote>A blockquote sits on the same surface as the text around it.</blockquote>
+          <figure>
+            <figcaption>A figcaption, dimmed against the body copy.</figcaption>
+          </figure>
+          <pre><code>const dark = matchMedia('(prefers-color-scheme: dark)');</code></pre>
+          <hr />
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1.5rem;">
+        <span class="supportingText">Lists - disc, circle, square, prominent and ordered</span>
+        <div class="review-row">
+          <ul class="disc">
+            <li class="liText">Disc marker</li>
+            <li class="liText">Second entry</li>
+          </ul>
+          <ul class="circle">
+            <li class="liText">Circle marker</li>
+            <li class="liText">Second entry</li>
+          </ul>
+          <ul class="square">
+            <li class="liText">Square marker</li>
+            <li class="liText">Second entry</li>
+          </ul>
+          <ul class="prominent">
+            <li class="liText">Prominent marker</li>
+            <li class="liText">Second entry</li>
+          </ul>
+          <ol>
+            <li class="liText">Ordered entry</li>
+            <li class="liText">Ordered entry</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1.5rem;">
+        <span class="supportingText">Labels - text only, and text with an info icon</span>
+        <div class="review-row">
+          <label class="ibkLabel"><span class="ibkLabelText">Label text</span></label>
+          <label class="ibkLabel"><span class="ibkLabelText">Label text, icon</span><i
+              class="ibkIcon">InfoCirc</i></label>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1.5rem;">
+        <span class="supportingText">Supporting text - default and the four states</span>
+        <div class="review-row">
+          <span class="supportingText">Default</span>
+          <span class="supportingText alert">Alert</span>
+          <span class="supportingText warning">Warning</span>
+          <span class="supportingText success">Success</span>
+          <span class="supportingText disabled">Disabled</span>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="accordion">
+      <h2>Accordion</h2>
+      <span class="review-file supportingText">accordion.css - item borders, open surface, disabled legend</span>
+      <div class="review-col review-fixed-width" style="max-width: 40rem;">
+        <ibk-accordion id="accordion-review"></ibk-accordion>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="badge">
+      <h2>Badge</h2>
+      <span class="review-file supportingText">badge.css - indicator colours per type. The wrapped icon inherits
+        the document colour, so it turns light in dark mode.</span>
+      <div class="review-row">
+        <div class="review-item">
+          <span class="supportingText">Default (dot)</span>
+          <ibk-badge icon="Mail" variant="regular"></ibk-badge>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Info</span>
+          <ibk-badge icon="Mail" variant="regular" type="info"></ibk-badge>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Success</span>
+          <ibk-badge icon="Mail" variant="regular" type="success"></ibk-badge>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Warning</span>
+          <ibk-badge icon="Mail" variant="regular" type="warning"></ibk-badge>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Alert</span>
+          <ibk-badge icon="Mail" variant="regular" type="alert"></ibk-badge>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Counter</span>
+          <ibk-badge icon="Mail" variant="counter" count="33"></ibk-badge>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="banner">
+      <h2>Banner</h2>
+      <span class="review-file supportingText">banner.css - surface, headline, body copy, close icon</span>
+      <div class="review-row">
+        <ibk-banner variant="regular" title="Title goes here" content="Text goes here, the banner
+          carries its own surface."></ibk-banner>
+        <ibk-banner variant="prominent" title="Title goes here" content="Text goes
+          here, the prominent banner keeps its close button."></ibk-banner>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="breadcrumb">
+      <h2>Breadcrumb</h2>
+      <span class="review-file supportingText">breadcrumb.css - separator icon colour</span>
+      <ibk-breadcrumb id="breadcrumb-review"></ibk-breadcrumb>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="button">
+      <h2>Button</h2>
+      <span class="review-file supportingText">button.css - the largest dark mode block: 17 rules over all
+        variants and states</span>
+
+      <div class="review-item">
+        <span class="supportingText">Regular</span>
+        <div class="review-row">
+          <ibk-button label="Primary" variant="regular" type="primary"></ibk-button>
+          <ibk-button label="Secondary" variant="regular" type="secondary"></ibk-button>
+          <ibk-button label="Success" type="success"></ibk-button>
+          <ibk-button label="Destructive" type="destructive"></ibk-button>
+          <ibk-button label="Primary" variant="regular" type="primary" disabled></ibk-button>
+          <ibk-button label="Secondary" variant="regular" type="secondary" disabled></ibk-button>
+          <ibk-button label="Success" type="success" disabled></ibk-button>
+          <ibk-button label="Destructive" type="destructive" disabled></ibk-button>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Decent</span>
+        <div class="review-row">
+          <ibk-button label="Primary" variant="decent" type="primary"></ibk-button>
+          <ibk-button label="Secondary" variant="decent" type="secondary"></ibk-button>
+          <ibk-button label="Primary" variant="decent" type="primary" disabled></ibk-button>
+          <ibk-button label="Secondary" variant="decent" type="secondary" disabled></ibk-button>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">With icon, icon only</span>
+        <div class="review-row">
+          <ibk-button label="Leading" icon="Save" variant="regular" type="primary"></ibk-button>
+          <ibk-button label="Trailing" icon="Save" iconposition="trailing" variant="regular"
+            type="secondary"></ibk-button>
+          <ibk-button icon="Save" iconposition="solo" variant="regular" type="primary"></ibk-button>
+          <ibk-button icon="Save" iconposition="solo" variant="decent" type="secondary"></ibk-button>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="card">
+      <h2>Card</h2>
+      <span class="review-file supportingText">card.css - one surface per delta step, bordered variant</span>
+      <div class="review-row">
+        <ibk-card delta="0" style="min-width: 10rem;"><h5>delta 0</h5><p>Surface step.</p></ibk-card>
+        <ibk-card delta="2" style="min-width: 10rem;"><h5>delta 2</h5><p>Surface step.</p></ibk-card>
+        <ibk-card delta="6" style="min-width: 10rem;"><h5>delta 6</h5><p>Surface step.</p></ibk-card>
+        <ibk-card delta="10" style="min-width: 10rem;"><h5>delta 10</h5><p>Surface step.</p></ibk-card>
+        <ibk-card variant="elevated" style="min-width: 10rem;"><h5>elevated</h5><p>Shadow.</p></ibk-card>
+      </div>
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Bordered - the delta colours the border instead of the
+          fill, so each step is its own dark rule</span>
+        <div class="review-row">
+          <ibk-card variant="bordered" delta="0" style="min-width: 10rem;"><h5>bordered 0</h5>
+            <p>Border step.</p></ibk-card>
+          <ibk-card variant="bordered" delta="2" style="min-width: 10rem;"><h5>bordered 2</h5>
+            <p>Border step.</p></ibk-card>
+          <ibk-card variant="bordered" delta="6" style="min-width: 10rem;"><h5>bordered 6</h5>
+            <p>Border step.</p></ibk-card>
+          <ibk-card variant="bordered" delta="10" style="min-width: 10rem;"><h5>bordered 10</h5>
+            <p>Border step.</p></ibk-card>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="checkbox">
+      <h2>Checkbox</h2>
+      <span class="review-file supportingText">checkbox.css - disabled border and fill, alert fill, label
+        colour</span>
+      <div class="review-row">
+        <div class="review-col">
+          <ibk-checkbox label="Unchecked"></ibk-checkbox>
+          <ibk-checkbox label="Checked" checked></ibk-checkbox>
+          <ibk-checkbox label="Indeterminate" indeterminate></ibk-checkbox>
+        </div>
+        <div class="review-col">
+          <ibk-checkbox label="Disabled" disabled></ibk-checkbox>
+          <ibk-checkbox label="Disabled, checked" checked disabled></ibk-checkbox>
+          <ibk-checkbox label="Disabled, indeterminate" indeterminate disabled></ibk-checkbox>
+        </div>
+        <div class="review-col">
+          <ibk-checkbox label="Alert" state="alert" supportingtext="Supporting text"></ibk-checkbox>
+          <ibk-checkbox label="Alert, checked" state="alert" checked></ibk-checkbox>
+          <ibk-checkbox label="Alert, indeterminate" state="alert" indeterminate></ibk-checkbox>
+          <ibk-checkbox label="Success, checked" state="success" checked></ibk-checkbox>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="chip">
+      <h2>Chip</h2>
+      <span class="review-file supportingText">chip.css - 16 rules: fills and borders per type, decent variant,
+        active states</span>
+      <div class="review-item">
+        <span class="supportingText">Regular</span>
+        <div class="review-row">
+          <ibk-chip label="Default" status="passive"></ibk-chip>
+          <ibk-chip label="Info" type="info" status="passive"></ibk-chip>
+          <ibk-chip label="Success" type="success" status="passive"></ibk-chip>
+          <ibk-chip label="Warning" type="warning" status="passive"></ibk-chip>
+          <ibk-chip label="Alert" type="alert" status="passive"></ibk-chip>
+        </div>
+      </div>
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Decent</span>
+        <div class="review-row">
+          <ibk-chip label="Default" status="passive" variant="decent"></ibk-chip>
+          <ibk-chip label="Info" type="info" status="passive" variant="decent"></ibk-chip>
+          <ibk-chip label="Success" type="success" status="passive" variant="decent"></ibk-chip>
+          <ibk-chip label="Warning" type="warning" status="passive" variant="decent"></ibk-chip>
+          <ibk-chip label="Alert" type="alert" status="passive" variant="decent"></ibk-chip>
+        </div>
+      </div>
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Active - removable, with the trailing close icon</span>
+        <div class="review-row">
+          <ibk-chip label="Default" status="active"></ibk-chip>
+          <ibk-chip label="Info" type="info" status="active"></ibk-chip>
+          <ibk-chip label="Success" type="success" status="active"></ibk-chip>
+          <ibk-chip label="Warning" type="warning" status="active"></ibk-chip>
+          <ibk-chip label="Alert" type="alert" status="active"></ibk-chip>
+          <ibk-chip label="Decent" status="active" variant="decent"></ibk-chip>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="dialog">
+      <h2>Dialog</h2>
+      <span class="review-file supportingText">dialog.css - surface, headline, body copy</span>
+      <div class="review-row">
+        <ibk-button label="Open regular dialog" type="primary"
+          onclick="document.getElementById('dialog-review').show()"></ibk-button>
+        <ibk-button label="Open decent dialog" type="secondary"
+          onclick="document.getElementById('dialog-review-decent').show()"></ibk-button>
+      </div>
+
+      <ibk-dialog id="dialog-review" headline="Title goes here" type="horizontal" variant="regular">
+        Text goes here. The dialog surface and its copy are repainted in dark mode.
+        <div slot="actions">
+          <ibk-button label="Preferred Action" type="primary"
+            onclick="this.closest('ibk-dialog').close()"></ibk-button>
+          <ibk-button label="Second Action" type="secondary"
+            onclick="this.closest('ibk-dialog').close()"></ibk-button>
+        </div>
+      </ibk-dialog>
+
+      <ibk-dialog id="dialog-review-decent" headline="Title goes here" type="horizontal"
+        variant="decent">
+        Text goes here. The decent variant has no card background of its own.
+        <div slot="actions">
+          <ibk-button label="Preferred Action" variant="decent" type="primary"
+            onclick="this.closest('ibk-dialog').close()"></ibk-button>
+        </div>
+      </ibk-dialog>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="dropdown">
+      <h2>Dropdown</h2>
+      <span class="review-file supportingText">dropdown.css - menu surface, item hover, disabled item,
+        shortcut</span>
+      <div class="review-dropdown-room">
+        <div class="ibkDropdownAnchor">
+          <!-- The trigger the design intends: the dropdown variant of the navigation menu
+               item squares its bottom corners, so it sits flush on the panel below. -->
+          <ibk-navigation-menu-item label="Bearbeiten" icon="Home" variant="regular" selected
+            dropdown></ibk-navigation-menu-item>
+          <ibk-dropdown id="dropdown-review" label="Bearbeiten"></ibk-dropdown>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="eib">
+      <h2>Icon styles (eIB)</h2>
+      <span class="review-file supportingText">eib.css - every family the stylesheet defines. Interactive rows
+        answer to the pointer, passive rows do not; decent renders one step smaller.</span>
+
+      <div class="review-item">
+        <span class="supportingText">Regular - interactive, mid grey, plus the four status colours</span>
+        <div class="review-row">
+          <i class="ibkIcon eIB-regular" title="eIB-regular">Edit</i>
+          <i class="ibkIcon eIB-regular info" title="eIB-regular info">InfoCirc</i>
+          <i class="ibkIcon eIB-regular success" title="eIB-regular success">ChkMCirc</i>
+          <i class="ibkIcon eIB-regular warning" title="eIB-regular warning">WarnTria</i>
+          <i class="ibkIcon eIB-regular alert" title="eIB-regular alert">ClsCirc</i>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Passive - display only, no pointer states</span>
+        <div class="review-row">
+          <i class="ibkIcon eIB-passive" title="eIB-passive">LockCls</i>
+          <i class="ibkIcon eIB-passive info" title="eIB-passive info">InfoCirc</i>
+          <i class="ibkIcon eIB-passive success" title="eIB-passive success">ChkMCirc</i>
+          <i class="ibkIcon eIB-passive warning" title="eIB-passive warning">WarnTria</i>
+          <i class="ibkIcon eIB-passive alert" title="eIB-passive alert">ClsCirc</i>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Decent - same families one step smaller</span>
+        <div class="review-row">
+          <i class="ibkIcon eIB-decent" title="eIB-decent">Setting</i>
+          <i class="ibkIcon eIB-decent info" title="eIB-decent info">InfoCirc</i>
+          <i class="ibkIcon eIB-decent success" title="eIB-decent success">ChkMCirc</i>
+          <i class="ibkIcon eIB-decent warning" title="eIB-decent warning">WarnTria</i>
+          <i class="ibkIcon eIB-decent alert" title="eIB-decent alert">ClsCirc</i>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Standalone interactive - hover and press these two</span>
+        <div class="review-row">
+          <i class="ibkIcon eIB-interactive-grey" title="eIB-interactive-grey">Search</i>
+          <i class="ibkIcon eIB-interactive-info" title="eIB-interactive-info">InfoCirc</i>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Decent, interactive - the grey ramp and the red. Press each one: the
+          pressed step moves the other way in dark mode</span>
+        <div class="review-row">
+          <i class="ibkIcon eIB-decent eIB-interactive-grey18" title="eIB-interactive-grey18">Edit</i>
+          <i class="ibkIcon eIB-decent eIB-interactive-grey42" title="eIB-interactive-grey42">Search</i>
+          <i class="ibkIcon eIB-decent eIB-interactive-grey74" title="eIB-interactive-grey74">Refresh</i>
+          <i class="ibkIcon eIB-decent eIB-interactive-red41" title="eIB-interactive-red41">Trash</i>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Decent, interactive - status colours</span>
+        <div class="review-row">
+          <i class="ibkIcon eIB-decent eIB-interactive-info" title="eIB-interactive-info">InfoCirc</i>
+          <i class="ibkIcon eIB-decent eIB-interactive-success" title="eIB-interactive-success">ChkM</i>
+          <i class="ibkIcon eIB-decent eIB-interactive-warning" title="eIB-interactive-warning">WarnTria</i>
+          <i class="ibkIcon eIB-decent eIB-interactive-alert" title="eIB-interactive-alert">Cls</i>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Regular, interactive - the same style classes on eIB-regular</span>
+        <div class="review-row">
+          <i class="ibkIcon eIB-regular eIB-interactive-grey18" title="eIB-regular eIB-interactive-grey18">Edit</i>
+          <i class="ibkIcon eIB-regular eIB-interactive-grey42" title="eIB-regular eIB-interactive-grey42">Search</i>
+          <i class="ibkIcon eIB-regular eIB-interactive-grey74" title="eIB-regular eIB-interactive-grey74">Refresh</i>
+          <i class="ibkIcon eIB-regular eIB-interactive-red41" title="eIB-regular eIB-interactive-red41">Trash</i>
+          <i class="ibkIcon eIB-regular eIB-interactive-info" title="eIB-regular eIB-interactive-info">InfoCirc</i>
+          <i class="ibkIcon eIB-regular eIB-interactive-success" title="eIB-regular eIB-interactive-success">ChkM</i>
+          <i class="ibkIcon eIB-regular eIB-interactive-warning" title="eIB-regular eIB-interactive-warning">WarnTria</i>
+          <i class="ibkIcon eIB-regular eIB-interactive-alert" title="eIB-regular eIB-interactive-alert">Cls</i>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Regular, passive</span>
+        <div class="review-row">
+          <i class="ibkIcon eIB-regular eIB-passive-grey18" title="eIB-regular eIB-passive-grey18">LockCls</i>
+          <i class="ibkIcon eIB-regular eIB-passive-grey42" title="eIB-regular eIB-passive-grey42">LockCls</i>
+          <i class="ibkIcon eIB-regular eIB-passive-grey74" title="eIB-regular eIB-passive-grey74">LockCls</i>
+          <i class="ibkIcon eIB-regular eIB-passive-red41" title="eIB-regular eIB-passive-red41">LockCls</i>
+          <i class="ibkIcon eIB-regular eIB-passive-info" title="eIB-regular eIB-passive-info">InfoCirc</i>
+          <i class="ibkIcon eIB-regular eIB-passive-success" title="eIB-regular eIB-passive-success">ChkMCirc</i>
+          <i class="ibkIcon eIB-regular eIB-passive-warning" title="eIB-regular eIB-passive-warning">WarnTria</i>
+          <i class="ibkIcon eIB-regular eIB-passive-alert" title="eIB-regular eIB-passive-alert">ClsCirc</i>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Decent, passive</span>
+        <div class="review-row">
+          <i class="ibkIcon eIB-decent eIB-passive-grey18" title="eIB-passive-grey18">LockCls</i>
+          <i class="ibkIcon eIB-decent eIB-passive-grey42" title="eIB-passive-grey42">LockCls</i>
+          <i class="ibkIcon eIB-decent eIB-passive-grey74" title="eIB-passive-grey74">LockCls</i>
+          <i class="ibkIcon eIB-decent eIB-passive-red41" title="eIB-passive-red41">LockCls</i>
+          <i class="ibkIcon eIB-decent eIB-passive-info" title="eIB-passive-info">InfoCirc</i>
+          <i class="ibkIcon eIB-decent eIB-passive-success" title="eIB-passive-success">ChkMCirc</i>
+          <i class="ibkIcon eIB-decent eIB-passive-warning" title="eIB-passive-warning">WarnTria</i>
+          <i class="ibkIcon eIB-decent eIB-passive-alert" title="eIB-passive-alert">ClsCirc</i>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Decent, passive with a fixed dark colour - these do not invert</span>
+        <div class="review-row">
+          <i class="ibkIcon eIB-decent eIB-passive-g18-w100" title="eIB-passive-g18-w100">LockCls</i>
+          <i class="ibkIcon eIB-decent eIB-passive-g18-g50" title="eIB-passive-g18-g50">LockCls</i>
+          <i class="ibkIcon eIB-decent eIB-passive-i-w100" title="eIB-passive-i-w100">InfoCirc</i>
+          <i class="ibkIcon eIB-decent eIB-passive-s-w100" title="eIB-passive-s-w100">ChkMCirc</i>
+          <i class="ibkIcon eIB-decent eIB-passive-w-w100" title="eIB-passive-w-w100">WarnTria</i>
+          <i class="ibkIcon eIB-decent eIB-passive-a-w100" title="eIB-passive-a-w100">ClsCirc</i>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">White inverts to black in dark mode, FixWhite stays white - both on the
+          grey-50 patch of the Figma sheet</span>
+        <div class="review-row">
+          <div class="review-on-grey">
+            <i class="ibkIcon eIB-regular eIB-interactive-white" title="eIB-regular eIB-interactive-white">Cls</i>
+            <i class="ibkIcon eIB-regular eIB-passive-white" title="eIB-regular eIB-passive-white">LockCls</i>
+            <i class="ibkIcon eIB-regular eIB-passive-fixwhite" title="eIB-regular eIB-passive-fixwhite">LockCls</i>
+            <i class="ibkIcon eIB-decent eIB-interactive-white" title="eIB-interactive-white">Cls</i>
+            <i class="ibkIcon eIB-decent eIB-passive-white" title="eIB-passive-white">LockCls</i>
+            <i class="ibkIcon eIB-decent eIB-passive-fixwhite" title="eIB-passive-fixwhite">LockCls</i>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-item" style="margin-top: 1rem;">
+        <span class="supportingText">Disabled - a .disabled class or the disabled attribute; hover and press
+          change nothing</span>
+        <div class="review-row">
+          <i class="ibkIcon eIB-regular disabled" title="eIB-regular disabled">Edit</i>
+          <i class="ibkIcon eIB-regular eIB-interactive-red41 disabled" title="eIB-regular eIB-interactive-red41 disabled">Trash</i>
+          <i class="ibkIcon eIB-passive disabled" title="eIB-passive disabled">LockCls</i>
+          <i class="ibkIcon eIB-decent eIB-interactive-info disabled" title="eIB-decent eIB-interactive-info disabled">InfoCirc</i>
+          <i class="ibkIcon eIB-decent eIB-passive-g18-w100 disabled" title="eIB-decent eIB-passive-g18-w100 disabled">LockCls</i>
+          <button class="ibkIcon eIB-decent eIB-interactive-alert" type="button" disabled title="button disabled">Cls</button>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="fieldset">
+      <h2>Fieldset</h2>
+      <span class="review-file supportingText">fieldset.css - legend, supporting text and the disabled
+        legend</span>
+      <div class="review-row">
+        <div class="review-item">
+          <span class="supportingText">Enabled</span>
+          <ibk-fieldset class="review-fixed-width" legend="Legend goes here"
+            supportingtext="Supporting text"></ibk-fieldset>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Disabled</span>
+          <ibk-fieldset class="review-fixed-width" legend="Disabled legend" disabled
+            supportingtext="Supporting text"></ibk-fieldset>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="input">
+      <h2>Input (text and password)</h2>
+      <span class="review-file supportingText">input.text.css, input.password.css - field surface, border,
+        placeholder, icons, states</span>
+      <div class="review-row">
+        <div class="review-item">
+          <span class="supportingText">Text</span>
+          <div class="review-col review-fixed-width">
+            <ibk-input label="Default" placeholder="Placeholder" labelinfoicon="InfoCirc"
+              labelinfoiconlabel="More about this field"></ibk-input>
+            <ibk-input label="Filled" value="Some value" textinfoicon="InfoCirc"
+              funcicon1="Search" funcicon1label="Search"></ibk-input>
+            <ibk-input label="Bezeichnung des Textfeldes" placeholder="Please type here"
+              labelinfoicon="InfoCirc" labelinfoiconlabel="Weitere Informationen"
+              textinfoicon="Search" funcicon1="Backspace" funcicon1label="Eingabe löschen"
+              funcicon2="Mic" funcicon2label="Spracheingabe starten" funcicon3="Cls"
+              funcicon3label="Eingabe löschen"
+              supportingtext="This is a sample supporting text."
+              supportingicon="Notf"></ibk-input>
+            <ibk-input label="Prominent" placeholder="Placeholder" prominent></ibk-input>
+            <ibk-input label="Disabled" value="Some value" disabled labelinfoicon="InfoCirc"
+              labelinfoiconlabel="More about this field" textinfoicon="InfoCirc"
+              funcicon1="Search" funcicon1label="Search" supportingtext="Supporting text"
+              supportingicon="InfoCirc"></ibk-input>
+            <ibk-input label="Readonly" value="Some value" readonly
+              supportingtext="Supporting text"></ibk-input>
+            <ibk-input label="Alert" value="Some value" state="alert"></ibk-input>
+            <ibk-input label="Warning" value="Some value" state="warning"></ibk-input>
+            <ibk-input label="Success" value="Some value" state="success"></ibk-input>
+          </div>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Password - its own stylesheet, so every state again</span>
+          <div class="review-col review-fixed-width">
+            <ibk-input type="password" label="Default" placeholder="Placeholder"
+              labelinfoicon="InfoCirc" labelinfoiconlabel="More about this field"></ibk-input>
+            <ibk-input type="password" label="Filled" value="secret"></ibk-input>
+            <ibk-input type="password" label="Prominent" placeholder="Placeholder"
+              prominent></ibk-input>
+            <ibk-input type="password" label="Disabled" value="secret" disabled
+              labelinfoicon="InfoCirc" labelinfoiconlabel="More about this field"
+              supportingtext="Supporting text" supportingicon="InfoCirc"></ibk-input>
+            <ibk-input type="password" label="Readonly" value="secret" readonly
+              supportingtext="Supporting text"></ibk-input>
+            <ibk-input type="password" label="Alert" value="secret" state="alert"></ibk-input>
+            <ibk-input type="password" label="Warning" value="secret" state="warning"></ibk-input>
+            <ibk-input type="password" label="Success" value="secret" state="success"></ibk-input>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="link">
+      <h2>Link</h2>
+      <span class="review-file supportingText">link.css - regular, decent, visited, disabled</span>
+      <div class="review-row">
+        <a class="ibkLink ibkLink-regular" href="#link">Regular link</a>
+        <a class="ibkLink ibkLink-regular" href="https://example.com/visited-probe">Regular,
+          visit me once</a>
+        <a class="ibkLink ibkLink-decent" href="#link">Decent link</a>
+        <a class="ibkLink disabled" href="#link">Disabled link</a>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="meter">
+      <h2>Meter and progress</h2>
+      <span class="review-file supportingText">meter.css, progress.css - track, fill per level, disabled</span>
+      <div class="review-row">
+        <div class="review-col review-fixed-width">
+          <ibk-meter label="Minimum" level="min" value="5"></ibk-meter>
+          <ibk-meter label="Low" level="low" value="20"></ibk-meter>
+          <ibk-meter label="Optimal" level="optimal" value="55"></ibk-meter>
+          <ibk-meter label="High, positive" level="highPos" value="75"></ibk-meter>
+          <ibk-meter label="High, negative" level="highNeg" value="75"></ibk-meter>
+          <ibk-meter label="Maximum" level="max" value="100"></ibk-meter>
+          <ibk-meter label="Decent" variant="decent" value="55"></ibk-meter>
+          <ibk-meter label="Disabled" value="55" disabled labelinfoicon="InfoCirc"
+            labelinfoiconlabel="More about this meter"></ibk-meter>
+        </div>
+        <div class="review-col review-fixed-width" id="progress">
+          <ibk-progress label="Bar" value="45"></ibk-progress>
+          <ibk-progress label="Bar, decent" value="45" variant="decent"></ibk-progress>
+          <ibk-progress label="Bar, disabled" value="45" disabled labelinfoicon="InfoCirc"
+            labelinfoiconlabel="More about this progress"></ibk-progress>
+          <ibk-progress label="Circular" value="45" type="circular"></ibk-progress>
+          <ibk-progress label="Spinner" value="45" type="spinner"></ibk-progress>
+          <ibk-progress label="Spinner, disabled" value="45" type="spinner"
+            disabled></ibk-progress>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="navigation-menu-item">
+      <h2>Navigation menu item</h2>
+      <span class="review-file supportingText">navigation-menu-item.css, menu.css - button surface, selected and
+        disabled, label and icon colour</span>
+      <div class="review-col review-fixed-width">
+        <ibk-navigation-menu-item label="Regular" icon="Home"></ibk-navigation-menu-item>
+        <ibk-navigation-menu-item label="Selected" icon="Home" selected></ibk-navigation-menu-item>
+        <ibk-navigation-menu-item label="Disabled" icon="Home" disabled></ibk-navigation-menu-item>
+        <ibk-navigation-menu-item label="Prominent" icon="Home"
+          variant="prominent"></ibk-navigation-menu-item>
+        <ibk-navigation-menu-item label="Prominent, selected" icon="Home" variant="prominent"
+          selected></ibk-navigation-menu-item>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="pagination">
+      <h2>Pagination</h2>
+      <span class="review-file supportingText">pagination.css, paginationdots.css - button surfaces, current page,
+        disabled arrows</span>
+      <div class="review-col">
+        <div class="review-item">
+          <span class="supportingText">Regular</span>
+          <ibk-pagination id="pagination-review"></ibk-pagination>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Prominent - red current page instead of the petrol one</span>
+          <ibk-pagination id="pagination-review-prominent" prominent></ibk-pagination>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Disabled</span>
+          <ibk-pagination id="pagination-review-disabled" disabled></ibk-pagination>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Dots</span>
+          <ibk-pagination-dots id="dots-review"></ibk-pagination-dots>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Dots, disabled</span>
+          <ibk-pagination-dots id="dots-review-disabled" disabled></ibk-pagination-dots>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="radio">
+      <h2>Radio</h2>
+      <span class="review-file supportingText">radio.css - border, dot, disabled, alert and success states</span>
+      <div class="review-row">
+        <ibk-radio-group id="radio-review" supportingtext="Select an option"></ibk-radio-group>
+        <ibk-radio-group id="radio-review-alert" state="alert"
+          supportingtext="Alert state"></ibk-radio-group>
+        <ibk-radio-group id="radio-review-success" state="success"
+          supportingtext="Success state"></ibk-radio-group>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="range-slider">
+      <h2>Range slider</h2>
+      <span class="review-file supportingText">range-slider.css - 15 rules: track, thumb, icons, disabled</span>
+      <div class="review-col review-fixed-width">
+        <ibk-range-slider label="Regular" value="40" leadingicon="Minus" trailingicon="Plus"
+          labelinfoicon="InfoCirc" labelinfoiconlabel="More about this slider"></ibk-range-slider>
+        <ibk-range-slider label="Regular, bound text" value="40" leadingtext="0"
+          trailingtext="100"></ibk-range-slider>
+        <ibk-range-slider label="Decent" value="40" dominance="decent"></ibk-range-slider>
+        <ibk-range-slider label="Disabled" value="40" disabled leadingicon="Minus"
+          trailingicon="Plus" labelinfoicon="InfoCirc" labelinfoiconlabel="More about this slider"
+          supportingtext="Supporting text" supportingicon="InfoCirc"></ibk-range-slider>
+        <ibk-range-slider label="Disabled, bound text" value="40" disabled leadingtext="0"
+          trailingtext="100"></ibk-range-slider>
+        <ibk-range-slider label="Decent, disabled" value="40" dominance="decent"
+          disabled></ibk-range-slider>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="rating">
+      <h2>Rating</h2>
+      <span class="review-file supportingText">rating.css - empty star outline and the disabled fill</span>
+      <div class="review-row">
+        <div class="review-item">
+          <span class="supportingText">Red, 3 of 5</span>
+          <ibk-rating value="3"></ibk-rating>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Gold, 3.5 of 5</span>
+          <ibk-rating value="3.5" variant="gold" allowhalf></ibk-rating>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Disabled, 3 of 5</span>
+          <ibk-rating value="3" disabled></ibk-rating>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="segmented-control">
+      <h2>Segmented control</h2>
+      <span class="review-file supportingText">segmented-control.css - bar surface, thumb, selected and disabled
+        segment</span>
+      <div class="review-col">
+        <ibk-segmented-control id="segmented-review" label="Regular"></ibk-segmented-control>
+        <ibk-segmented-control id="segmented-review-prominent" dominance="prominent"
+          label="Prominent"></ibk-segmented-control>
+        <ibk-segmented-control id="segmented-review-disabled" label="Disabled"
+          disabled></ibk-segmented-control>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="select">
+      <h2>Select</h2>
+      <span class="review-file supportingText">select.css - 13 rules: field, option list, states, disabled</span>
+      <div class="review-row">
+        <div class="review-col review-fixed-width">
+          <ibk-select id="select-review" label="Default"
+            placeholder="Please choose"></ibk-select>
+          <ibk-select id="select-review-prominent" label="Prominent" placeholder="Please choose"
+            prominent></ibk-select>
+          <ibk-select id="select-review-disabled" label="Disabled" placeholder="Please choose"
+            disabled labelinfoicon="InfoCirc" labelinfoiconlabel="More about this field"
+            supportingtext="Supporting text" supportingicon="InfoCirc"></ibk-select>
+        </div>
+        <div class="review-col review-fixed-width">
+          <ibk-select id="select-review-alert" label="Alert" state="alert"
+            supportingtext="Supporting text"></ibk-select>
+          <ibk-select id="select-review-warning" label="Warning" state="warning"
+            supportingtext="Supporting text"></ibk-select>
+          <ibk-select id="select-review-success" label="Success" state="success"
+            supportingtext="Supporting text"></ibk-select>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="step-button">
+      <h2>Step button</h2>
+      <span class="review-file supportingText">step-button.css - 10 rules over all dominances and the framed
+        bar</span>
+      <div class="review-row">
+        <ibk-step-button icon="Plus" dominance="prominent"></ibk-step-button>
+        <ibk-step-button icon="Plus" dominance="regular"></ibk-step-button>
+        <ibk-step-button icon="Plus" dominance="decent"></ibk-step-button>
+        <ibk-step-button icon="Plus" dominance="prominent" disabled></ibk-step-button>
+        <ibk-step-button icon="Plus" dominance="regular" disabled></ibk-step-button>
+        <ibk-step-button icon="Plus" dominance="decent" disabled></ibk-step-button>
+        <ibk-step-button-bar dominance="regular"></ibk-step-button-bar>
+        <ibk-step-button-bar dominance="decent" framed></ibk-step-button-bar>
+        <ibk-step-button-bar dominance="regular" disabled></ibk-step-button-bar>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="switch">
+      <h2>Switch</h2>
+      <span class="review-file supportingText">switch.css - 10 rules: track, knob, disabled, alert and
+        success</span>
+      <div class="review-row">
+        <div class="review-col">
+          <ibk-switch label="Off"></ibk-switch>
+          <ibk-switch label="On" checked></ibk-switch>
+        </div>
+        <div class="review-col">
+          <ibk-switch label="Disabled, off" disabled></ibk-switch>
+          <ibk-switch label="Disabled, on" checked disabled></ibk-switch>
+        </div>
+        <div class="review-col">
+          <ibk-switch label="Alert, off" state="alert"></ibk-switch>
+          <ibk-switch label="Alert, on" state="alert" checked></ibk-switch>
+        </div>
+        <div class="review-col">
+          <ibk-switch label="Success, off" state="success"></ibk-switch>
+          <ibk-switch label="Success, on" state="success" checked></ibk-switch>
+        </div>
+        <div class="review-col">
+          <ibk-switch label="Disabled, supporting text" disabled
+            supportingtext="Supporting text"></ibk-switch>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="table">
+      <h2>Table</h2>
+      <span class="review-file supportingText">table.css - 12 rules: surface, header, zebra rows, caption,
+        footer</span>
+      <div class="review-col">
+        <ibk-table id="table-review" caption="Regular table" zebra hover></ibk-table>
+        <ibk-table id="table-review-decent" caption="Decent table" variant="decent"></ibk-table>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="tabs">
+      <h2>Tabs</h2>
+      <span class="review-file supportingText">tabs.css - tab label, hover and active surface, disabled tab,
+        content</span>
+      <ibk-tabs id="tabs-review">
+        <ibk-tabs-content id="tabs-review-1">Content of the first tab.</ibk-tabs-content>
+        <ibk-tabs-content id="tabs-review-2">Content of the second tab.</ibk-tabs-content>
+        <ibk-tabs-content id="tabs-review-3">Content of the third tab.</ibk-tabs-content>
+      </ibk-tabs>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="textarea">
+      <h2>Textarea</h2>
+      <span class="review-file supportingText">textarea.css - 15 rules: surface, border, states, disabled,
+        readonly</span>
+      <div class="review-row">
+        <div class="review-col review-fixed-width">
+          <ibk-textarea label="Default" placeholder="Placeholder" labelinfoicon="InfoCirc"
+            labelinfoiconlabel="More about this field"></ibk-textarea>
+          <ibk-textarea label="Resize" placeholder="Placeholder" resize
+            supportingtext="Drag the bottom-right corner to resize"></ibk-textarea>
+          <ibk-textarea label="Disabled" value="Some value" disabled labelinfoicon="InfoCirc"
+            labelinfoiconlabel="More about this field" supportingtext="Supporting text"
+            supportingicon="InfoCirc"></ibk-textarea>
+          <ibk-textarea label="Readonly" value="Some value" readonly
+            supportingtext="Supporting text"></ibk-textarea>
+        </div>
+        <div class="review-col review-fixed-width">
+          <ibk-textarea label="Alert" placeholder="Placeholder" state="alert"
+            supportingtext="Supporting text"></ibk-textarea>
+          <ibk-textarea label="Warning" value="Some value" state="warning"
+            supportingtext="Supporting text"></ibk-textarea>
+          <ibk-textarea label="Success" value="Some value" state="success"
+            supportingtext="Supporting text"></ibk-textarea>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="toast">
+      <h2>Toast</h2>
+      <span class="review-file supportingText">toast.css - 7 rules: one surface per state plus its icon and
+        labels</span>
+      <div class="review-row">
+        <div class="review-item">
+          <span class="supportingText">Regular</span>
+          <div class="review-col review-fixed-width" style="max-width: 32rem;">
+            <ibk-toast state="default" label="Default" secondary-label="Secondary label"></ibk-toast>
+            <ibk-toast state="success" label="Success" secondary-label="Secondary label"></ibk-toast>
+            <ibk-toast state="warning" label="Warning" secondary-label="Secondary label"></ibk-toast>
+            <ibk-toast state="alert" label="Alert" secondary-label="Secondary label"></ibk-toast>
+          </div>
+        </div>
+        <div class="review-item">
+          <span class="supportingText">Decent</span>
+          <div class="review-col review-fixed-width" style="max-width: 32rem;">
+            <ibk-toast variant="decent" state="default" label="Default"
+              secondary-label="Secondary label"></ibk-toast>
+            <ibk-toast variant="decent" state="success" label="Success"
+              secondary-label="Secondary label"></ibk-toast>
+            <ibk-toast variant="decent" state="warning" label="Warning"
+              secondary-label="Secondary label"></ibk-toast>
+            <ibk-toast variant="decent" state="alert" label="Alert"
+              secondary-label="Secondary label"></ibk-toast>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="tooltip">
+      <h2>Tooltip</h2>
+      <span class="review-file supportingText">tooltip.css - surface, text, arrow</span>
+      <div class="review-row" style="padding-bottom: 4rem;">
+        <ibk-tooltip class="review-tooltip-plain" label="Tooltip text goes here" open></ibk-tooltip>
+        <ibk-tooltip label="Toggletip text goes here" type="toggletip" open></ibk-tooltip>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ***************************************************************************** -->
+    <section class="review-section" id="navigation-bars">
+      <h2>Top and bottom navigation</h2>
+      <span class="review-file supportingText">top-navigation.css, bottom-navigation.css - bar surface, selected
+        item, disabled item</span>
+      <div class="review-col">
+        <ibk-top-navigation id="top-nav-review" label="Main navigation"></ibk-top-navigation>
+        <ibk-bottom-navigation id="bottom-nav-review" label="Main navigation"></ibk-bottom-navigation>
+        <ibk-bottom-navigation id="bottom-nav-review-prominent" dominance="prominent"
+          label="Main navigation"></ibk-bottom-navigation>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    /* The colour-scheme toggle: one class on <html> forces the mode (see global.css),
+       localStorage carries it across visits, the head script reapplies it before paint. */
+    const setScheme = (mode) => {
+      document.documentElement.classList.toggle('isDark', mode === 'dark');
+      document.documentElement.classList.toggle('isLight', mode === 'light');
+      localStorage.setItem('ibk-color-scheme', mode);
+    };
+    document.getElementById('scheme-toggle-dark')?.addEventListener('step', () => setScheme('dark'));
+    document.getElementById('scheme-toggle-light')?.addEventListener('step', () => setScheme('light'));
+
+    /* Array properties and the camelCase properties whose attribute form is not obvious
+       (Lit lowercases them) are set here rather than in the markup. */
+    const set = (id, props) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      Object.assign(el, props);
+    };
+
+    set('accordion-review', {
+      items: [
+        {
+          title: 'Enabled section',
+          content:
+            'Weit hinten, hinter den Wortbergen, fern der Länder Vokalien und Konsonantien leben die Blindtexte.',
+        },
+        {
+          title: 'Open section',
+          content:
+            'Abgeschieden wohnen sie in Buchstabhausen an der Küste des Semantik, eines großen Sprachozeans.',
+          active: true,
+        },
+        { title: 'Disabled section', content: 'Not reachable.', disabled: true },
+      ],
+    });
+
+    set('breadcrumb-review', {
+      items: [
+        { label: 'First Level', href: '#breadcrumb' },
+        { label: 'Second Level', href: '#breadcrumb' },
+        { label: 'Current Level' },
+      ],
+    });
+
+    set('dropdown-review', {
+      items: [
+        { label: 'Aus diesem Formular', icon: 'FTypDoc' },
+        { label: 'Aus der Vorlage', icon: 'Copy' },
+        { separator: true },
+        {
+          label: 'Letzten Wert einfügen',
+          icon: 'BklgAdd',
+          items: [
+            { label: 'Aus diesem Formular', icon: 'FTypDoc' },
+            { label: 'Aus der Vorlage', icon: 'Copy' },
+          ],
+        },
+        { label: 'Liste der letzten Werte zeigen', icon: 'List', shortcut: 'Umsch + F5' },
+        { label: 'Wert rücksetzen', icon: 'UndoAll', shortcut: 'Alt + F5', disabled: true },
+      ],
+    });
+
+    for (const id of ['pagination-review', 'pagination-review-prominent', 'pagination-review-disabled']) {
+      set(id, { currentPage: 3, totalPages: 9 });
+    }
+    for (const id of ['dots-review', 'dots-review-disabled']) {
+      set(id, { currentPage: 2, totalPages: 5 });
+    }
+
+    /* The rows carry `state` themselves rather than inheriting it from the group:
+       ibk-radio-group only pushes name / state / labelPosition down from its own `updated()`,
+       so rows appended afterwards are never told - and assigning the value the markup had
+       already set is not a change either, so nothing would ever reach them.
+
+       insertAdjacentHTML, not innerHTML: the group renders its supporting text into its own
+       light DOM, so replacing all children would take Lit's markers with it. */
+    for (const [id, state] of [
+      ['radio-review', ''],
+      ['radio-review-alert', 'alert'],
+      ['radio-review-success', 'success'],
+    ]) {
+      const group = document.getElementById(id);
+      if (!group) continue;
+      const attr = state ? ` state="${state}"` : '';
+      group.insertAdjacentHTML(
+        'afterbegin',
+        `<ibk-radio name="${id}" value="1" label="Option 1" checked${attr}></ibk-radio>
+        <ibk-radio name="${id}" value="2" label="Option 2"${attr}></ibk-radio>
+        <ibk-radio name="${id}" value="3" label="Option 3" disabled${attr}></ibk-radio>`,
+      );
+    }
+
+    const segments = [
+      { label: 'Segment', icon: 'Home', active: true },
+      { label: 'Segment', icon: 'Setting' },
+      { label: 'Segment', icon: 'InfoCirc', disabled: true },
+    ];
+    for (const id of ['segmented-review', 'segmented-review-prominent', 'segmented-review-disabled']) {
+      set(id, { items: segments });
+    }
+
+    const options = [
+      { value: '', label: 'Please choose' },
+      { value: 'dog', label: 'Dog' },
+      { value: 'cat', label: 'Cat' },
+    ];
+    for (const id of [
+      'select-review',
+      'select-review-prominent',
+      'select-review-disabled',
+      'select-review-alert',
+      'select-review-warning',
+      'select-review-success',
+    ]) {
+      set(id, { options });
+    }
+
+    const headers = [
+      { label: 'Status' },
+      { label: 'Instance' },
+      { label: 'Load', align: 'right' },
+    ];
+    const rows = [
+      [{ content: '<ibk-chip label="Online" type="success" variant="decent"></ibk-chip>' }, { content: 'srv-01' }, { content: '12 %', align: 'right' }],
+      [{ content: '<ibk-chip label="Warning" type="warning" variant="decent"></ibk-chip>' }, { content: 'srv-02' }, { content: '68 %', align: 'right' }],
+      [{ content: '<ibk-chip label="Offline" type="alert" variant="decent"></ibk-chip>' }, { content: 'srv-03' }, { content: '0 %', align: 'right' }],
+    ];
+    const footers = [{ content: 'Three instances' }, { content: '' }, { content: '27 %', align: 'right' }];
+    set('table-review', { headers, rows, footers });
+    set('table-review-decent', { headers, rows });
+
+    set('tabs-review', {
+      items: [
+        { label: 'First tab', icon: 'Home', id: 'tabs-review-1' },
+        { label: 'Second tab', icon: 'Setting', id: 'tabs-review-2' },
+        { label: 'Disabled tab', icon: 'InfoCirc', id: 'tabs-review-3', disabled: true },
+      ],
+    });
+
+    set('top-nav-review', {
+      items: [
+        { label: 'Start', href: '#navigation-bars', active: true },
+        { label: 'Reports', href: '#navigation-bars' },
+        { label: 'Settings', href: '#navigation-bars', disabled: true },
+      ],
+    });
+
+    const bottomItems = [
+      { label: 'Start', icon: 'Home', active: true },
+      { label: 'Search', icon: 'Search' },
+      { label: 'Settings', icon: 'Setting', disabled: true },
+    ];
+    set('bottom-nav-review', { items: bottomItems });
+    set('bottom-nav-review-prominent', { items: bottomItems });
+
+    /* `dismissible` defaults to true and a Boolean property cannot be switched off from the
+       markup - the absent attribute is not `false`, it is simply no change - so the plain
+       tooltip needs the property. */
+    document
+      .querySelectorAll('.review-tooltip-plain')
+      .forEach((el) => Object.assign(el, { dismissible: false }));
+
+    /* ***********************************************************************************
+     *  The section list marks where the page currently is. The mark is `aria-current` and
+     *  nothing else - it names the state for a screen reader and is what the stylesheet
+     *  hangs the colour and the weight off, so there is one mechanism rather than two.
+     *
+     *  Resolved through getElementById rather than over the sections, because one entry
+     *  (Progress) points at a column inside the Meter section rather than at a section.
+     * ***********************************************************************************/
+    const spy = () => {
+      const nav = document.querySelector('.review-nav');
+      if (!nav) return;
+      const links = [...nav.querySelectorAll('a[href^="#"]')];
+      const targets = links
+        .map((link) => ({ link, target: document.getElementById(decodeURIComponent(link.hash.slice(1))) }))
+        .filter((entry) => entry.target);
+      if (!targets.length) return;
+
+      let active = null;
+      const mark = (entry) => {
+        if (entry === active) return;
+        active = entry;
+        for (const { link } of targets) {
+          if (link === entry.link) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        }
+        /* Only when the window is too short for the full list - see .review-nav. Its own
+           scroll box, never the page's. */
+        if (nav.scrollHeight > nav.clientHeight) {
+          nav.scrollTop = Math.max(
+            0,
+            entry.link.offsetTop - nav.clientHeight / 2 + entry.link.offsetHeight / 2,
+          );
+        }
+      };
+
+      /* The last target whose top edge has passed the band below the viewport top. Read in
+         document order, so overlapping targets resolve to the innermost one. */
+      const update = () => {
+        const band = 6 * 16;
+        let current = targets[0];
+        for (const entry of targets) {
+          if (entry.target.getBoundingClientRect().top <= band) current = entry;
+        }
+        mark(current);
+      };
+
+      let queued = false;
+      const onScroll = () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(() => {
+          queued = false;
+          update();
+        });
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      update();
+    };
+    spy();
+
+    /* ibk-dropdown is the menu, not the button that opens it - so the trigger is the page's
+       job. This is the wiring from ibk-dropdown.stories.ts: delegated on the anchor, so a
+       click anywhere on the trigger toggles the panel while clicks on a row pass through. */
+    document.querySelectorAll('.ibkDropdownAnchor').forEach((anchor) => {
+      const menu = anchor.querySelector('ibk-dropdown');
+      if (!menu) return;
+      const fromMenu = (e) => e.composedPath().includes(menu);
+
+      const syncAria = () => {
+        const trigger = anchor.querySelector('button.ibkButton');
+        if (!trigger) return;
+        trigger.setAttribute('aria-haspopup', 'menu');
+        trigger.setAttribute('aria-expanded', String(menu.open));
+      };
+
+      anchor.addEventListener('click', (e) => {
+        if (!fromMenu(e)) menu.toggle();
+      });
+      anchor.addEventListener('keydown', (e) => {
+        if (fromMenu(e)) return;
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          void menu.focusFirstItem();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          void menu.focusLastItem();
+        }
+      });
+      anchor.addEventListener('dropdown-open', syncAria);
+      anchor.addEventListener('dropdown-close', syncAria);
+      syncAria();
+    });
+  </script>
+</body>
+
+</html>

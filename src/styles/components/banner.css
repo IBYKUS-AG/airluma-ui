@@ -1,0 +1,131 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ *
+ * Author:       Christian Dinse, IBYKUS AG fuer Informationstechnologie
+ * Description:  The main CSS file of IBYKUS-Designsystem (IDES) CSS-Framework
+ * Rights:       (C) 2023-2025 IBYKUS AG fuer Informationstechnologie
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Banner
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Initial settings
+ * ***************************************************************************************/
+
+.ibkBanner {
+    display: flex;
+    width: 330px;
+    padding: var(--ibk-spacing-24) var(--ibk-spacing-16) var(--ibk-spacing-16) var(--ibk-spacing-16);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ibk-spacing-12);
+    border-radius: var(--ibk-radius-10);
+    -webkit-border-radius: var(--ibk-radius-10);
+    -moz-border-radius: var(--ibk-radius-10);
+    background-color: light-dark(var(--white-100), var(--ibk-neutral-grey-14));
+    box-shadow: var(--ibk-shadow-1);
+}
+
+.ibkBanner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ibk-spacing-16);
+    align-self: stretch;
+}
+
+.ibkBanner h4 {
+    align-self: stretch;
+    color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+    font-size: var(--h4, 21px);
+    font-style: normal;
+    font-weight: 600;
+    line-height: var(--h4-lh, 24px);
+    margin: 0 0 0 0 !important;
+}
+
+.ibkBanner p {
+    align-self: stretch;
+    color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+    font-size: var(--text-l, 16px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--text-l-lh, 24px);
+    margin: 0 0 0 0 !important;
+}
+
+/* ***************************************************************************************
+ *  Banner Prominent
+ * ***************************************************************************************/
+
+.ibkBanner.prominent {
+    position: relative;
+}
+
+.ibkBanner.prominent .ibkButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    border-radius: var(--ibk-radius-6, 6px) 0;
+    position: absolute;
+    top: -1.375rem;
+    right: -1.375rem;
+    padding: var(--ibk-spacing-6, 6px);
+    width: 2.5rem;
+    cursor: pointer;
+}
+
+.ibkBanner.prominent .ibkButton .ibkIcon {
+    color: var(--white-100);
+    font-size: 1.25rem;
+    margin: 0;
+    padding: 0;
+}
+
+/* ***************************************************************************************
+ *  Banner Decent
+ * ***************************************************************************************/
+
+.ibkBanner.regular {
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ibkBanner.regular .ibkButton-close {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ibkBanner.regular .ibkButton-close .ibkIcon {
+    display: flex;
+    height: 1.25rem;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    align-self: flex-start;
+    aspect-ratio: 1/1;
+    color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+    text-align: center;
+    font-size: var(--icon-support, 20px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: var(--icon-support-lh, 1.5rem);
+}
+.ibkBanner.regular .ibkButton-close:hover i {
+    color: light-dark(var(--ibk-neutral-grey-26), var(--ibk-neutral-grey-74));
+}
+.ibkBanner.regular .ibkButton-close:active i {
+    color: light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-90));
+}

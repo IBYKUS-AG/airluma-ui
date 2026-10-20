@@ -1,0 +1,428 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Layout primitives (Stack, Cluster, Auto-Grid, Sidebar) + Container
+ *
+ *  Four arrangements cover almost every screen: elements below each other (Stack),
+ *  next to each other (Cluster), equal-weight tiles (Auto-Grid) and a main plus a
+ *  secondary column (Sidebar). A primitive answers "in which direction do the
+ *  elements sit"; the spacing token answers "how strongly do they belong together".
+ *  The two questions are independent, so the gap is always overridable.
+ *
+ *  Deliberately NOT a twelve-column grid: a column count assumes the element knows
+ *  the viewport width. It does not - the same card can sit in a narrow aside or in
+ *  the wide main area. The primitives therefore react to the space they actually get
+ *  (auto-fit, flex-basis, container queries), which needs no breakpoint at all and
+ *  satisfies WCAG 1.4.10 "Reflow" down to 320px on its own.
+ *
+ *  A primitive describes an arrangement, never an appearance: no colour, no border,
+ *  no focus ring, no states. Everything here is layout only.
+ * ***************************************************************************************/
+
+
+/* ***************************************************************************************
+ *  Gap - the only knob all four primitives share
+ *
+ *  Every primitive reads its gap from --ibk-layout-gap, so one set of utility
+ *  classes (.gap-spacing-*) works on all of them instead of four sets of
+ *  modifiers. These are layout parameters, not aliases for design tokens: the
+ *  utilities below assign the global spacing tokens unchanged, and each primitive
+ *  keeps its own documented default as the var() fallback.
+ *
+ *  inherits: false is the important part. A custom property is inherited even
+ *  though `gap` is not, so a Stack with .gap-spacing-24 would otherwise hand its
+ *  24 down to a Cluster nested inside it and that Cluster would silently lose its
+ *  own default. syntax '*' with no initial-value keeps the property
+ *  guaranteed-invalid until a utility sets it, which is what makes the var()
+ *  fallbacks below work at all.
+ *
+ *  Proximity scale - pick by how strongly the parts belong together, not by the
+ *  space that happens to be available:
+ *
+ *    --ibk-spacing-4    parts of one label      "Label" + info icon
+ *    --ibk-spacing-6    a field and its label   label, field, supporting text
+ *    --ibk-spacing-8    parts of one control    icon + text in a button, radios
+ *    --ibk-spacing-16   independent blocks      dialog buttons, banner areas
+ *
+ *  Two rules are binding: inside tighter than outside (nested primitives must grow
+ *  outwards), and the same relationship gets the same value across components.
+ * ***************************************************************************************/
+
+@property --ibk-layout-gap {
+    syntax: '*';
+    inherits: false;
+}
+
+.gap-spacing-0 {
+    --ibk-layout-gap: 0;
+}
+
+.gap-spacing-2 {
+    --ibk-layout-gap: var(--ibk-spacing-2);
+}
+
+.gap-spacing-4 {
+    --ibk-layout-gap: var(--ibk-spacing-4);
+}
+
+.gap-spacing-6 {
+    --ibk-layout-gap: var(--ibk-spacing-6);
+}
+
+.gap-spacing-8 {
+    --ibk-layout-gap: var(--ibk-spacing-8);
+}
+
+.gap-spacing-10 {
+    --ibk-layout-gap: var(--ibk-spacing-10);
+}
+
+.gap-spacing-12 {
+    --ibk-layout-gap: var(--ibk-spacing-12);
+}
+
+.gap-spacing-14 {
+    --ibk-layout-gap: var(--ibk-spacing-14);
+}
+
+.gap-spacing-16 {
+    --ibk-layout-gap: var(--ibk-spacing-16);
+}
+
+.gap-spacing-24 {
+    --ibk-layout-gap: var(--ibk-spacing-24);
+}
+
+.gap-spacing-32 {
+    --ibk-layout-gap: var(--ibk-spacing-32);
+}
+
+.gap-spacing-40 {
+    --ibk-layout-gap: var(--ibk-spacing-40);
+}
+
+.gap-spacing-48 {
+    --ibk-layout-gap: var(--ibk-spacing-48);
+}
+
+
+/* ***************************************************************************************
+ *  Stack - below each other
+ *
+ *  The most common arrangement there is: forms, text sections, the content of a
+ *  card, the parts of a dialog. One column, every gap identical.
+ *
+ *  Default --ibk-spacing-16, because a Stack most often separates independent
+ *  blocks. Use .gap-spacing-8 for sibling items of one group and .gap-spacing-24
+ *  for larger jumps in content. A Stack may be nested - a section at 24 can hold
+ *  fields at 8 - as long as the outer gap stays the larger one.
+ * ***************************************************************************************/
+
+.ibk-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ibk-layout-gap, var(--ibk-spacing-16));
+}
+
+/* Splits a Stack: everything from this child on is pushed to the bottom edge.
+   Turns "header, content, footer" into a full-height layout without a wrapper
+   div, e.g. a card whose action row stays at the bottom whatever the text does. */
+.ibk-stack > .ibk-stack-push {
+    margin-block-start: auto;
+}
+
+
+/* ***************************************************************************************
+ *  Cluster - next to each other, with wrapping
+ *
+ *  Equal-ranking elements in one row that may wrap when the space runs out:
+ *  button bars, chip rows, filter rows, toolbars.
+ *
+ *  flex-wrap: wrap is the core of this primitive, not a detail. A Cluster that
+ *  cannot wrap forces horizontal scrolling and breaks WCAG 1.4.10 "Reflow".
+ *
+ *  Default --ibk-spacing-16 (independent buttons). Use .gap-spacing-4 inside one
+ *  label block and .gap-spacing-0 where the row has to read as a single element,
+ *  the way the tab bar does.
+ *
+ *  align-items: center is a deliberate addition to the plain three-line
+ *  definition: the flex default (stretch) would blow an info icon up to the height
+ *  of the label beside it. Rows that do want equal heights opt back in with
+ *  .ibk-cluster-align-stretch.
+ * ***************************************************************************************/
+
+.ibk-cluster {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ibk-layout-gap, var(--ibk-spacing-16));
+}
+
+/* Alignment along the row. Named after what they do, not after the flex value,
+   so a footer of buttons reads as "ibk-cluster ibk-cluster-end". */
+.ibk-cluster-start {
+    justify-content: flex-start;
+}
+
+.ibk-cluster-center {
+    justify-content: center;
+}
+
+.ibk-cluster-end {
+    justify-content: flex-end;
+}
+
+/* Two fixed groups pushed to the two edges. Survives a wrap, which is why this is
+   the safer choice over .ibk-cluster-push for a header or a dialog footer. */
+.ibk-cluster-between {
+    justify-content: space-between;
+}
+
+/* Cross-axis alignment. Fields with supporting text of different lengths want
+   their tops flush (start), a toolbar wants equal heights (stretch), a row that
+   mixes font sizes wants the text sitting on one line (baseline). */
+.ibk-cluster-align-start {
+    align-items: flex-start;
+}
+
+.ibk-cluster-align-end {
+    align-items: flex-end;
+}
+
+.ibk-cluster-align-baseline {
+    align-items: baseline;
+}
+
+.ibk-cluster-align-stretch {
+    align-items: stretch;
+}
+
+/* Pushes this child and everything after it to the end of the row. Only works
+   while the row has not wrapped - after a wrap the auto margin sits between two
+   lines instead. Use .ibk-cluster-between for two groups that must stay apart. */
+.ibk-cluster > .ibk-cluster-push {
+    margin-inline-start: auto;
+}
+
+/* Opts one child into taking the free space: a search field that grows while the
+   buttons beside it keep their size. min-inline-size: 0 defeats the automatic
+   minimum size of a flex item, which would otherwise let a long value push the
+   whole row past its container instead of shrinking the field. */
+.ibk-cluster > .ibk-cluster-grow {
+    flex: 1 1 auto;
+    min-inline-size: 0;
+}
+
+
+/* ***************************************************************************************
+ *  Auto-Grid - equal-weight tiles
+ *
+ *  Several elements of the same kind next to each other, all the same width, free
+ *  height. As soon as there is room for another column, a new one appears. That is
+ *  exactly the behaviour the card article describes: the width stays the same from
+ *  one card to the next while the heights may differ.
+ *
+ *  The only value worth deciding here is the minimum width - it answers "from
+ *  which width on does this tile become unreadable?" The content decides that, not
+ *  the screen, so it belongs to the component and is set through
+ *  --ibk-auto-grid-min (default 20rem). No breakpoint is needed for any of it.
+ *
+ *  rem, not px: at 200% text zoom a px minimum never wraps although the text
+ *  stopped fitting long ago (WCAG 1.4.4 "Resize Text").
+ * ***************************************************************************************/
+
+.ibk-auto-grid {
+    display: grid;
+    gap: var(--ibk-layout-gap, var(--ibk-spacing-24));
+    /* min() keeps the tile from overflowing its own minimum: at a 320px viewport
+       20rem no longer fits, and auto-fit would produce a single column wider than
+       the container. 100% is the container width, so the tile shrinks with it
+       instead of forcing a horizontal scrollbar. */
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(var(--ibk-auto-grid-min, 20rem), 100%), 1fr)
+    );
+}
+
+/* Minimum tile widths for the sizes that come up most often. Anything else sets
+   --ibk-auto-grid-min per component, which is all these classes do. */
+.ibk-auto-grid-narrow {
+    --ibk-auto-grid-min: 12rem;
+}
+
+.ibk-auto-grid-wide {
+    --ibk-auto-grid-min: 28rem;
+}
+
+/* auto-fill keeps empty columns instead of stretching the last row across the
+   full width. Use it when the tiles have to stay the size of the rows above, e.g.
+   a gallery that must not end in one giant tile. */
+.ibk-auto-grid-fill {
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(min(var(--ibk-auto-grid-min, 20rem), 100%), 1fr)
+    );
+}
+
+/* Tiles in one row share the tallest height by default (align-items: stretch),
+   which is what a row of cards wants. This opts out, so every tile keeps its
+   natural height. */
+.ibk-auto-grid-align-start {
+    align-items: start;
+}
+
+
+/* ***************************************************************************************
+ *  Sidebar - main and secondary column
+ *
+ *  Two unequal areas next to each other: a main area that takes the remaining
+ *  space and a secondary column with an approximate target width. Once the space
+ *  for the secondary column gets too tight it slides below the main area by
+ *  itself - no breakpoint, no media query. The wrap happens as soon as the two
+ *  declared minimums no longer fit side by side, so those two values are the whole
+ *  configuration.
+ *
+ *  Main and secondary column are the most independent blocks we have, so the gap
+ *  starts at --ibk-spacing-24.
+ * ***************************************************************************************/
+
+.ibk-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ibk-layout-gap, var(--ibk-spacing-24));
+}
+
+/* flex-basis is the width at which the pair still fits side by side, not a fixed
+   width: the main area may grow (flex-grow: 1), the aside may only shrink.
+   min-inline-size: 0 defeats the automatic minimum size, which would otherwise
+   let a wide child (a table, a long word) keep the column from shrinking. */
+.ibk-sidebar > .ibk-sidebar-main {
+    flex: 1 1 var(--ibk-sidebar-main-min, 30rem);
+    min-inline-size: 0;
+}
+
+.ibk-sidebar > .ibk-sidebar-aside {
+    flex: 0 1 var(--ibk-sidebar-aside-size, 20rem);
+    min-inline-size: 0;
+}
+
+/* Puts the secondary column first while it sits beside the main area. After the
+   wrap the order follows the DOM again, and so do the keyboard and a screen
+   reader - `order` never changes those. Keep the reading order in the markup
+   (WCAG 1.3.2 "Meaningful Sequence"). */
+.ibk-sidebar-aside-first > .ibk-sidebar-aside {
+    order: -1;
+}
+
+
+/* ***************************************************************************************
+ *  Container - page width and page margins
+ *
+ *  Centres the content and caps how wide a page becomes. The inline padding is the
+ *  page margin: it breathes with the viewport (clamp) so a phone keeps a 1rem edge
+ *  and a wide monitor does not put text flush against the window frame.
+ *
+ *  max-inline-size in rem, so the cap grows with the user's font size instead of
+ *  squeezing 200%-zoomed text into the same measure.
+ * ***************************************************************************************/
+
+.ibk-container {
+    inline-size: 100%;
+    margin-inline: auto;
+    max-inline-size: var(--ibk-container-size, 80rem);
+    padding-inline: var(--ibk-container-gutter, clamp(1rem, 4vw, 2rem));
+}
+
+.ibk-container-sm {
+    --ibk-container-size: 40rem;
+}
+
+.ibk-container-md {
+    --ibk-container-size: 60rem;
+}
+
+.ibk-container-lg {
+    --ibk-container-size: 80rem;
+}
+
+.ibk-container-xl {
+    --ibk-container-size: 100rem;
+}
+
+/* Edge to edge - a hero or a banner that spans the window. Keeps the gutter, so
+   its content still does not touch the window frame. */
+.ibk-container-full {
+    --ibk-container-size: none;
+}
+
+/* Drops the page margin too, for a section that supplies its own padding. */
+.ibk-container-flush {
+    --ibk-container-gutter: 0;
+}
+
+/* Reading measure for running text. ch, not rem: what matters for readability is
+   the number of characters per line (~65-75), and ch is the only unit that stays
+   correct when the font changes. */
+.ibk-container-prose {
+    --ibk-container-size: 70ch;
+}
+
+
+/* ***************************************************************************************
+ *  Query container
+ *
+ *  Lets a component react to the width it actually got instead of the viewport
+ *  width - the whole reason for not using a column grid. Put .ibk-query-container
+ *  on the wrapper, then query it from the component's own stylesheet:
+ *
+ *      @container (inline-size < 30rem) { ... }
+ *
+ *  inline-size, not size: a size container needs an explicit height, and the
+ *  content would collapse.
+ *
+ *  Two rules for where this class may go, both consequences of containment:
+ *
+ *  1. Never on a box that is sized BY its content. inline-size containment makes
+ *     the box compute its intrinsic inline size as if it were empty, so a
+ *     shrink-to-fit box - a float, an inline-block, a flex item with the default
+ *     flex-basis: auto - collapses to zero width and its content spills over
+ *     whatever sits beside it. Put it on a block-level element in normal flow, or
+ *     on a flex item that has a real flex-basis (.ibk-sidebar-main and
+ *     .ibk-sidebar-aside both qualify). An element also cannot query itself, so
+ *     the class always goes on an ancestor of whatever reads the query.
+ *
+ *  2. Not on an ancestor of an overlay. container-type also applies layout
+ *     containment, which makes the element a containing block for absolutely and
+ *     fixed positioned descendants - a tooltip or dropdown anchored to the page
+ *     would be trapped inside it.
+ * ***************************************************************************************/
+
+.ibk-query-container {
+    container-type: inline-size;
+}
+
+
+/* ***************************************************************************************
+ *  Visually hidden
+ *
+ *  Whatever forms a group visually has to be a group programmatically too - a gap
+ *  on its own carries nothing for a screen reader (WCAG 1.3.1 "Info and
+ *  Relationships"). Where a primitive replaces a heading or a legend visually,
+ *  this keeps the element in the accessibility tree while taking it out of the
+ *  layout.
+ * ***************************************************************************************/
+
+.ibk-visually-hidden {
+    border: 0;
+    block-size: 1px;
+    clip-path: inset(50%);
+    inline-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+}

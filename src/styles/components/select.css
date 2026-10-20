@@ -1,0 +1,216 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+
+/* ***************************************************************************************
+ *	 Select/Drop Down (ibkSelect)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+.ibkSelect {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	gap: var(--ibk-spacing-6, 0.375rem);
+	position: relative;
+	width: 100%;
+}
+
+.ibkSelectWrapper {
+	position: relative;
+	width: 100%;
+}
+
+.ibkSelect label {
+	color: var(--standard-fontcolor);
+	display: block;
+}
+
+.ibkSelect .ibkLabel .ibkIcon.label-info {
+	color: var(--ibk-info-34);
+}
+
+.ibkSelect select {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background: light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-10));
+	border: 2px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-34));
+	border-radius: var(--ibk-radius-6, 0.375rem);
+	color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+	cursor: pointer;
+	display: inline-block;
+	padding: var(--ibk-spacing-6, 0.375rem) 2.75rem var(--ibk-spacing-6, 0.375rem) var(--ibk-spacing-8, 0.5rem);
+	position: relative;
+	width: 100%;
+}
+
+.ibkSelect:not(.alert):not(.warning):not(.success) select:hover:not([disabled]) {
+	background-color: light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-18));
+}
+
+.ibkSelect .ibkIcon.dropdown-icon {
+	color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+	pointer-events: none;
+	position: absolute;
+	right: 0.625rem;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.ibkSelect .ibkIcon.info-icon {
+	display: none;
+}
+
+.ibkSelect.has-info-icon .ibkIcon.info-icon {
+	display: block;
+	color: var(--standard-fontcolor);
+	left: 0.625rem;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.ibkSelect.has-info-icon select {
+	padding-left: 2.625rem;
+}
+
+.ibkSelect .supportingText {
+	align-items: flex-start;
+	display: flex;
+	gap: var(--ibk-spacing-4, 0.25rem);
+	width: 100%;
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+}
+
+.ibkSelect .supportingText .ibkIcon {
+	color: light-dark(inherit, var(--ibk-neutral-grey-58));
+	float: none !important;
+	margin: 0;
+}
+
+.ibkSelect .supportingText .content {
+	float: none;
+}
+
+
+/* ***************************************************************************************
+ *  ibkSelect variations
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  disabled
+ * ***************************************************************************************/
+
+.ibkSelect.disabled .ibkLabel,
+.ibkSelect.disabled .ibkLabel .ibkLabelText,
+.ibkSelect.disabled .ibkLabel .ibkIcon {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+/* See the note in textarea.css: label.css marks the info icon's hover and active colours
+   !important, which outranks the disabled grey above. Taken back out of the interaction. */
+
+.ibkSelect.disabled .ibkLabel .ibkIcon.label-info {
+	cursor: default;
+}
+
+.ibkSelect.disabled .ibkLabel .ibkIcon:hover,
+.ibkSelect.disabled .ibkLabel .ibkIcon:active {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+}
+
+.ibkSelect.disabled select[disabled] {
+	background-color: light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-2));
+	border: var(--ibk-spacing-2, 2px) solid light-dark(var(--select-disable-b, var(--ibk-neutral-grey-82)), var(--ibk-neutral-grey-14));
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkSelect.disabled .ibkSelectWrapper .ibkIcon {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+}
+
+.ibkSelect.disabled .supportingText,
+.ibkSelect.disabled .supportingText .ibkIcon {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+}
+
+
+/* ***************************************************************************************
+ *  alert
+ * ***************************************************************************************/
+
+.ibkSelect.alert select {
+	background-color: light-dark(var(--ibk-alert-94), var(--ibk-alert-6));
+	border-color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+}
+
+.ibkSelect.alert .supportingText {
+	color: var(--ibk-alert-34);
+}
+
+.ibkSelect.alert .supportingText .ibkIcon {
+	color: var(--ibk-alert-34);
+}
+
+
+/* ***************************************************************************************
+ *  warning
+ * ***************************************************************************************/
+
+.ibkSelect.warning select {
+	border-color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22));
+}
+
+.ibkSelect.warning .supportingText {
+	color: var(--ibk-warning-34);
+}
+
+.ibkSelect.warning .supportingText .ibkIcon {
+	color: var(--ibk-warning-34);
+}
+
+
+/* ***************************************************************************************
+ *  success
+ * ***************************************************************************************/
+
+.ibkSelect.success select {
+	border-color: light-dark(var(--ibk-success-26), var(--ibk-success-18));
+}
+
+.ibkSelect.success .supportingText {
+	color: var(--ibk-success-22);
+}
+
+.ibkSelect.success .supportingText .ibkIcon {
+	color: var(--ibk-success-22);
+}
+
+
+/* ***************************************************************************************
+ *  prominent
+ * ***************************************************************************************/
+
+.ibkSelect.prominent select {
+	border-radius: var(--ibk-spacing-10, 0.625rem);
+	padding-top: 0.625rem;
+	padding-bottom: 0.625rem;
+}
+
+.ibkSelect.prominent .ibkIcon.info-icon {
+	display: none;
+}
+
+.ibkSelect.prominent.has-info-icon .ibkIcon.info-icon {
+	display: block;
+}
+
+.ibkSelect.prominent.has-info-icon select {
+	padding-left: 2.625rem;
+}

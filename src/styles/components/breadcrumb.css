@@ -1,0 +1,38 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ *
+ * Author:       Christian Dinse, IBYKUS AG fuer Informationstechnologie
+ * Description:  The main CSS file of IBYKUS-Designsystem (IDES) CSS-Framework
+ * Rights:       (C) 2023-2025 IBYKUS AG fuer Informationstechnologie
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Breadcrumb (ibkBreadcrumb)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Initial settings
+ * ***************************************************************************************/
+
+.ibkBreadcrumb .breadcrumb-element {
+	font-size: 1rem;
+	line-height: 1.0;
+}
+
+.ibkBreadcrumb .breadcrumb-element .ibkIcon {
+	color: light-dark(var(--ibk-red-41), var(--ibk-red-73));
+	/* display: inherit; 		changed in 0.5.8 */
+	display: inline-block;
+	font-size: 1.0rem;
+	font-style: inherit;
+	line-height: 1.0;
+	/* margin-left: 0.125rem; 	removed in 0.5.8 */
+	/* margin-right: 0.125rem; 	removed in 0.5.8 */
+	vertical-align: middle;
+	width: 1.0rem 				/* added in 0.5.8 */
+}
+
+.ibkBreadcrumb.single .breadcrumb-element .ibkIcon {
+	margin-left: 0;
+}

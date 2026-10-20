@@ -1,0 +1,8 @@
+/* Entry for the self-contained CDN stylesheet: fonts, icon font and framework in
+   one file. esbuild inlines the @imports, copies the referenced font files to
+   assets/ and rewrites the url()s. Never import this from application code --
+   use @ides/webcomponents/styles/all, which composes the same three parts
+   through the package exports. */
+@import "../packages/fonts/fonts.css";
+@import "../packages/iconset/iconset.css";
+@import "../src/styles/ides.css";

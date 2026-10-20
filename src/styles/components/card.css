@@ -1,0 +1,74 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Cards (ibkCard)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Initial definitions
+ * ***************************************************************************************/
+
+.ibkCard {
+	display: block;
+	min-width: 8.0rem;
+	min-height: 8.0rem;
+	padding: var(--ibk-spacing-16, 1.0rem);
+	border: 1px solid transparent;
+	border-radius: var(--ibk-radius-10, 0.625rem);
+	background-color: light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-6));
+}
+
+/* ***************************************************************************************
+ *	 Surface steps (delta)
+ *	 The delta fills the background, except for the bordered variant where it
+ *	 colours the border instead.
+ * ***************************************************************************************/
+
+.ibkCard[delta="0"] {
+	background-color: light-dark(var(--white-100), var(--black-0));
+}
+
+.ibkCard[delta="2"] {
+	background-color: light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-2));
+}
+
+.ibkCard[delta="6"] {
+	background-color: light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-6));
+}
+
+.ibkCard[delta="10"] {
+	background-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+}
+
+/* ***************************************************************************************
+ *	 Variants
+ * ***************************************************************************************/
+
+.ibkCard[variant="elevated"],
+.ibkCard.elevated {
+	box-shadow: var(--ibk-shadow-1);
+}
+
+.ibkCard[variant="bordered"] {
+	background-color: transparent;
+	border-color: light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-6));
+}
+
+.ibkCard[variant="bordered"][delta="0"] {
+	border-color: light-dark(var(--white-100), var(--black-0));
+}
+
+.ibkCard[variant="bordered"][delta="2"] {
+	border-color: light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-2));
+}
+
+.ibkCard[variant="bordered"][delta="6"] {
+	border-color: light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-6));
+}
+
+.ibkCard[variant="bordered"][delta="10"] {
+	border-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+}

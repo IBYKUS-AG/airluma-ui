@@ -1,0 +1,199 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Step Button (ibkStepButton)
+ *  An icon-only stepper button. Dominance defines the colour ramp, size the icon
+ *  scale, shape the corner radius. States (hover / pressed / focus / disabled) are
+ *  driven by pseudo-classes and use the global --ibk-* tokens directly.
+ * ***************************************************************************************/
+
+/* The host wraps the button; make it hug its content (no inline baseline gap). */
+ibk-step-button {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.ibkStepButton {
+    align-items: center;
+    border: 2px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    line-height: 0;
+    padding: 0;
+    vertical-align: middle;
+}
+
+.ibkStepButton .ibkIcon {
+    color: inherit;
+    display: block;
+    text-align: center;
+}
+
+/* ***************************************************************************************
+ *  States (shared) — the colours per state are defined per dominance below
+ * ***************************************************************************************/
+
+.ibkStepButton:disabled {
+    cursor: not-allowed;
+}
+
+/* ***************************************************************************************
+ *  Dominance: Prominent (red)
+ * ***************************************************************************************/
+
+.ibkStepButton-prominent {
+    background: var(--ibk-red-41);
+    border-color: var(--ibk-red-41);
+    color: var(--white-100);
+}
+
+.ibkStepButton-prominent:hover:not(:disabled) {
+    background: var(--ibk-red-49);
+    border-color: var(--ibk-red-49);
+}
+
+.ibkStepButton-prominent:active:not(:disabled) {
+    background: var(--ibk-red-33);
+    border-color: var(--ibk-red-33);
+}
+
+.ibkStepButton-prominent:disabled {
+    background: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10));
+    border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10));
+    color: light-dark(var(--white-100), var(--ibk-neutral-grey-22));
+}
+
+/* ***************************************************************************************
+ *  Dominance: Regular (petrol) — hover has no palette token, uses the literal ramp
+ * ***************************************************************************************/
+
+.ibkStepButton-regular {
+    background: light-dark(var(--ibk-petrol-32), var(--ibk-petrol-26));
+    border-color: light-dark(var(--ibk-petrol-32), var(--ibk-petrol-26));
+    color: var(--white-100);
+}
+
+.ibkStepButton-regular:hover:not(:disabled) {
+    background: light-dark(var(--ibk-petrol-40, #52697a), var(--ibk-petrol-32));
+    border-color: light-dark(var(--ibk-petrol-40, #52697a), var(--ibk-petrol-32));
+}
+
+.ibkStepButton-regular:active:not(:disabled) {
+    background: light-dark(var(--ibk-petrol-26), var(--ibk-petrol-18));
+    border-color: light-dark(var(--ibk-petrol-26), var(--ibk-petrol-18));
+}
+
+.ibkStepButton-regular:disabled {
+    background: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10));
+    border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10));
+    color: light-dark(var(--white-100), var(--ibk-neutral-grey-22));
+}
+
+/* ***************************************************************************************
+ *  Dominance: Decent (ghost) — transparent until hovered, dark icon
+ * ***************************************************************************************/
+
+.ibkStepButton-decent {
+    background: transparent;
+    border-color: transparent;
+    color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+}
+
+.ibkStepButton-decent:hover:not(:disabled) {
+    background: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+    border-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+}
+
+.ibkStepButton-decent:active:not(:disabled) {
+    background: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26));
+    border-color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26));
+}
+
+.ibkStepButton-decent:disabled {
+    background: transparent;
+    border-color: transparent;
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+/* ***************************************************************************************
+ *  Size: 40 (1.5rem icon) / 20 (1.25rem icon)
+ * ***************************************************************************************/
+
+.ibkStepButton-40 {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.ibkStepButton-40 .ibkIcon {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+
+.ibkStepButton-20 {
+    height: 1.25rem;
+    width: 1.25rem;
+}
+
+.ibkStepButton-20 .ibkIcon {
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+}
+
+/* ***************************************************************************************
+ *  Shape: Round (pill) / Quad (rounded square) / Rect (compact 1.25rem × 1rem, size 20 only)
+ * ***************************************************************************************/
+
+.ibkStepButton-round {
+    border-radius: 1.5rem;
+}
+
+.ibkStepButton-quad {
+    border-radius: 0.375rem;
+}
+
+/* Quad tightens its radius at the smaller size (matches Figma). */
+.ibkStepButton-quad.ibkStepButton-20 {
+    border-radius: 0.25rem;
+}
+
+.ibkStepButton-rect {
+    border-radius: 0.25rem;
+}
+
+.ibkStepButton-rect.ibkStepButton-20 {
+    height: 1rem;
+}
+
+/* ***************************************************************************************
+ *  Step Button Bar (ibkStepButtonBar) — two buttons grouped as one control.
+ *  Round → horizontal (previous / next), Quad & Rect → vertical (up / down).
+ * ***************************************************************************************/
+
+.ibkStepButtonBar {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    line-height: 0;
+}
+
+.ibkStepButtonBar-horizontal {
+    flex-direction: row;
+    gap: var(--ibk-spacing-4, 0.25rem);
+}
+
+.ibkStepButtonBar-vertical {
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Framed: a filled, bordered container wrapping the pair (used with Round). */
+.ibkStepButtonBarFramed {
+    background: light-dark(var(--white-100), var(--black-0));
+    border: 2px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26));
+    border-radius: 1.5rem;
+    padding: 0.125rem;
+}

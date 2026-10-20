@@ -1,0 +1,498 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+
+/* ***************************************************************************************
+ *	 Input Text (ibkInputText)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+.ibkInputText {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	gap: var(--ibk-spacing-6, 6px);
+	position: relative;
+	width: 100%;
+}
+
+/* Interactive icons are <button> elements so role, focus order and keyboard activation come
+   from the browser. Strip the UA button chrome and guarantee the 24x24 CSS px target of
+   WCAG 2.5.8 - the glyph alone is 1.5rem tall but has no width of its own. */
+
+button.ibkIcon {
+	align-items: center;
+	background: none;
+	border: 0;
+	color: inherit;
+	cursor: pointer;
+	display: inline-flex;
+	font-family: inherit;
+	font-weight: inherit;
+	justify-content: center;
+	min-height: 1.5rem;
+	min-width: 1.5rem;
+	padding: 0;
+}
+
+button.ibkIcon[disabled] {
+	cursor: default;
+}
+
+.ibkInputWrapper {
+	position: relative;
+	width: 100%;
+}
+
+.ibkInputText label {
+	color: var(--standard-fontcolor);
+	display: block;
+}
+
+.ibkInputText .ibkLabel .ibkIcon.label-info {
+	color: var(--ibk-info-34);
+}
+
+.ibkInputText input::placeholder {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+	opacity: 1;
+	/* Firefox fix */
+}
+
+.ibkInputText .ibkIcon.ibkIcon.info-icon {
+	display: none;
+}
+
+
+/* if info-icon is activated */
+
+.ibkInputText.info-icon .ibkIcon.ibkIcon.info-icon {
+	display: block;
+}
+
+.ibkInputText.info-icon input {
+	padding-left: 2.625rem;
+}
+
+/*
+.ibkInputText .ibkLabel .ibkIcon {
+	color: var(--ibk-info-34);
+	float: inherit;
+	position: inherit;
+}
+*/
+
+.ibkInputText input {
+	background: light-dark(var(--input-txt-enable-bg, #FFF), var(--ibk-neutral-grey-10));
+	border-radius: var(--ibk-radius-6, 6px) 0;
+	border: 2px solid light-dark(var(--ibk-neutral-grey-58), var(--ibk-neutral-grey-34));
+	color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+	display: inline-block;
+	padding: var(--ibk-spacing-6, 6px) var(--ibk-spacing-8, 8px);
+	position: relative;
+	width: 100%;
+}
+
+/* grey-42 is the icon grey of a light field; on the dark field it sits too close to the
+   background, so dark mode uses grey-58 - the same pair the placeholder and the supporting
+   text in this file already carry. */
+
+.ibkInputWrapper .ibkIcon {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+	float: left;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+
+/* The glyph inside an icon button must stay in flow - otherwise the rule above also absolutely
+   positions it, the button collapses to its min-width and a glyph wider than 1.5rem escapes to
+   the right, over the input border. In flow the button wraps its glyph, so `right` is really
+   the gap between glyph and border.
+
+   `color: inherit` is what makes the interactive states visible at all. A function icon is a
+   <button> wrapping an <i>, and the <i> carries .ibkIcon too, so the wrapper rule above matched
+   it directly and pinned it to the resting grey. The :hover and :active rules further down
+   address the button, so they repainted a box that paints nothing while the glyph the user
+   actually sees never moved. Inheriting makes the button the single source of truth, the way
+   `button.ibkIcon { color: inherit }` at the top of this file already intends. The disabled
+   rules keep winning here - they set the glyph directly and carry !important. */
+
+.ibkInputWrapper button.ibkIcon > .ibkIcon {
+	color: inherit;
+	float: none;
+	position: static;
+	transform: none;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Input Text - with 1 to 3 extra functions
+ * ***************************************************************************************/
+
+/* The text stops one gap before the innermost function icon: the field padding, then one icon
+   box plus one gap per icon - the same steps the icon offsets further down are built from.
+   The alert, warning and success states add no icon to the field, so they keep this padding. */
+
+/* 3 functions activated */
+
+.ibkInputText.func-3 input {
+	padding-right: calc(var(--ibk-spacing-8, 0.5rem) + 3 * (var(--ibk-spacing-24, 1.5rem) + var(--ibk-spacing-8, 0.5rem)));
+}
+
+.ibkInputText.func-3 .ibkIcon.func.first,
+.ibkInputText.func-3 .ibkIcon.func.second,
+.ibkInputText.func-3 .ibkIcon.func.third {
+	display: block !important;
+}
+
+
+/* 2 functions activated */
+
+.ibkInputText.func-2 input {
+	padding-right: calc(var(--ibk-spacing-8, 0.5rem) + 2 * (var(--ibk-spacing-24, 1.5rem) + var(--ibk-spacing-8, 0.5rem)));
+}
+
+.ibkInputText.func-2 .ibkIcon.func.first,
+.ibkInputText.func-2 .ibkIcon.func.second {
+	display: block;
+}
+
+.ibkInputText.func-2 .ibkIcon.func.third {
+	display: none;
+}
+
+
+/* 1 function activated */
+
+.ibkInputText.func-1 input {
+	padding-right: calc(var(--ibk-spacing-8, 0.5rem) + var(--ibk-spacing-24, 1.5rem) + var(--ibk-spacing-8, 0.5rem));
+}
+
+.ibkInputText.func-1 .ibkIcon.func.first {
+	display: block;
+}
+
+.ibkInputText.func-1 .ibkIcon.func.second,
+.ibkInputText.func-1 .ibkIcon.func.third {
+	display: none;
+}
+
+
+/* 0 functions activated - initial standard */
+
+.ibkInputText .ibkIcon.func.first,
+.ibkInputText .ibkIcon.func.second,
+.ibkInputText .ibkIcon.func.third {
+	display: none;
+}
+
+
+/* more settings */
+
+/* The trailing function icons run grey-42 / grey-50 / grey-34 on a light field and
+   grey-58 / grey-50 / grey-66 on a dark one. Hover is the pivot of the two ramps and needs
+   no pair; only the resting and the pressed colour flip sides. */
+
+.ibkInputText .ibkIcon.func.first,
+.ibkInputText .ibkIcon.func.second,
+.ibkInputText .ibkIcon.func.third {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+	cursor: pointer;
+}
+
+.ibkInputText .ibkIcon.func.first:focus-visible,
+.ibkInputText .ibkIcon.func.second:focus-visible,
+.ibkInputText .ibkIcon.func.third:focus-visible {
+	border-radius: 0.0625rem;
+	outline-offset: 0;
+}
+
+.ibkInputText .ibkIcon.func.first:hover,
+.ibkInputText .ibkIcon.func.second:hover,
+.ibkInputText .ibkIcon.func.third:hover {
+	color: var(--ibk-neutral-grey-50);
+}
+
+.ibkInputText .ibkIcon.func.first:active,
+.ibkInputText .ibkIcon.func.second:active,
+.ibkInputText .ibkIcon.func.third:active {
+	color: light-dark(var(--ibk-neutral-grey-34), var(--ibk-neutral-grey-66));
+}
+
+/* One shared edge gap for both sides, so the distance between border and glyph is the same on
+   the left and on the right. Every further function icon steps inwards by exactly one icon box
+   plus one gap, so the row stays evenly spaced whatever the glyph widths are. */
+
+.ibkInputText .ibkIcon.info-icon {
+	left: var(--ibk-spacing-10, 0.625rem);
+	min-width: var(--ibk-spacing-24, 1.5rem);
+}
+
+.ibkInputText .ibkIcon.func.first {
+	right: var(--ibk-spacing-10, 0.625rem);
+}
+
+.ibkInputText .ibkIcon.func.second {
+	right: calc(var(--ibk-spacing-10, 0.625rem) + var(--ibk-spacing-24, 1.5rem) + var(--ibk-spacing-8, 0.5rem));
+}
+
+.ibkInputText .ibkIcon.func.third {
+	right: calc(var(--ibk-spacing-10, 0.625rem) + 2 * (var(--ibk-spacing-24, 1.5rem) + var(--ibk-spacing-8, 0.5rem)));
+}
+
+.ibkInputText .supportingText {
+	align-items: flex-start;
+	display: flex;
+	gap: var(--ibk-spacing-4, 4px);
+	width: 100%;
+}
+
+.ibkInputText .supportingText .ibkIcon {
+	color: inherit;
+	float: none !important;
+	margin: 0;
+}
+
+.ibkInputText .supportingText .content {
+	float: none;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Counter - right of the supporting text, below the field
+ * ***************************************************************************************/
+
+.ibkInputText .supportingRow {
+	align-items: flex-start;
+	display: flex;
+	gap: var(--ibk-spacing-16, 1rem);
+	justify-content: flex-end;
+	width: 100%;
+}
+
+.ibkInputText .supportingRow .supportingText {
+	flex: 1;
+	min-width: 0;
+}
+
+/* The 3px top padding centres the 14px counter line on the first 20px line of the supporting
+   text. */
+
+.ibkInputText .counter {
+	color: var(--standard-fontcolor);
+	flex-shrink: 0;
+	font-size: 0.875rem;
+	font-weight: 500;
+	letter-spacing: 0.03125rem;
+	line-height: 0.875rem;
+	padding-top: 0.1875rem;
+	white-space: nowrap;
+}
+
+/* The counter keeps the text colour in the alert, warning and success states - only the
+   supporting text carries the state colour. Disabled and read-only fields grey it out. */
+
+.ibkInputText.disabled .counter,
+.ibkInputText.readonly .counter {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+
+
+
+/* ***************************************************************************************
+ *  ibkInputText variations
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  disabled
+ * ***************************************************************************************/
+
+.ibkInputText.disabled .ibkLabel,
+.ibkInputText.disabled .ibkLabel .ibkLabelText,
+.ibkInputText.disabled .ibkLabel .ibkIcon {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+/* See the note in textarea.css: label.css marks the info icon's hover and active colours
+   !important, which outranks the disabled grey above. Taken back out of the interaction.
+   Unlike textarea, the info icon here is a <button> wrapping an <i class="ibkIcon">, and the
+   glyph matches `.ibkLabel .ibkIcon { cursor: pointer }` in label.css on its own - so the hand
+   came back over the glyph itself unless the inner <i> is reset too. */
+
+.ibkInputText.disabled .ibkLabel .ibkIcon.label-info,
+.ibkInputText.disabled .ibkLabel .ibkIcon.label-info > .ibkIcon {
+	cursor: default;
+}
+
+.ibkInputText.disabled .ibkLabel .ibkIcon:hover,
+.ibkInputText.disabled .ibkLabel .ibkIcon:active {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+}
+
+.ibkInputText.disabled input[disabled] {
+	background-color: light-dark(var(--ibk-neutral-grey-94), transparent);
+	border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-14));
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkInputText.disabled input[disabled]::placeholder {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkInputText.disabled .ibkInputWrapper .ibkIcon {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+}
+
+.ibkInputText.disabled .supportingText,
+.ibkInputText.disabled .supportingText .ibkIcon {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+}
+
+.ibkInputText.disabled .ibkIcon.func.first,
+.ibkInputText.disabled .ibkIcon.func.second,
+.ibkInputText.disabled .ibkIcon.func.third {
+	cursor: default !important;
+}
+
+
+/* ***************************************************************************************
+ *  alert
+ * ***************************************************************************************/
+
+.ibkInputText.alert input {
+	background-color: light-dark(var(--ibk-alert-94), var(--ibk-alert-6));
+	border-color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+}
+
+.ibkInputText.alert .supportingText {
+	color: var(--ibk-alert-34);
+}
+
+.ibkInputText.alert .supportingText .ibkIcon {
+	color: var(--ibk-alert-34);
+}
+
+.ibkInputText.alert .ibkIcon.func.first {
+	display: block;
+}
+
+/* ***************************************************************************************
+ *  warning
+ * ***************************************************************************************/
+
+.ibkInputText.warning input {
+	border-color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22));
+}
+
+.ibkInputText.warning .supportingText {
+	color: var(--ibk-warning-34);
+}
+
+.ibkInputText.warning .supportingText .ibkIcon {
+	color: var(--ibk-warning-34);
+}
+
+.ibkInputText.warning .ibkIcon.func.first {
+	display: block;
+}
+
+
+/* ***************************************************************************************
+ *  read-only
+ * ***************************************************************************************/
+
+.ibkInputText.readonly input {
+	color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-58));
+	border-color: light-dark(var(--ibk-neutral-grey-58), var(--ibk-neutral-grey-14));
+	background-color: light-dark(var(--ibk-neutral-grey-94), transparent);
+}
+
+.ibkInputText.readonly .supportingText {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+/* ***************************************************************************************
+ *  success
+ * ***************************************************************************************/
+
+.ibkInputText.success input {
+	border-color: light-dark(var(--ibk-success-26), var(--ibk-success-18));
+}
+
+.ibkInputText.success .supportingText {
+	color: var(--ibk-success-22);
+}
+
+.ibkInputText.success .supportingText .ibkIcon {
+	color: var(--ibk-success-22);
+}
+
+.ibkInputText.success .ibkIcon.func.first {
+	display: block;
+}
+
+/* ***************************************************************************************
+ *  prominent
+ * ***************************************************************************************/
+
+.ibkInputText.prominent {
+	border: 0;
+}
+
+.ibkInputText.prominent input::placeholder {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+	opacity: 1;
+	/* Firefox fix */
+}
+
+.ibkInputText.prominent .ibkIcon.ibkIcon.info-icon {
+	display: none;
+}
+
+/* if info-icon is activated */
+.ibkInputText.prominent.info-icon .ibkIcon.ibkIcon.info-icon {
+	display: block;
+}
+
+.ibkInputText.prominent.info-icon input {
+	padding-left: 2.625rem;
+}
+
+.ibkInputText.prominent input {
+	border-radius: var(--ibk-spacing-10, 10px) 0;
+	padding-top: 0.625rem;
+	padding-bottom: 0.625rem;
+	padding-right: 3.50rem;
+}
+
+/* The prominent variant keeps the same icon offsets as the standard one - see the shared rules
+   above; only its input padding differs. */
+
+/* ***************************************************************************************
+ *  prominent - 3 functions activated
+ * ***************************************************************************************/
+
+.ibkInputText.prominent.func-3 input {
+	padding-right: 6.75rem;
+}
+
+.ibkInputText.prominent.func-2 input {
+	padding-right: 5.00rem;
+}
+
+.ibkInputText.prominent.func-1 input {
+	padding-right: 3.50rem;
+}

@@ -1,0 +1,194 @@
+/* ***************************************************************************************
+*  IBYKUS-Designsystem - IdesFramework
+*  This file contains component individual definitions. Do not use individually!
+* ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Checkbox (ibkCheckbox)
+ *  barrier free
+ * ***************************************************************************************/
+
+.ibkCheckboxContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ibk-spacing-8, 8px);
+}
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+.ibkCheckbox {
+    display: inline-flex;
+    align-items: center;
+    height: 1.25rem;
+}
+
+.ibkCheckbox label {
+    color: var(--standard-fontcolor);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ibk-spacing-8, 8px);
+    cursor: pointer;
+}
+
+/* outer rect of the checkbox */
+
+.ibkCheckbox label input {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 0.125rem solid var(--ibk-red-41);
+    border-top-left-radius: var(--ibk-radius-6, 6px);
+    border-bottom-right-radius: var(--ibk-radius-6, 6px);
+    display: inline-grid;
+    place-content: center;
+    flex-shrink: 0;
+    /* The UA stylesheet sets `cursor: auto` on `input`, so the box would keep the arrow
+       while the label next to it already shows the hand. */
+    cursor: pointer;
+}
+
+/* the checkmark and indeterminate line */
+
+.ibkCheckbox label input::before {
+    content: 'ChkM';
+    /* Hidden until the input is checked - the glyph is white, so without this it is
+       simply invisible on a light page and shows up as a checkmark on a dark one. */
+    transform: scale(0);
+    font-family: 'IBYKUS-Iconset';
+    font-weight: normal;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    color: var(--white-100);
+}
+
+.ibkCheckbox label input:checked {
+    background-color: var(--ibk-red-41);
+    border-color: var(--ibk-red-41);
+}
+
+.ibkCheckbox label input:checked::before {
+    transform: scale(1);
+}
+
+/* indeterminate state */
+
+.ibkCheckbox label input:indeterminate {
+    background-color: var(--ibk-red-41);
+    border-color: var(--ibk-red-41);
+}
+
+.ibkCheckbox label input:indeterminate::before {
+    content: 'Minus';
+    transform: scale(1.2);
+}
+
+.ibkCheckbox label .ibk-checkbox-label {
+    font-weight: 500;
+    color: var(--standard-fontcolor);
+}
+
+/* ***************************************************************************************
+ *  ibkCheckbox | State variations (alert, warning, success)
+ * ***************************************************************************************/
+
+.ibkCheckbox.alert label input:not([disabled]),
+.ibkCheckbox.alert:hover label input:not([disabled]),
+.ibkCheckbox.alert:active label input:not([disabled]) {
+    border-color: var(--ibk-alert-34);
+}
+
+.ibkCheckbox.alert label input:checked:not([disabled]),
+.ibkCheckbox.alert:hover label input:checked:not([disabled]),
+.ibkCheckbox.alert:active label input:checked:not([disabled]),
+.ibkCheckbox.alert label input:indeterminate:not([disabled]),
+.ibkCheckbox.alert:hover label input:indeterminate:not([disabled]),
+.ibkCheckbox.alert:active label input:indeterminate:not([disabled]) {
+    background-color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+    border-color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+}
+
+
+.ibkCheckbox.success label input:not([disabled]),
+.ibkCheckbox.success:hover label input:not([disabled]),
+.ibkCheckbox.success:active label input:not([disabled]) {
+    border-color: var(--ibk-success-22);
+}
+
+.ibkCheckbox.success label input:checked:not([disabled]),
+.ibkCheckbox.success:hover label input:checked:not([disabled]),
+.ibkCheckbox.success:active label input:checked:not([disabled]),
+.ibkCheckbox.success label input:indeterminate:not([disabled]),
+.ibkCheckbox.success:hover label input:indeterminate:not([disabled]),
+.ibkCheckbox.success:active label input:indeterminate:not([disabled]) {
+    background-color: var(--ibk-success-22);
+    border-color: var(--ibk-success-22);
+}
+
+/* ***************************************************************************************
+ *  ibkCheckbox variations
+ * ***************************************************************************************/
+
+/* ibkCheckbox | disabled */
+
+.ibkCheckbox label input[disabled],
+.ibkCheckbox:hover label input[disabled] {
+    border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+    background-color: transparent;
+    cursor: not-allowed;
+}
+
+.ibkCheckbox label input[disabled]:checked,
+.ibkCheckbox:hover label input[disabled]:checked,
+.ibkCheckbox label input[disabled]:indeterminate,
+.ibkCheckbox:hover label input[disabled]:indeterminate {
+    background-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+    border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+/*
+ * The fill behind the glyph is grey-82 in light mode and grey-22 in dark mode. A white glyph
+ * reads as a faint ghost on the light fill, which is the intended disabled look, but turns into
+ * full contrast on the dark one and makes a disabled box look enabled. Black restores the same
+ * subdued appearance in dark mode.
+ */
+.ibkCheckbox label input[disabled]::before,
+.ibkCheckbox:hover label input[disabled]::before {
+    color: light-dark(var(--white-100), var(--black-0));
+}
+
+.ibkCheckbox label.ibkCheckbox-disabled .ibk-checkbox-label {
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkCheckbox label.ibkCheckbox-disabled {
+    cursor: not-allowed;
+}
+
+/* ibkCheckbox | enabled | hover */
+
+.ibkCheckbox:hover label input {
+    border-color: var(--ibk-red-49);
+}
+
+.ibkCheckbox:hover label input:checked,
+.ibkCheckbox:hover label input:indeterminate {
+    background-color: var(--ibk-red-49);
+    border-color: var(--ibk-red-49);
+}
+
+/* ibkCheckbox | enabled | active */
+
+.ibkCheckbox:active label input {
+    border-color: var(--ibk-red-33);
+}
+
+.ibkCheckbox:active label input:checked,
+.ibkCheckbox:active label input:indeterminate {
+    background-color: var(--ibk-red-33);
+    border-color: var(--ibk-red-33);
+}

@@ -1,0 +1,11 @@
+Airluma Web Components
+Copyright 2023-2026 IBYKUS AG fuer Informationstechnologie
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The Asap fonts (packages/fonts) are licensed under the SIL Open Font License,
+Version 1.1, and the IBYKUS-Iconset (packages/iconset) under the Apache
+License, Version 2.0; each package carries its own licence file.
+
+Third-party code redistributed inside the published bundles is listed in
+THIRD-PARTY-NOTICES.txt.

@@ -1,0 +1,650 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Embedded Info Button (based in ibkIcon) 
+ *  Caution: Never use this element as stand-alone!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ *
+ *  Every dark value is taken from the Figma dark sheet "Embedded Icon Button (eIB) (D)".
+ *  Info and red41 keep the same tokens in both modes, and so does every hover of the
+ *  grey-42 families. Grey74 and White invert, and the success, warning and alert ramps
+ *  step down: the dark sheet keeps their pressed state darker than rest, as in light mode.
+ *
+ *  The grey-42 families below (eIB-regular, eIB-decent and the two grey42 variants) share
+ *  one ramp: grey-42 at rest (grey-58 in dark mode), grey-50 on hover, and the pressed
+ *  state one step the other way. On a light surface that step is grey-34 - darker, so the
+ *  pressed icon reads as stronger. On a dark surface the same step reads as the icon
+ *  fading out, because darker means closer to the background. Dark mode therefore steps
+ *  up to grey-66, past the hover value, which is the mirror of grey-34 on the ramp and
+ *  keeps the feedback direction intact. The hover value needs no pair: grey-50 is its own
+ *  mirror.
+ * ***************************************************************************************/
+
+/* The glyph is a font ligature; clicking it must not select its name as text. */
+.ibkIcon.eIB-regular,
+.ibkIcon.eIB-decent,
+.ibkIcon.eIB-passive,
+.ibkIcon.eIB-interactive-grey,
+.ibkIcon.eIB-interactive-info {
+	user-select: none;
+}
+
+/* ***************************************************************************************
+ *  Regular Grey42
+ * ***************************************************************************************/
+
+.ibkIcon.eIB-regular {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+	cursor: pointer;
+}
+.ibkIcon.eIB-regular:hover {
+	color: var(--ibk-neutral-grey-50);
+}
+.ibkIcon.eIB-regular:active {
+	color: light-dark(var(--ibk-neutral-grey-34), var(--ibk-neutral-grey-66));
+}
+.ibkIcon.eIB-regular:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+	outline-offset: 0;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Regular color variants
+ * ***************************************************************************************/
+
+.ibkIcon.eIB-regular.info {
+	color: var(--ibk-info-34) !important;
+}
+.ibkIcon.eIB-regular.success {
+	color: light-dark(var(--ibk-success-22), var(--ibk-success-18)) !important;
+}
+.ibkIcon.eIB-regular.warning {
+	color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22)) !important;
+}
+.ibkIcon.eIB-regular.alert {
+	color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22)) !important;
+}
+
+
+/* ***************************************************************************************
+ *  Interactive Info
+ * ***************************************************************************************/
+
+.ibkIcon.eIB-interactive-info {
+	color: var(--ibk-info-34);
+	cursor: pointer;
+}
+.ibkIcon.eIB-interactive-info:hover {
+	color: var(--ibk-info-42);
+}
+.ibkIcon.eIB-interactive-info:active {
+	color: var(--ibk-info-26);
+}
+.ibkIcon.eIB-interactive-info:focus-visible {
+	border-radius: 0.0625rem;
+	color: var(--ibk-info-34);
+	outline-offset: 0;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Interactive Grey18
+ * ***************************************************************************************/
+
+.ibkIcon.eIB-interactive-grey {
+	color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+	cursor: pointer;
+}
+.ibkIcon.eIB-interactive-grey:hover {
+	color: light-dark(var(--ibk-neutral-grey-26), var(--ibk-neutral-grey-74));
+}
+.ibkIcon.eIB-interactive-grey:active {
+	color: light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-90));
+}
+.ibkIcon.eIB-interactive-grey:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+	outline-offset: 0;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Passive Grey42
+ * ***************************************************************************************/
+
+.ibkIcon.eIB-passive {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Passive color variants
+ * ***************************************************************************************/
+
+.ibkIcon.eIB-passive.info {
+	color: var(--ibk-info-34) !important;
+}
+.ibkIcon.eIB-passive.success {
+	color: light-dark(var(--ibk-success-22), var(--ibk-success-18)) !important;
+}
+.ibkIcon.eIB-passive.warning {
+	color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22)) !important;
+}
+.ibkIcon.eIB-passive.alert {
+	color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22)) !important;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Decent Grey42
+ * ***************************************************************************************/
+
+.ibkIcon.eIB-decent {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+	cursor: pointer;
+	font-size: 1.25rem !important;
+}
+.ibkIcon.eIB-decent:hover {
+	color: var(--ibk-neutral-grey-50);
+}
+.ibkIcon.eIB-decent:active {
+	color: light-dark(var(--ibk-neutral-grey-34), var(--ibk-neutral-grey-66));
+}
+.ibkIcon.eIB-decent:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+	outline-offset: 0;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Decent color variants
+ * ***************************************************************************************/
+
+.ibkIcon.eIB-decent.info {
+	color: var(--ibk-info-34) !important;
+}
+.ibkIcon.eIB-decent.success {
+	color: light-dark(var(--ibk-success-22), var(--ibk-success-18)) !important;
+}
+.ibkIcon.eIB-decent.warning {
+	color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22)) !important;
+}
+.ibkIcon.eIB-decent.alert {
+	color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22)) !important;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Interactive - Colors (Regular and Decent)
+ * ***************************************************************************************/
+
+/* 	 Red41 */
+
+.ibkIcon.eIB-regular.eIB-interactive-red41,
+.ibkIcon.eIB-decent.eIB-interactive-red41 {
+	color: var(--ibk-red-41) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-red41:hover,
+.ibkIcon.eIB-decent.eIB-interactive-red41:hover {
+	color: var(--ibk-red-49) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-red41:active,
+.ibkIcon.eIB-decent.eIB-interactive-red41:active {
+	color: var(--ibk-red-33) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-red41:focus-visible,
+.ibkIcon.eIB-decent.eIB-interactive-red41:focus-visible {
+	border-radius: 0.0625rem;
+	color: var(--ibk-red-41) !important;
+	outline-offset: 0;
+}
+
+
+/* 	 Grey74 */
+
+.ibkIcon.eIB-regular.eIB-interactive-grey74,
+.ibkIcon.eIB-decent.eIB-interactive-grey74 {
+	color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-42)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-grey74:hover,
+.ibkIcon.eIB-decent.eIB-interactive-grey74:hover {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-grey74:active,
+.ibkIcon.eIB-decent.eIB-interactive-grey74:active {
+	color: light-dark(var(--ibk-neutral-grey-66), var(--ibk-neutral-grey-34)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-grey74:focus-visible,
+.ibkIcon.eIB-decent.eIB-interactive-grey74:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-42)) !important;
+	outline-offset: 0;
+}
+
+
+/* 	 Grey18 */
+
+.ibkIcon.eIB-regular.eIB-interactive-grey18,
+.ibkIcon.eIB-decent.eIB-interactive-grey18 {
+	color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-grey18:hover,
+.ibkIcon.eIB-decent.eIB-interactive-grey18:hover {
+	color: light-dark(var(--ibk-neutral-grey-26), var(--ibk-neutral-grey-74)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-grey18:active,
+.ibkIcon.eIB-decent.eIB-interactive-grey18:active {
+	color: light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-90)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-grey18:focus-visible,
+.ibkIcon.eIB-decent.eIB-interactive-grey18:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82)) !important;
+	outline-offset: 0;
+}
+
+
+/* 	 Grey42 */
+
+.ibkIcon.eIB-regular.eIB-interactive-grey42,
+.ibkIcon.eIB-decent.eIB-interactive-grey42 {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-grey42:hover,
+.ibkIcon.eIB-decent.eIB-interactive-grey42:hover {
+	color: var(--ibk-neutral-grey-50) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-grey42:active,
+.ibkIcon.eIB-decent.eIB-interactive-grey42:active {
+	color: light-dark(var(--ibk-neutral-grey-34), var(--ibk-neutral-grey-66)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-grey42:focus-visible,
+.ibkIcon.eIB-decent.eIB-interactive-grey42:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58)) !important;
+	outline-offset: 0;
+}
+
+
+/* 	 Info */
+
+.ibkIcon.eIB-regular.eIB-interactive-info,
+.ibkIcon.eIB-decent.eIB-interactive-info {
+	color: var(--ibk-info-34) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-info:hover,
+.ibkIcon.eIB-decent.eIB-interactive-info:hover {
+	color: var(--ibk-info-42) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-info:active,
+.ibkIcon.eIB-decent.eIB-interactive-info:active {
+	color: var(--ibk-info-26) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-info:focus-visible,
+.ibkIcon.eIB-decent.eIB-interactive-info:focus-visible {
+	border-radius: 0.0625rem;
+	color: var(--ibk-info-34) !important;
+	outline-offset: 0;
+}
+
+
+/* 	 Success */
+
+.ibkIcon.eIB-regular.eIB-interactive-success,
+.ibkIcon.eIB-decent.eIB-interactive-success {
+	color: light-dark(var(--ibk-success-22), var(--ibk-success-18)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-success:hover,
+.ibkIcon.eIB-decent.eIB-interactive-success:hover {
+	color: light-dark(var(--ibk-success-26), var(--ibk-success-22)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-success:active,
+.ibkIcon.eIB-decent.eIB-interactive-success:active {
+	color: light-dark(var(--ibk-success-14), var(--ibk-success-10)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-success:focus-visible,
+.ibkIcon.eIB-decent.eIB-interactive-success:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--ibk-success-22), var(--ibk-success-18)) !important;
+	outline-offset: 0;
+}
+
+
+/* 	 Warning */
+
+.ibkIcon.eIB-regular.eIB-interactive-warning,
+.ibkIcon.eIB-decent.eIB-interactive-warning {
+	color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-warning:hover,
+.ibkIcon.eIB-decent.eIB-interactive-warning:hover {
+	color: light-dark(var(--ibk-warning-42), var(--ibk-warning-26)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-warning:active,
+.ibkIcon.eIB-decent.eIB-interactive-warning:active {
+	color: light-dark(var(--ibk-warning-26), var(--ibk-warning-14)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-warning:focus-visible,
+.ibkIcon.eIB-decent.eIB-interactive-warning:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22)) !important;
+	outline-offset: 0;
+}
+
+
+/* 	 Alert */
+.ibkIcon.eIB-regular.eIB-interactive-alert,
+.ibkIcon.eIB-decent.eIB-interactive-alert {
+	color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-alert:hover,
+.ibkIcon.eIB-decent.eIB-interactive-alert:hover {
+	color: light-dark(var(--ibk-alert-42), var(--ibk-alert-26)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-alert:active,
+.ibkIcon.eIB-decent.eIB-interactive-alert:active {
+	color: light-dark(var(--ibk-alert-26), var(--ibk-alert-14)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-alert:focus-visible,
+.ibkIcon.eIB-decent.eIB-interactive-alert:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22)) !important;
+	outline-offset: 0;
+}
+
+
+/* White */
+
+.ibkIcon.eIB-regular.eIB-interactive-white,
+.ibkIcon.eIB-decent.eIB-interactive-white {
+	color: light-dark(var(--white-100), var(--black-0)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-white:hover,
+.ibkIcon.eIB-decent.eIB-interactive-white:hover {
+	color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-white:active,
+.ibkIcon.eIB-decent.eIB-interactive-white:active {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18)) !important;
+}
+.ibkIcon.eIB-regular.eIB-interactive-white:focus-visible,
+.ibkIcon.eIB-decent.eIB-interactive-white:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--white-100), var(--black-0)) !important;
+	outline-offset: 0;
+}
+
+
+
+
+/* ***************************************************************************************
+ *	 Passive - Variants (Regular and Decent)
+ * ***************************************************************************************/
+
+/* Grey18 */
+
+.ibkIcon.eIB-regular.eIB-passive-grey18,
+.ibkIcon.eIB-decent.eIB-passive-grey18 {
+	color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82)) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-grey18:hover,
+.ibkIcon.eIB-decent.eIB-passive-grey18:hover {
+	cursor: inherit;
+}
+.ibkIcon.eIB-regular.eIB-passive-grey18:active,
+.ibkIcon.eIB-decent.eIB-passive-grey18:active {
+	color: light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-90)) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-grey18:focus-visible,
+.ibkIcon.eIB-decent.eIB-passive-grey18:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82)) !important;
+	outline-offset: 0;
+}
+
+
+/* 	 Grey42 */
+
+.ibkIcon.eIB-regular.eIB-passive-grey42,
+.ibkIcon.eIB-decent.eIB-passive-grey42 {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58)) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-grey42:hover,
+.ibkIcon.eIB-decent.eIB-passive-grey42:hover {
+	cursor: inherit;
+}
+.ibkIcon.eIB-regular.eIB-passive-grey42:active,
+.ibkIcon.eIB-decent.eIB-passive-grey42:active {
+	color: light-dark(var(--ibk-neutral-grey-34), var(--ibk-neutral-grey-66)) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-grey42:focus-visible,
+.ibkIcon.eIB-decent.eIB-passive-grey42:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58)) !important;
+	outline-offset: 0;
+}
+
+
+/* 	 White */
+
+.ibkIcon.eIB-regular.eIB-passive-white,
+.ibkIcon.eIB-decent.eIB-passive-white {
+	color: light-dark(var(--white-100), var(--black-0)) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-white:hover,
+.ibkIcon.eIB-decent.eIB-passive-white:hover {
+	cursor: inherit;
+}
+.ibkIcon.eIB-regular.eIB-passive-white:active,
+.ibkIcon.eIB-decent.eIB-passive-white:active {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18)) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-white:focus-visible,
+.ibkIcon.eIB-decent.eIB-passive-white:focus-visible {
+	border-radius: 0.0625rem;
+	color: light-dark(var(--white-100), var(--black-0)) !important;
+	outline-offset: 0;
+}
+
+
+/* 	 Red41 */
+
+.ibkIcon.eIB-regular.eIB-passive-red41,
+.ibkIcon.eIB-decent.eIB-passive-red41 {
+	color: var(--ibk-red-41) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-red41:hover,
+.ibkIcon.eIB-decent.eIB-passive-red41:hover {
+	cursor: inherit;
+}
+
+
+/* 	 Grey74 */
+
+.ibkIcon.eIB-regular.eIB-passive-grey74,
+.ibkIcon.eIB-decent.eIB-passive-grey74 {
+	color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-42)) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-grey74:hover,
+.ibkIcon.eIB-decent.eIB-passive-grey74:hover {
+	cursor: inherit;
+}
+
+
+/* 	 Info */
+
+.ibkIcon.eIB-regular.eIB-passive-info,
+.ibkIcon.eIB-decent.eIB-passive-info {
+	color: var(--ibk-info-34) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-info:hover,
+.ibkIcon.eIB-decent.eIB-passive-info:hover {
+	cursor: inherit;
+}
+
+
+/* 	 Success */
+
+.ibkIcon.eIB-regular.eIB-passive-success,
+.ibkIcon.eIB-decent.eIB-passive-success {
+	color: light-dark(var(--ibk-success-22), var(--ibk-success-18)) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-success:hover,
+.ibkIcon.eIB-decent.eIB-passive-success:hover {
+	cursor: inherit;
+}
+
+
+/* 	 Warning */
+
+.ibkIcon.eIB-regular.eIB-passive-warning,
+.ibkIcon.eIB-decent.eIB-passive-warning {
+	color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22)) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-warning:hover,
+.ibkIcon.eIB-decent.eIB-passive-warning:hover {
+	cursor: inherit;
+}
+
+
+/* 	 Alert */
+
+.ibkIcon.eIB-regular.eIB-passive-alert,
+.ibkIcon.eIB-decent.eIB-passive-alert {
+	color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22)) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-alert:hover,
+.ibkIcon.eIB-decent.eIB-passive-alert:hover {
+	cursor: inherit;
+}
+
+
+/* 	 FixWhite - white in both modes, for surfaces that stay dark */
+
+.ibkIcon.eIB-regular.eIB-passive-fixwhite,
+.ibkIcon.eIB-decent.eIB-passive-fixwhite {
+	color: var(--white-100) !important;
+}
+.ibkIcon.eIB-regular.eIB-passive-fixwhite:hover,
+.ibkIcon.eIB-decent.eIB-passive-fixwhite:hover {
+	cursor: inherit;
+}
+
+
+
+
+/* ***************************************************************************************
+ *	 Decent Passive - Fixed dark values
+ *
+ *	 These styles do not invert between the modes: each keeps its light colour and takes
+ *	 one fixed colour in dark mode. The Figma sheet defines them for Decent only.
+ * ***************************************************************************************/
+
+
+/* 	 Grey18 > White */
+
+.ibkIcon.eIB-decent.eIB-passive-g18-w100 {
+	color: light-dark(var(--ibk-neutral-grey-18), var(--white-100)) !important;
+}
+.ibkIcon.eIB-decent.eIB-passive-g18-w100:hover {
+	cursor: inherit;
+}
+
+
+/* 	 Grey18 > Grey50 */
+
+.ibkIcon.eIB-decent.eIB-passive-g18-g50 {
+	color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-50)) !important;
+}
+.ibkIcon.eIB-decent.eIB-passive-g18-g50:hover {
+	cursor: inherit;
+}
+
+
+/* 	 Info > White */
+
+.ibkIcon.eIB-decent.eIB-passive-i-w100 {
+	color: light-dark(var(--ibk-info-34), var(--white-100)) !important;
+}
+.ibkIcon.eIB-decent.eIB-passive-i-w100:hover {
+	cursor: inherit;
+}
+
+
+/* 	 Success > White */
+
+.ibkIcon.eIB-decent.eIB-passive-s-w100 {
+	color: light-dark(var(--ibk-success-22), var(--white-100)) !important;
+}
+.ibkIcon.eIB-decent.eIB-passive-s-w100:hover {
+	cursor: inherit;
+}
+
+
+/* 	 Warning > White */
+
+.ibkIcon.eIB-decent.eIB-passive-w-w100 {
+	color: light-dark(var(--ibk-warning-34), var(--white-100)) !important;
+}
+.ibkIcon.eIB-decent.eIB-passive-w-w100:hover {
+	cursor: inherit;
+}
+
+
+/* 	 Alert > White */
+
+.ibkIcon.eIB-decent.eIB-passive-a-w100 {
+	color: light-dark(var(--ibk-alert-34), var(--white-100)) !important;
+}
+.ibkIcon.eIB-decent.eIB-passive-a-w100:hover {
+	cursor: inherit;
+}
+
+
+
+
+/* ***************************************************************************************
+ *	 Disabled
+ *
+ *	 Every family turns to the disabled grey through a .disabled class or the disabled
+ *	 attribute, with no pointer and no hover or pressed feedback. The second selector group
+ *	 repeats the first with the interaction states so it outranks the coloured state rules
+ *	 above; this block must stay last in the file.
+ * ***************************************************************************************/
+
+.ibkIcon.eIB-regular:is(.disabled, [disabled]),
+.ibkIcon.eIB-decent:is(.disabled, [disabled]),
+.ibkIcon.eIB-passive:is(.disabled, [disabled]),
+.ibkIcon.eIB-interactive-grey:is(.disabled, [disabled]),
+.ibkIcon.eIB-interactive-info:is(.disabled, [disabled]),
+.ibkIcon.eIB-regular:is(.disabled, [disabled]):is(:hover, :active, :focus-visible),
+.ibkIcon.eIB-decent:is(.disabled, [disabled]):is(:hover, :active, :focus-visible),
+.ibkIcon.eIB-passive:is(.disabled, [disabled]):is(:hover, :active, :focus-visible),
+.ibkIcon.eIB-interactive-grey:is(.disabled, [disabled]):is(:hover, :active, :focus-visible),
+.ibkIcon.eIB-interactive-info:is(.disabled, [disabled]):is(:hover, :active, :focus-visible) {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+	cursor: default;
+}

@@ -1,0 +1,155 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Toast
+ * ***************************************************************************************/
+
+.ibkToast {
+	align-content: center;
+	align-items: center;
+	border: var(--2, 2px) solid transparent;
+	border-radius: 6.25rem;
+	color: var(--white-100);
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: var(--ibk-spacing-8, 8px);
+	justify-content: center;
+	min-height: 2.5rem;
+	padding: var(--ibk-spacing-6, 6px) var(--ibk-spacing-16, 16px);
+}
+
+.ibkToast.regular {
+	background: var(--ibk-petrol-26);
+}
+
+.ibkToast.regular.success {
+	background: light-dark(var(--ibk-success-26), var(--ibk-success-18));
+}
+
+.ibkToast.regular.warning {
+	background: light-dark(var(--ibk-warning-26), var(--ibk-warning-22));
+}
+
+.ibkToast.regular.alert {
+	background: light-dark(var(--ibk-alert-26), var(--ibk-alert-22));
+}
+
+.ibkToast.decent {
+	background: light-dark(var(--ibk-petrol-94), var(--ibk-petrol-10));
+	border-color: var(--ibk-petrol-26);
+	color: light-dark(var(--ibk-petrol-26), var(--white-100));
+}
+
+.ibkToast.decent.success {
+	background: light-dark(var(--ibk-success-98), var(--ibk-success-10));
+	border-color: light-dark(var(--ibk-success-26), var(--ibk-success-18));
+	color: light-dark(var(--ibk-success-26), var(--white-100));
+}
+
+.ibkToast.decent.warning {
+	background: light-dark(var(--ibk-warning-98), var(--ibk-warning-10));
+	border-color: light-dark(var(--ibk-warning-26), var(--ibk-warning-22));
+	color: light-dark(var(--ibk-warning-26), var(--white-100));
+}
+
+.ibkToast.decent.alert {
+	background: light-dark(var(--ibk-alert-98), var(--ibk-alert-10));
+	border-color: light-dark(var(--ibk-alert-26), var(--ibk-alert-22));
+	color: light-dark(var(--ibk-alert-26), var(--white-100));
+}
+
+.ibkToastContent {
+	align-content: center;
+	align-items: center;
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: var(--ibk-spacing-8, 8px);
+	justify-content: center;
+}
+
+.ibkToastText {
+	align-content: center;
+	align-items: center;
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: var(--ibk-spacing-8, 8px);
+}
+
+.ibkToast.twoLabel .ibkToastText {
+	gap: var(--ibk-spacing-8, 8px);
+}
+
+.ibkToast.twoLabel .ibkToastLabel {
+	font-size: 0.875rem;
+	font-weight: 400;
+}
+
+.ibkToast:not(.eIB):not(.twoLabel) {
+	padding: var(--ibk-spacing-6, 6px) var(--ibk-spacing-32, 32px);
+	max-width: 12rem;
+}
+
+.ibkToast:not(.eIB):not(.twoLabel) .ibkToastContent,
+.ibkToast:not(.eIB):not(.twoLabel) .ibkToastText {
+	justify-content: center;
+	text-align: center;
+}
+
+.ibkToast.eIB:not(.twoLabel) {
+	align-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--ibk-spacing-16, 16px) var(--ibk-spacing-16, 16px);
+	justify-content: center;
+	padding: var(--ibk-spacing-6, 6px) var(--ibk-spacing-32, 32px) var(--ibk-spacing-6, 6px)
+		var(--ibk-spacing-16, 16px);
+	max-width: 13rem;
+}
+
+.ibkToast.eIB:not(.twoLabel) .ibkToastContent {
+	align-items: center;
+	column-gap: var(--ibk-spacing-16, 16px);
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	row-gap: var(--ibk-spacing-16, 16px);
+	width: 100%;
+}
+
+.ibkToast.eIB:not(.twoLabel) .ibkToastText {
+	display: block;
+	max-width: 100%;
+	min-width: 0;
+	overflow-wrap: anywhere;
+	text-align: left;
+	word-break: break-word;
+}
+
+.ibkToast.eIB:not(.twoLabel) .ibkToastLabel {
+	display: block;
+	max-width: 100%;
+	overflow-wrap: anywhere;
+	text-align: left;
+	white-space: normal;
+	word-break: break-word;
+}
+
+.ibkToastLabel,
+.ibkToastSecondary {
+	color: inherit;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 1.5rem;
+	letter-spacing: 0;
+}
+
+.ibkToastSecondary {
+	font-weight: 600;
+}
+
+.ibkToast .ibkToastIcon {
+	font-size: 1.25rem;
+}

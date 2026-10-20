@@ -1,0 +1,63 @@
+{
+  "name": "@ides/iconset",
+  "version": "0.0.0-dev",
+  "description": "IBYKUS-Iconset - icon webfont (ligatures) and the curated icon manifest",
+  "license": "Apache-2.0",
+  "author": "IBYKUS AG fuer Informationstechnologie",
+  "type": "module",
+  "ides": {
+    "fontFamily": "IBYKUS-Iconset",
+    "fontVersion": "2.0",
+    "designers": [
+      "Mathias John",
+      "Kelly Chiapolino"
+    ],
+    "generator": "IcoMoon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IBYKUS-AG/airluma-ui.git",
+    "directory": "packages/iconset"
+  },
+  "bugs": {
+    "url": "https://github.com/IBYKUS-AG/airluma-ui/issues"
+  },
+  "keywords": [
+    "ibykus",
+    "ides",
+    "iconset",
+    "icon-font",
+    "webfont",
+    "ligatures"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    "./iconset.css": "./iconset.css",
+    "./iconset.woff2.css": "./iconset.woff2.css",
+    "./icons.json": "./icons.json",
+    "./assets/*": "./assets/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "iconset.css",
+    "iconset.woff2.css",
+    "icons.json",
+    "assets/IBYKUS-Iconset.woff2",
+    "assets/IBYKUS-Iconset.woff",
+    "assets/IBYKUS-Iconset.ttf",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "node check-version.js",
+    "prepack": "node check-version.js"
+  },
+  "homepage": "https://www.airluma.de"
+}

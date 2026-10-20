@@ -1,0 +1,162 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  Table Component
+ *
+ *  Author:       Antigravity (AI Assistant)
+ *  Description:  Styles for the ibk-table web component matching design specs.
+ *  Rights:       (C) 2023-2025 IBYKUS AG fuer Informationstechnologie
+ * ***************************************************************************************/
+
+.ibkTable-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+}
+
+.ibkTable {
+    width: max-content;
+    min-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: 'Asap', sans-serif;
+    color: light-dark(var(--standard-fontcolor, #2E2E2E), var(--ibk-neutral-grey-82));
+}
+
+.ibkTable caption {
+    font-size: var(--text-m, 0.75rem);
+    line-height: var(--text-m-lh, 1.125rem);
+    letter-spacing: var(--text-m-ls, 0.01875rem);
+    text-align: left;
+    padding-bottom: 7px;
+    color: light-dark(var(--standard-fontcolor, #2E2E2E), var(--ibk-neutral-grey-82));
+}
+
+/*
+ * The two rules below were the only flat colours left in this file, so both lines kept their
+ * light value on a near-black table and read as near-white hairlines. Both are paired now -
+ * 86/14 for the header rule, 94/10 for the row rule - which preserves the hierarchy the light
+ * mode has: the header line stays the stronger of the two in both modes.
+ *
+ * The dark row value is grey-10 by the designer's call on IDES-179, not the grey-6 the ramp
+ * mirror would give. grey-6 sat only one step off the grey-2 cell and the line disappeared.
+ */
+
+.ibkTable th {
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    padding: 0 1rem;
+    height: 56px;
+    line-height: 1.5;
+    border-bottom: 1px solid light-dark(var(--ibk-neutral-grey-86, #DBDBDB), var(--ibk-neutral-grey-14));
+    background: light-dark(var(--white-100, #FFF), var(--ibk-neutral-grey-2));
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.ibkTable td {
+    font-size: 1rem;
+    text-align: left;
+    vertical-align: middle;
+    padding: 0 1rem;
+    height: 2.75rem;
+    line-height: 1.5;
+    border-top: 1px solid light-dark(var(--ibk-neutral-grey-94, #F0F0F0), var(--ibk-neutral-grey-10));
+    background-color: light-dark(var(--white-100, #FFF), var(--ibk-neutral-grey-2));
+}
+
+.ibkTable tfoot td {
+    font-size: 1rem;
+    font-weight: 600;
+    vertical-align: middle;
+    background: light-dark(var(--white-100, #FFF), var(--ibk-neutral-grey-2));
+    padding: 0 1rem;
+    height: 56px;
+    line-height: 1.5;
+    border-top: 1px solid light-dark(var(--standard-fontcolor, #2E2E2E), var(--ibk-neutral-grey-82));
+}
+
+/* Decent Variant */
+.ibkTable-decent th {
+    padding: 0 0.25rem;
+    height: 48px;
+    font-size: 1rem;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+.ibkTable-decent tfoot td {
+    padding: 0 0.25rem;
+    height: 42px;
+    font-size: 1rem;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+.ibkTable-decent td {
+    padding: 0 0.25rem;
+    height: 2.6rem;
+    font-size: 0.875rem;
+    vertical-align: middle;
+}
+
+/* Zebra (even/odd) styling targeting the cells to ensure background works with sticky/hover */
+.ibkTable-zebra tbody tr:nth-child(odd)>td {
+    background-color: light-dark(var(--ibk-neutral-grey-98, #FAFAFA), var(--ibk-neutral-grey-10));
+}
+
+.ibkTable-zebra tbody tr:nth-child(even)>td {
+    background-color: light-dark(var(--white-100, #FFF), var(--ibk-neutral-grey-2));
+}
+
+/* Hover/Tap effect on row cells */
+.ibkTable tbody tr:hover>td {
+    background-color: light-dark(var(--ibk-neutral-grey-94, #F0F0F0), var(--ibk-neutral-grey-14));
+    cursor: pointer;
+}
+
+.ibkTable tbody tr:active>td {
+    background-color: light-dark(var(--ibk-neutral-grey-90, #E6E6E6), var(--ibk-neutral-grey-18));
+}
+
+/* Highlighted Column (Cross-hover) */
+.ibkTable td.hovered-col,
+.ibkTable th.hovered-col {
+    background-color: light-dark(var(--ibk-neutral-grey-94, #F0F0F0), var(--ibk-neutral-grey-14)) !important;
+}
+
+/* Specific cell hover should have highest priority */
+.ibkTable td:hover {
+    background-color: light-dark(var(--ibk-neutral-grey-90, #E6E6E6), var(--ibk-neutral-grey-18)) !important;
+}
+
+/* Header hover */
+.ibkTable thead th:hover {
+    background: light-dark(var(--ibk-neutral-grey-90, #E6E6E6), var(--ibk-neutral-grey-18));
+    cursor: pointer;
+    border-radius: 0.25rem 0.25rem 0 0;
+}
+
+/* Alignment Classes */
+.ibkTable .right {
+    text-align: right;
+}
+
+.ibkTable .center {
+    text-align: center;
+}
+
+/* Icons - Matching user styles and ensuring they use the iconset font */
+.ibkTable i,
+.ibkTable .ibkIcon {
+    font-family: "IBYKUS-Iconset";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+    padding-left: 0.5rem;
+    vertical-align: text-bottom;
+    display: inline-block;
+    /* Override global float */
+    color: inherit;
+    line-height: 0.8;
+}

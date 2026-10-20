@@ -1,0 +1,98 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+.ibkRating {
+    align-items: center;
+    display: inline-flex;
+    line-height: 1;
+}
+
+.ibkRating:focus-visible {
+    outline: solid 2px var(--ibk-focusstroke);
+    outline-offset: var(--ibk-spacing-2, 0.125rem);
+    border-radius: 4px;
+}
+
+.ibkRating-star {
+    display: block;
+    flex: 0 0 auto;
+    height: var(--ibk-spacing-24, 1.5rem);
+    position: relative;
+    width: var(--ibk-spacing-24, 1.5rem);
+}
+
+/* The drawn star is narrower than its 1.5rem glyph box, so the design overlaps
+ * neighbouring cells by 0.25rem — five stars then measure 6.5rem in total. */
+.ibkRating-star + .ibkRating-star {
+    margin-left: calc(var(--ibk-spacing-4, 0.25rem) * -1);
+}
+
+.ibkRating .ibkIcon {
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+    display: block;
+    font-size: var(--ibk-spacing-24, 1.5rem);
+    font-style: normal;
+    line-height: 1;
+    margin: 0;
+    pointer-events: none;
+}
+
+/* The fill sits on top of the grey outline, so an unfilled star needs no extra layer. */
+.ibkRating-starFill {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+/* Clipping to the left half keeps the right half of the glyph from covering the grey
+ * outline underneath, matching the half-star steps in the design. */
+.ibkRating-starFill-half {
+    clip-path: inset(0 50% 0 0);
+}
+
+/* One zone per star picks whole stars; the two modifiers below split a star in half for
+ * `allow-half`. */
+.ibkRating-hit {
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.ibkRating-hit-left {
+    right: auto;
+    width: 50%;
+}
+
+.ibkRating-hit-right {
+    left: auto;
+    width: 50%;
+}
+
+.ibkRating-red .ibkRating-starFill {
+    color: var(--ibk-red-49);
+}
+
+.ibkRating-red.ibkRating-pressed .ibkRating-starFill {
+    color: var(--ibk-red-41);
+}
+
+.ibkRating-gold .ibkRating-starFill {
+    color: var(--ibk-warning-50);
+}
+
+.ibkRating-gold.ibkRating-pressed .ibkRating-starFill {
+    color: var(--ibk-warning-42);
+}
+
+.ibkRating-disabled .ibkRating-starFill {
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkRating-disabled .ibkRating-hit {
+    cursor: default;
+}

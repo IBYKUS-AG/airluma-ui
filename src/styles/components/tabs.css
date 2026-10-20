@@ -1,0 +1,150 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Tabs
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Initial settings
+ *	 The tab list is a simple horizontal flex row of tabs
+ * ***************************************************************************************/
+
+.ibkTabs .ibkTabs-list {
+    align-items: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+/* ***************************************************************************************
+ *	 Single tab (<button>)
+ * ***************************************************************************************/
+
+.ibkTabs button.ibkTab {
+    background-color: transparent;
+    border: 0;
+    border-bottom: var(--ibk-spacing-2, 2px) solid var(--ibk-neutral-grey-74);
+    border-radius: 0;
+    color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--ibk-spacing-8, 8px);
+    font-size: var(--text-button, 1rem);
+    font-weight: 500;
+    line-height: var(--text-button-lh, 24px);
+    padding: var(--ibk-spacing-6, 0.375rem) var(--ibk-spacing-14, 0.875rem)
+        var(--ibk-spacing-6, 0.375rem) var(--ibk-spacing-10, 0.625rem);
+}
+
+.ibkTabs button.ibkTab .ibkIcon {
+    color: currentColor;
+    display: block;
+    font-size: var(--text-button-lh, 24px);
+    font-style: normal;
+    line-height: 1;
+    margin: 0;
+}
+
+.ibkTabs button.ibkTab .ibkTabText {
+    font-weight: 500;
+}
+
+/* ***************************************************************************************
+ *	 Optional counter badge (item.badge on TabItem, combined with ibk-badge)
+ *	 ibk-badge positions its counter as an absolute corner-overlay directly on the
+ *	 edge of whatever it wraps - without this padding it visually overlaps/clips
+ *	 the last characters of the tab label instead of sitting clear of the text.
+ * ***************************************************************************************/
+
+.ibkTabs button.ibkTab ibk-badge .ibkBadge {
+    padding-right: var(--ibk-spacing-24, 1.5rem);
+}
+
+/* Contrast fix, not a hover-redesign: the selected-tab hover background
+ * (var(--ibk-red-49)) is the exact same color as the badge counter's own
+ * background - without this, the badge circle becomes invisible against
+ * the tab, leaving only the number floating on red. Scoped to this one
+ * state only; the general tab hover color scheme is untouched (separate,
+ * not-yet-discussed design decision). */
+.ibkTabs button.ibkTab.selected:not(:disabled):hover ibk-badge .indicator {
+    background: var(--white-100);
+    color: var(--ibk-neutral-grey-18);
+}
+
+/* ***************************************************************************************
+ *	 Tab focus on keyboard navigation
+ *	 It's the same focus style as all other components use
+ * ***************************************************************************************/
+
+.ibkTabs button.ibkTab:focus-visible {
+    outline: solid var(--ibk-spacing-2, 2px) var(--ibk-focusstroke);
+    outline-offset: var(--ibk-spacing-2, 2px);
+}
+
+/* ***************************************************************************************
+ *	 Tab unselected states (hover / pressed)
+ * ***************************************************************************************/
+
+.ibkTabs button.ibkTab:not(.selected):not(:disabled):hover {
+    background-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+}
+
+.ibkTabs button.ibkTab:not(.selected):not(:disabled):active {
+    background-color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26));
+    border-bottom-color: var(--ibk-neutral-grey-58);
+}
+
+/* ***************************************************************************************
+ *	 Tab disabled
+ * ***************************************************************************************/
+
+.ibkTabs button.ibkTab:disabled {
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+    cursor: default;
+}
+
+/* ***************************************************************************************
+ *	 Tab selected (regular)
+ *	 The gray underline turns red on the selected tab
+ * ***************************************************************************************/
+
+.ibkTabs button.ibkTab.selected {
+    border-bottom-color: var(--ibk-red-41);
+}
+
+.ibkTabs button.ibkTab.selected:not(:disabled):hover {
+    background-color: var(--ibk-red-49);
+    color: var(--white-100);
+}
+
+/* ***************************************************************************************
+ *	 Rail
+ *	 An optional empty tab without label and icon. It only continues the gray
+ *	 underline and fills the remaining space of the tab list
+ * ***************************************************************************************/
+
+.ibkTabs .ibkTabs-rail {
+    border-bottom: var(--ibk-spacing-2, 2px) solid var(--ibk-neutral-grey-74);
+    flex: 1 1 auto;
+    min-height: calc(
+        var(--text-button-lh, 24px) + 2 * var(--ibk-spacing-6, 6px) + var(--ibk-spacing-2, 2px)
+    );
+}
+
+/* ***************************************************************************************
+ *	 Tab content (tabpanel)
+ * ***************************************************************************************/
+
+.ibkTabs .ibkTabs-content {
+    display: none;
+    padding: var(--ibk-spacing-16, 16px);
+    color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+}
+
+.ibkTabs .ibkTabs-content.active {
+    display: block;
+}

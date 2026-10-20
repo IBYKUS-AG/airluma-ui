@@ -1,0 +1,146 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Top Navigation (ibkTopNavigation)
+ *	 A horizontal bar of text-only links to an application's top-level destinations
+ *	 ("Start", "Info", "Themen", "Kontakt"). Exactly one item is the current
+ *	 destination: it carries the accent colour and an underline indicator below the
+ *	 label. Hover and pressed underline the label as well, focus draws the shared
+ *	 blue ring from global.css.
+ *
+ *	 Only for top level navigation, and only without eIB decorations: the underline
+ *	 indicator occupies exactly the space an eIB decoration would need, so the two
+ *	 cannot be combined. Items therefore carry no icons at all.
+ *
+ *	 The bar itself has no background of its own: it inherits whatever surface it is
+ *	 placed on, so an app can put it in a header, on a card or on the page directly.
+ * ***************************************************************************************/
+
+/* The bar is a block-level strip spanning its container. */
+ibk-top-navigation {
+    display: block;
+}
+
+/* ***************************************************************************************
+ *	 Bar
+ *	 Transparent by design (see above). The bottom padding is smaller than the top one
+ *	 because the underline indicator of the current item already sits below the label.
+ * ***************************************************************************************/
+
+.ibkTopNavigation .ibkTopNavigation-list {
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ibk-spacing-32, 2rem);
+    list-style: none;
+    margin: 0;
+    padding: var(--ibk-spacing-16, 1rem) var(--ibk-spacing-16, 1rem) var(--ibk-spacing-10, 0.625rem);
+}
+
+/* Carries no styling of its own - it is here so the bar stays a real list for screen
+   readers, which announce the item count and position from it. */
+.ibkTopNavigation .ibkTopNavigation-listItem {
+    display: flex;
+}
+
+/* ***************************************************************************************
+ *	 Single item (<a> with an href, <button> otherwise)
+ *	 The label sits above the underline indicator, which only the current item shows.
+ *	 The 2px radius is there for the shared focus ring, which rounds with the element.
+ * ***************************************************************************************/
+
+.ibkTopNavigation .ibkTopNavigation-item {
+    align-items: flex-start;
+    background: transparent;
+    border: 0;
+    border-radius: var(--ibk-radius-2, 0.125rem);
+    color: light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-94));
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    gap: var(--ibk-spacing-6, 0.375rem);
+    line-height: 1.25rem;
+    padding: 0;
+    text-align: left;
+    text-decoration: none;
+    transition: color var(--ibk-transition-default, 0.2s ease-in-out);
+}
+
+.ibkTopNavigation .ibkTopNavigation-label {
+    white-space: nowrap;
+}
+
+/* ***************************************************************************************
+ *	 Underline indicator
+ *	 One and the same stroke carries every underline in this component - the current
+ *	 destination as well as hover and pressed - so all of them sit on the same line,
+ *	 6px below the label, instead of a text-decoration hugging the glyphs.
+ *
+ *	 It is rendered on every item, transparent until a state asks for it: that keeps
+ *	 all items the same height, so underlining one on hover never shifts the bar.
+ * ***************************************************************************************/
+
+.ibkTopNavigation .ibkTopNavigation-indicator {
+    background: transparent;
+    height: 1px;
+    width: 100%;
+}
+
+/* ***************************************************************************************
+ *	 Unselected states
+ *	 Hover and pressed only darken the label and draw the stroke across its full width -
+ *	 no background, no shift.
+ * ***************************************************************************************/
+
+.ibkTopNavigation .ibkTopNavigation-item:hover:not(:disabled) {
+    color: light-dark(var(--ibk-neutral-grey-26), var(--ibk-neutral-grey-74));
+}
+
+.ibkTopNavigation .ibkTopNavigation-item:active:not(:disabled) {
+    color: light-dark(var(--ibk-neutral-grey-2), var(--ibk-neutral-grey-58));
+}
+
+.ibkTopNavigation .ibkTopNavigation-item:hover:not(:disabled) .ibkTopNavigation-indicator,
+.ibkTopNavigation .ibkTopNavigation-item:active:not(:disabled) .ibkTopNavigation-indicator {
+    background: currentColor;
+}
+
+.ibkTopNavigation .ibkTopNavigation-item:disabled {
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+    cursor: not-allowed;
+}
+
+/* ***************************************************************************************
+ *	 Selected item
+ *	 Keeps the accent colour across enabled, hover, pressed and focus - the design gives
+ *	 it no disabled state of its own. Only the width of the underline changes with the
+ *	 state, never the height of the item, so the bar never shifts.
+ * ***************************************************************************************/
+
+.ibkTopNavigation .ibkTopNavigation-item.selected,
+.ibkTopNavigation .ibkTopNavigation-item.selected:hover:not(:disabled),
+.ibkTopNavigation .ibkTopNavigation-item.selected:active:not(:disabled) {
+    color: light-dark(var(--ibk-red-41), var(--ibk-red-73));
+}
+
+/* At rest the current destination is marked with a short 20px stroke rather than the
+   full label width. */
+.ibkTopNavigation .ibkTopNavigation-item.selected .ibkTopNavigation-indicator {
+    background: currentColor;
+    width: 1.25rem;
+}
+
+/* Hover and pressed grow that stroke to the full label width, the same underline an
+   unselected item gets - so the current destination answers the pointer too. */
+.ibkTopNavigation .ibkTopNavigation-item.selected:hover:not(:disabled) .ibkTopNavigation-indicator,
+.ibkTopNavigation
+    .ibkTopNavigation-item.selected:active:not(:disabled)
+    .ibkTopNavigation-indicator {
+    width: 100%;
+}

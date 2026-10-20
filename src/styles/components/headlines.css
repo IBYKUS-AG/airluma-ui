@@ -1,0 +1,79 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Headlines
+ *  <h1>, <h2>, <h3>, <h4>, <h5>, <h6>
+ * ***************************************************************************************/
+
+h1, h2, h3, h4, h5, h6 {
+	color: var(--standard-fontcolor);
+	border: 0;
+	clear: both;
+	font-weight: 600;
+	margin: 0;
+	padding: 0;
+}
+
+
+h1 {
+	font-size: 3.1875rem;
+	line-height: 3.75rem;
+	margin: 0 0 0.875rem 0;
+}
+
+h2 {
+	font-size: 2.375rem;
+	line-height: 3.00rem;
+	margin: var(--ibk-spacing-2) 0 var(--ibk-spacing-8) 0;
+}
+
+h3 {
+	font-size: 1.75rem;
+	line-height: 2.00rem;
+	margin: var(--ibk-spacing-2) 0 var(--ibk-spacing-8) 0;
+}
+
+h4 {
+	font-size: 1.3125rem;
+	line-height: 1.50rem;
+	letter-spacing: 0.009rem;
+	margin: 0 0 0.375rem 0;
+}
+
+h5 {
+	font-size: 1.0rem;
+	line-height: 1.25rem;
+	letter-spacing: 0.016rem;
+	margin: 0 0 0.375rem 0;
+}
+
+h6 {
+	font-size: 1.0rem;
+	line-height: 1.50rem;
+	letter-spacing: 0.013rem;
+	margin: var(--ibk-spacing-2) 0 0 0;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Headlines
+ *  additional spacings between headlines,
+ *  when a headline follows a headline
+ *  Removed in 0.6.0 - spacings are headline individual settings
+ * ***************************************************************************************/
+
+/*
+h1 + h1, h1 + h2, h1 + h3, h1 + h4, h1 + h5, h1 + h6,
+h2 + h1, h2 + h2, h2 + h3, h2 + h4, h2 + h5, h2 + h6,
+h3 + h1, h3 + h2, h3 + h3, h3 + h4, h3 + h5, h3 + h6,
+h4 + h1, h4 + h2, h4 + h3, h4 + h4, h4 + h5, h4 + h6,
+h5 + h1, h5 + h2, h5 + h3, h5 + h4, h5 + h5, h5 + h6,
+h6 + h1, h6 + h2, h6 + h3, h6 + h4, h6 + h5, h6 + h6 {
+	margin: 0 0 var(--ibk-spacing-16) 0;
+}
+*/

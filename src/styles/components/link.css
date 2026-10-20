@@ -1,0 +1,120 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+
+/* ***************************************************************************************
+ *	 Link (ibkLink)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+a.ibkLink {
+	-webkit-border-radius: 0.0625rem;
+	-moz-border-radius: 0.0625rem;
+	border-radius: 0.0625rem;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	font-family: 'Asap', sans-serif;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 1.25rem;
+	text-decoration-line: underline;
+	text-decoration-style: solid;
+	text-decoration-skip-ink: auto;
+	text-decoration-thickness: 1px;
+	text-underline-offset: -0.5px;
+	text-underline-position: from-font;
+}
+
+
+/* ***************************************************************************************
+ *  Link Regular
+ * ***************************************************************************************/
+
+/*  Enabled */
+a.ibkLink.ibkLink-regular {
+	color: light-dark(var(--ibk-red-41), var(--ibk-red-73));
+}
+
+/*  Hover */
+a.ibkLink.ibkLink-regular:hover {
+	color: var(--ibk-red-49);
+}
+
+/*  Pressed / Active */
+a.ibkLink.ibkLink-regular:active {
+	color: light-dark(var(--ibk-red-33), var(--ibk-red-41));
+}
+
+/*  Visited */
+a.ibkLink.ibkLink-regular:visited {
+	color: light-dark(var(--ibk-petrol-32), var(--ibk-petrol-78));
+}
+
+
+/* ***************************************************************************************
+ *  Link Decent
+ * ***************************************************************************************/
+
+/*  Enabled */
+a.ibkLink.ibkLink-decent {
+	color: light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-94));
+}
+
+/*  Hover */
+a.ibkLink.ibkLink-decent:hover {
+	color: light-dark(var(--ibk-neutral-grey-26), var(--ibk-neutral-grey-74));
+}
+
+/*  Pressed / Active */
+a.ibkLink.ibkLink-decent:active {
+	color: light-dark(var(--ibk-neutral-grey-2), var(--ibk-neutral-grey-58));
+}
+
+/*  Visited */
+a.ibkLink.ibkLink-decent:visited {
+	color: light-dark(var(--ibk-petrol-32), var(--ibk-petrol-78));
+}
+
+
+/* ***************************************************************************************
+ *  Focus stroke (all variants)
+ * ***************************************************************************************/
+
+a.ibkLink.ibkLink-regular:focus-visible {
+	color: light-dark(var(--ibk-red-41), var(--ibk-red-73));
+}
+
+a.ibkLink.ibkLink-decent:focus-visible {
+	color: light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-94));
+}
+
+/*  Focus + Visited */
+a.ibkLink.ibkLink-regular:visited:focus-visible {
+	color: light-dark(var(--ibk-petrol-32), var(--ibk-petrol-78));
+}
+
+a.ibkLink.ibkLink-decent:visited:focus-visible {
+	color: light-dark(var(--ibk-petrol-32), var(--ibk-petrol-78));
+}
+
+
+/* ***************************************************************************************
+ *  Disabled
+ * ***************************************************************************************/
+
+a.ibkLink.disabled,
+a.ibkLink.disabled:visited,
+a.ibkLink.disabled:hover,
+a.ibkLink.disabled:active {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+	cursor: default;
+	pointer-events: none;
+	text-decoration-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}

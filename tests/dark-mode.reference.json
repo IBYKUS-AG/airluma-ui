@@ -1,0 +1,2407 @@
+{
+  "accordion": [
+    {
+      "selector": ".ibkAccordion-item",
+      "prop": "border-top",
+      "value": "1px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkAccordion-item:last-child",
+      "prop": "border-bottom",
+      "value": "1px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkAccordion-legend",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkAccordion-icon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkAccordion-content",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkAccordion-item.active",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkAccordion-item.active",
+      "prop": "border-top-color",
+      "value": "light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkAccordion-item.active:last-child",
+      "prop": "border-bottom-color",
+      "value": "light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkAccordion-item.disabled .ibkAccordion-legend, .ibkAccordion-item.disabled .ibkAccordion-icon, .ibkAccordion-item.disabled .ibkAccordion-content",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkAccordion-item.active.disabled",
+      "prop": "border-top-color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkAccordion-item.active.disabled:last-child",
+      "prop": "border-bottom-color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-22))"
+    }
+  ],
+  "badge": [
+    {
+      "selector": ".ibkBadge.type-info .indicator",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-info-34), var(--ibk-info-26))"
+    },
+    {
+      "selector": ".ibkBadge.type-success .indicator",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-18))"
+    },
+    {
+      "selector": ".ibkBadge.type-warning .indicator",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22))"
+    },
+    {
+      "selector": ".ibkBadge.type-alert .indicator",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    }
+  ],
+  "banner": [
+    {
+      "selector": ".ibkBanner",
+      "prop": "background-color",
+      "value": "light-dark(var(--white-100), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkBanner h4",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkBanner p",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkBanner.regular .ibkButton-close .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkBanner.regular .ibkButton-close:hover i",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-26), var(--ibk-neutral-grey-74))"
+    },
+    {
+      "selector": ".ibkBanner.regular .ibkButton-close:active i",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-90))"
+    }
+  ],
+  "bottom-navigation": [
+    {
+      "selector": ".ibkBottomNavigation .ibkBottomNavigation-item",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkBottomNavigation .ibkBottomNavigation-item:not(.selected):hover:not(:disabled)",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkBottomNavigation .ibkBottomNavigation-item:not(.selected):active:not(:disabled)",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkBottomNavigation .ibkBottomNavigation-item:disabled, .ibkBottomNavigation .ibkBottomNavigation-item:disabled .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkBottomNavigation-dominance-regular .ibkBottomNavigation-item.selected",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-petrol-32), var(--ibk-petrol-26))"
+    }
+  ],
+  "breadcrumb": [
+    {
+      "selector": ".ibkBreadcrumb .breadcrumb-element .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-red-41), var(--ibk-red-73))"
+    }
+  ],
+  "button": [
+    {
+      "selector": ".ibkButton.ibkButton-regular.ibkButton-primary:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-regular.ibkButton-primary:disabled",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-regular.ibkButton-primary:disabled",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-regular.ibkButton-secondary",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-66))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-regular.ibkButton-secondary",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-66))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-regular.ibkButton-secondary:disabled",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-regular.ibkButton-secondary:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-regular.ibkButton-secondary:disabled",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-primary",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-primary",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-primary:disabled",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-primary:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-78), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-primary:hover",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-primary:hover",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-primary:active",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-secondary",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-secondary:disabled",
+      "prop": "background-color",
+      "value": "light-dark(var(--white-100), transparent) !important"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-secondary:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-78), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-secondary:disabled",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--white-100), transparent) !important"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-secondary:hover",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-secondary:hover",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-secondary:active",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-decent.ibkButton-secondary:active",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-destructive:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-destructive:disabled",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-destructive:disabled",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-success",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-success-22), var(--ibk-success-18))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-success",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-success-22), var(--ibk-success-18))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-success:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-success:disabled",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-success:disabled",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-success:hover",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-success-34), var(--ibk-success-26))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-success:hover",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-success-34), var(--ibk-success-26))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-success:active",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-success-14), var(--ibk-success-10))"
+    },
+    {
+      "selector": ".ibkButton.ibkButton-success:active",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-success-14), var(--ibk-success-10))"
+    }
+  ],
+  "card": [
+    {
+      "selector": ".ibkCard",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-6))"
+    },
+    {
+      "selector": ".ibkCard[delta=\"0\"]",
+      "prop": "background-color",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    },
+    {
+      "selector": ".ibkCard[delta=\"2\"]",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-2))"
+    },
+    {
+      "selector": ".ibkCard[delta=\"6\"]",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-6))"
+    },
+    {
+      "selector": ".ibkCard[delta=\"10\"]",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkCard[variant=\"bordered\"]",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-6))"
+    },
+    {
+      "selector": ".ibkCard[variant=\"bordered\"][delta=\"0\"]",
+      "prop": "border-color",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    },
+    {
+      "selector": ".ibkCard[variant=\"bordered\"][delta=\"2\"]",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-2))"
+    },
+    {
+      "selector": ".ibkCard[variant=\"bordered\"][delta=\"6\"]",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-6))"
+    },
+    {
+      "selector": ".ibkCard[variant=\"bordered\"][delta=\"10\"]",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    }
+  ],
+  "checkbox": [
+    {
+      "selector": ".ibkCheckbox.alert label input:checked:not([disabled]), .ibkCheckbox.alert:hover label input:checked:not([disabled]), .ibkCheckbox.alert:active label input:checked:not([disabled]), .ibkCheckbox.alert label input:indeterminate:not([disabled]), .ibkCheckbox.alert:hover label input:indeterminate:not([disabled]), .ibkCheckbox.alert:active label input:indeterminate:not([disabled])",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkCheckbox.alert label input:checked:not([disabled]), .ibkCheckbox.alert:hover label input:checked:not([disabled]), .ibkCheckbox.alert:active label input:checked:not([disabled]), .ibkCheckbox.alert label input:indeterminate:not([disabled]), .ibkCheckbox.alert:hover label input:indeterminate:not([disabled]), .ibkCheckbox.alert:active label input:indeterminate:not([disabled])",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkCheckbox label input[disabled], .ibkCheckbox:hover label input[disabled]",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkCheckbox label input[disabled]:checked, .ibkCheckbox:hover label input[disabled]:checked, .ibkCheckbox label input[disabled]:indeterminate, .ibkCheckbox:hover label input[disabled]:indeterminate",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkCheckbox label input[disabled]:checked, .ibkCheckbox:hover label input[disabled]:checked, .ibkCheckbox label input[disabled]:indeterminate, .ibkCheckbox:hover label input[disabled]:indeterminate",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkCheckbox label input[disabled]::before, .ibkCheckbox:hover label input[disabled]::before",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    },
+    {
+      "selector": ".ibkCheckbox label.ibkCheckbox-disabled .ibk-checkbox-label",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    }
+  ],
+  "chip": [
+    {
+      "selector": ".ibkChip",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkChip",
+      "prop": "border",
+      "value": "1px solid light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkChip",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--white-100))"
+    },
+    {
+      "selector": ".ibkChip.info",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-info-34), var(--ibk-info-26))"
+    },
+    {
+      "selector": ".ibkChip.info",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-info-34), var(--ibk-info-26))"
+    },
+    {
+      "selector": ".ibkChip.success",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-18))"
+    },
+    {
+      "selector": ".ibkChip.success",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-18))"
+    },
+    {
+      "selector": ".ibkChip.warning",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22))"
+    },
+    {
+      "selector": ".ibkChip.warning",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22))"
+    },
+    {
+      "selector": ".ibkChip.alert",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkChip.alert",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkChip.decent",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-78), var(--ibk-neutral-grey-50))"
+    },
+    {
+      "selector": ".ibkChip.decent",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-50))"
+    },
+    {
+      "selector": ".ibkChip.decent.success",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-18))"
+    },
+    {
+      "selector": ".ibkChip.decent.success",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-18))"
+    },
+    {
+      "selector": ".ibkChip.decent.warning",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22))"
+    },
+    {
+      "selector": ".ibkChip.decent.warning",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22))"
+    },
+    {
+      "selector": ".ibkChip.decent.alert",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkChip.decent.alert",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkChip.active:hover",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-34))"
+    },
+    {
+      "selector": ".ibkChip.active:hover",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-34))"
+    },
+    {
+      "selector": ".ibkChip.active:active",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-18))"
+    },
+    {
+      "selector": ".ibkChip.active:active",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-18))"
+    },
+    {
+      "selector": ".ibkChip.active.decent:hover",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-78), var(--ibk-neutral-grey-34))"
+    },
+    {
+      "selector": ".ibkChip.active.decent:hover",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-78), var(--ibk-neutral-grey-50))"
+    },
+    {
+      "selector": ".ibkChip.active.decent:hover",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--white-100))"
+    },
+    {
+      "selector": ".ibkChip.active.decent:active",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-18))"
+    },
+    {
+      "selector": ".ibkChip.active.decent:active",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-50))"
+    },
+    {
+      "selector": ".ibkChip.active.decent:active",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--white-100))"
+    },
+    {
+      "selector": ".ibkChip.active.decent.info:hover",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-info-34), var(--ibk-info-26))"
+    },
+    {
+      "selector": ".ibkChip.active.decent.warning:hover",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22))"
+    },
+    {
+      "selector": ".ibkChip.active.decent.alert:hover",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    }
+  ],
+  "dialog": [
+    {
+      "selector": ".ibkDialog",
+      "prop": "background-color",
+      "value": "light-dark(var(--white-100), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkDialog.regular",
+      "prop": "background-color",
+      "value": "light-dark(var(--white-100), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkDialog.decent",
+      "prop": "background-color",
+      "value": "light-dark(var(--white-100), var(--ibk-neutral-grey-10))"
+    }
+  ],
+  "dropdown": [
+    {
+      "selector": "ibk-dropdown .ibkDropdown-menu",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": "ibk-dropdown .ibkDropdown-menu",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-34))"
+    },
+    {
+      "selector": "ibk-dropdown .ibkDropdown-menu button.ibkDropdown-item",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": "ibk-dropdown .ibkDropdown-menu button.ibkDropdown-item:hover:not(:disabled), ibk-dropdown .ibkDropdown-menu button.ibkDropdown-item:active:not(:disabled), ibk-dropdown .ibkDropdown-menu button.ibkDropdown-item.open:not(:disabled)",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-18))"
+    },
+    {
+      "selector": "ibk-dropdown .ibkDropdown-menu button.ibkDropdown-item:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": "ibk-dropdown .ibkDropdown-menu hr.ibkDropdown-separator",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-34))"
+    }
+  ],
+  "eib": [
+    {
+      "selector": ".ibkIcon.eIB-regular",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-34), var(--ibk-neutral-grey-66))"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.success",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-success-22), var(--ibk-success-18)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.warning",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.alert",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-interactive-grey",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkIcon.eIB-interactive-grey:hover",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-26), var(--ibk-neutral-grey-74))"
+    },
+    {
+      "selector": ".ibkIcon.eIB-interactive-grey:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-90))"
+    },
+    {
+      "selector": ".ibkIcon.eIB-interactive-grey:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkIcon.eIB-passive",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkIcon.eIB-passive.success",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-success-22), var(--ibk-success-18)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-passive.warning",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-passive.alert",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-decent",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkIcon.eIB-decent:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-34), var(--ibk-neutral-grey-66))"
+    },
+    {
+      "selector": ".ibkIcon.eIB-decent:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkIcon.eIB-decent.success",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-success-22), var(--ibk-success-18)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-decent.warning",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-decent.alert",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-grey74, .ibkIcon.eIB-decent.eIB-interactive-grey74",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-42)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-grey74:hover, .ibkIcon.eIB-decent.eIB-interactive-grey74:hover",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-grey74:active, .ibkIcon.eIB-decent.eIB-interactive-grey74:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-66), var(--ibk-neutral-grey-34)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-grey74:focus-visible, .ibkIcon.eIB-decent.eIB-interactive-grey74:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-42)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-grey18, .ibkIcon.eIB-decent.eIB-interactive-grey18",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-grey18:hover, .ibkIcon.eIB-decent.eIB-interactive-grey18:hover",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-26), var(--ibk-neutral-grey-74)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-grey18:active, .ibkIcon.eIB-decent.eIB-interactive-grey18:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-90)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-grey18:focus-visible, .ibkIcon.eIB-decent.eIB-interactive-grey18:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-grey42, .ibkIcon.eIB-decent.eIB-interactive-grey42",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-grey42:active, .ibkIcon.eIB-decent.eIB-interactive-grey42:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-34), var(--ibk-neutral-grey-66)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-grey42:focus-visible, .ibkIcon.eIB-decent.eIB-interactive-grey42:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-success, .ibkIcon.eIB-decent.eIB-interactive-success",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-success-22), var(--ibk-success-18)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-success:hover, .ibkIcon.eIB-decent.eIB-interactive-success:hover",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-success:active, .ibkIcon.eIB-decent.eIB-interactive-success:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-success-14), var(--ibk-success-10)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-success:focus-visible, .ibkIcon.eIB-decent.eIB-interactive-success:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-success-22), var(--ibk-success-18)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-warning, .ibkIcon.eIB-decent.eIB-interactive-warning",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-warning:hover, .ibkIcon.eIB-decent.eIB-interactive-warning:hover",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-warning-42), var(--ibk-warning-26)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-warning:active, .ibkIcon.eIB-decent.eIB-interactive-warning:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-warning-26), var(--ibk-warning-14)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-warning:focus-visible, .ibkIcon.eIB-decent.eIB-interactive-warning:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-alert, .ibkIcon.eIB-decent.eIB-interactive-alert",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-alert:hover, .ibkIcon.eIB-decent.eIB-interactive-alert:hover",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-alert-42), var(--ibk-alert-26)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-alert:active, .ibkIcon.eIB-decent.eIB-interactive-alert:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-alert-26), var(--ibk-alert-14)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-alert:focus-visible, .ibkIcon.eIB-decent.eIB-interactive-alert:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-white, .ibkIcon.eIB-decent.eIB-interactive-white",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--black-0)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-white:hover, .ibkIcon.eIB-decent.eIB-interactive-white:hover",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-white:active, .ibkIcon.eIB-decent.eIB-interactive-white:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-interactive-white:focus-visible, .ibkIcon.eIB-decent.eIB-interactive-white:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--black-0)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-grey18, .ibkIcon.eIB-decent.eIB-passive-grey18",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-grey18:active, .ibkIcon.eIB-decent.eIB-passive-grey18:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-90)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-grey18:focus-visible, .ibkIcon.eIB-decent.eIB-passive-grey18:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-grey42, .ibkIcon.eIB-decent.eIB-passive-grey42",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-grey42:active, .ibkIcon.eIB-decent.eIB-passive-grey42:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-34), var(--ibk-neutral-grey-66)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-grey42:focus-visible, .ibkIcon.eIB-decent.eIB-passive-grey42:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-white, .ibkIcon.eIB-decent.eIB-passive-white",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--black-0)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-white:active, .ibkIcon.eIB-decent.eIB-passive-white:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-white:focus-visible, .ibkIcon.eIB-decent.eIB-passive-white:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--black-0)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-grey74, .ibkIcon.eIB-decent.eIB-passive-grey74",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-42)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-success, .ibkIcon.eIB-decent.eIB-passive-success",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-success-22), var(--ibk-success-18)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-warning, .ibkIcon.eIB-decent.eIB-passive-warning",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular.eIB-passive-alert, .ibkIcon.eIB-decent.eIB-passive-alert",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-decent.eIB-passive-g18-w100",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--white-100)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-decent.eIB-passive-g18-g50",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-50)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-decent.eIB-passive-i-w100",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-info-34), var(--white-100)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-decent.eIB-passive-s-w100",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-success-22), var(--white-100)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-decent.eIB-passive-w-w100",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-warning-34), var(--white-100)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-decent.eIB-passive-a-w100",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-alert-34), var(--white-100)) !important"
+    },
+    {
+      "selector": ".ibkIcon.eIB-regular:is(.disabled, [disabled]), .ibkIcon.eIB-decent:is(.disabled, [disabled]), .ibkIcon.eIB-passive:is(.disabled, [disabled]), .ibkIcon.eIB-interactive-grey:is(.disabled, [disabled]), .ibkIcon.eIB-interactive-info:is(.disabled, [disabled]), .ibkIcon.eIB-regular:is(.disabled, [disabled]):is(:hover, :active, :focus-visible), .ibkIcon.eIB-decent:is(.disabled, [disabled]):is(:hover, :active, :focus-visible), .ibkIcon.eIB-passive:is(.disabled, [disabled]):is(:hover, :active, :focus-visible), .ibkIcon.eIB-interactive-grey:is(.disabled, [disabled]):is(:hover, :active, :focus-visible), .ibkIcon.eIB-interactive-info:is(.disabled, [disabled]):is(:hover, :active, :focus-visible)",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    }
+  ],
+  "fieldset": [
+    {
+      "selector": ".ibkFieldset:disabled legend",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkFieldset:disabled *",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkFieldset:disabled *",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkFieldset:disabled .ibkInputText label, .ibkInputText label i",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkFieldset:disabled .ibkInputText input",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-6))"
+    },
+    {
+      "selector": ".ibkFieldset:disabled .ibkInputText input",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkFieldset:disabled .ibkInputText input ~ .ibkIcon, .ibkFieldset:disabled .ibkInputText input ~ .supportingText",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    }
+  ],
+  "global": [
+    {
+      "selector": ":root",
+      "prop": "--standard-fontcolor",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ":root",
+      "prop": "--ibk-focusstroke",
+      "value": "light-dark(var(--ibk-info-34), var(--ibk-info-22))"
+    },
+    {
+      "selector": "html, body",
+      "prop": "background-color",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    }
+  ],
+  "htmlelements": [
+    {
+      "selector": "::selection",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-info-94), var(--ibk-info-14))"
+    },
+    {
+      "selector": "caption, figcaption",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": "hr",
+      "prop": "border",
+      "value": "1px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": "kbd",
+      "prop": "background-color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": "kbd",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    },
+    {
+      "selector": "kbd::selection",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": "mark",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": "mark",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-sisal-90), var(--ibk-sisal-18))"
+    },
+    {
+      "selector": "mark::before, mark::after",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-sisal-90), var(--ibk-sisal-18))"
+    }
+  ],
+  "input.password": [
+    {
+      "selector": ".ibkInputPassword input::placeholder",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkInputPassword input",
+      "prop": "background",
+      "value": "light-dark(var(--input-txt-enable-bg, #FFF), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkInputPassword input",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-58), var(--ibk-neutral-grey-34))"
+    },
+    {
+      "selector": ".ibkInputPassword input",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkInputWrapper .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkInputPassword .ibkIcon.func.first, .ibkInputPassword .ibkIcon.func.second",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkInputPassword .ibkIcon.func.first:active, .ibkInputPassword .ibkIcon.func.second:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-34), var(--ibk-neutral-grey-66))"
+    },
+    {
+      "selector": ".ibkInputPassword.disabled .counter, .ibkInputPassword.readonly .counter",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkInputPassword.disabled .ibkLabel, .ibkInputPassword.disabled .ibkLabel .ibkLabelText, .ibkInputPassword.disabled .ibkLabel .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkInputPassword.disabled .ibkLabel .ibkIcon:hover, .ibkInputPassword.disabled .ibkLabel .ibkIcon:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkInputPassword.disabled input[disabled]",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94), transparent)"
+    },
+    {
+      "selector": ".ibkInputPassword.disabled input[disabled]",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkInputPassword.disabled input[disabled]",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkInputPassword.disabled input[disabled]::placeholder",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkInputPassword.disabled .ibkInputWrapper .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkInputPassword.disabled .supportingText, .ibkInputPassword.disabled .supportingText .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkInputPassword.readonly input",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkInputPassword.readonly input",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-58), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkInputPassword.readonly input",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94), transparent)"
+    },
+    {
+      "selector": ".ibkInputPassword.readonly .supportingText",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkInputPassword.alert input",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-alert-94), var(--ibk-alert-6))"
+    },
+    {
+      "selector": ".ibkInputPassword.alert input",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkInputPassword.warning input",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22))"
+    },
+    {
+      "selector": ".ibkInputPassword.success input",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-18))"
+    },
+    {
+      "selector": ".ibkInputPassword.prominent input::placeholder",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    }
+  ],
+  "input.text": [
+    {
+      "selector": ".ibkInputText input::placeholder",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkInputText input",
+      "prop": "background",
+      "value": "light-dark(var(--input-txt-enable-bg, #FFF), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkInputText input",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-58), var(--ibk-neutral-grey-34))"
+    },
+    {
+      "selector": ".ibkInputText input",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkInputWrapper .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkInputText .ibkIcon.func.first, .ibkInputText .ibkIcon.func.second, .ibkInputText .ibkIcon.func.third",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkInputText .ibkIcon.func.first:active, .ibkInputText .ibkIcon.func.second:active, .ibkInputText .ibkIcon.func.third:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-34), var(--ibk-neutral-grey-66))"
+    },
+    {
+      "selector": ".ibkInputText.disabled .counter, .ibkInputText.readonly .counter",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkInputText.disabled .ibkLabel, .ibkInputText.disabled .ibkLabel .ibkLabelText, .ibkInputText.disabled .ibkLabel .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkInputText.disabled .ibkLabel .ibkIcon:hover, .ibkInputText.disabled .ibkLabel .ibkIcon:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkInputText.disabled input[disabled]",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94), transparent)"
+    },
+    {
+      "selector": ".ibkInputText.disabled input[disabled]",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkInputText.disabled input[disabled]",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkInputText.disabled input[disabled]::placeholder",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkInputText.disabled .ibkInputWrapper .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkInputText.disabled .supportingText, .ibkInputText.disabled .supportingText .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkInputText.alert input",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-alert-94), var(--ibk-alert-6))"
+    },
+    {
+      "selector": ".ibkInputText.alert input",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkInputText.warning input",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22))"
+    },
+    {
+      "selector": ".ibkInputText.readonly input",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkInputText.readonly input",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-58), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkInputText.readonly input",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94), transparent)"
+    },
+    {
+      "selector": ".ibkInputText.readonly .supportingText",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkInputText.success input",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-18))"
+    },
+    {
+      "selector": ".ibkInputText.prominent input::placeholder",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    }
+  ],
+  "label": [
+    {
+      "selector": ".ibkLabel .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-info-34), var(--ibk-info-26))"
+    }
+  ],
+  "link": [
+    {
+      "selector": "a.ibkLink.ibkLink-regular",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-red-41), var(--ibk-red-73))"
+    },
+    {
+      "selector": "a.ibkLink.ibkLink-regular:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-red-33), var(--ibk-red-41))"
+    },
+    {
+      "selector": "a.ibkLink.ibkLink-regular:visited",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-petrol-32), var(--ibk-petrol-78))"
+    },
+    {
+      "selector": "a.ibkLink.ibkLink-decent",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-94))"
+    },
+    {
+      "selector": "a.ibkLink.ibkLink-decent:hover",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-26), var(--ibk-neutral-grey-74))"
+    },
+    {
+      "selector": "a.ibkLink.ibkLink-decent:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-2), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": "a.ibkLink.ibkLink-decent:visited",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-petrol-32), var(--ibk-petrol-78))"
+    },
+    {
+      "selector": "a.ibkLink.ibkLink-regular:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-red-41), var(--ibk-red-73))"
+    },
+    {
+      "selector": "a.ibkLink.ibkLink-decent:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-94))"
+    },
+    {
+      "selector": "a.ibkLink.ibkLink-regular:visited:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-petrol-32), var(--ibk-petrol-78))"
+    },
+    {
+      "selector": "a.ibkLink.ibkLink-decent:visited:focus-visible",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-petrol-32), var(--ibk-petrol-78))"
+    },
+    {
+      "selector": "a.ibkLink.disabled, a.ibkLink.disabled:visited, a.ibkLink.disabled:hover, a.ibkLink.disabled:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": "a.ibkLink.disabled, a.ibkLink.disabled:visited, a.ibkLink.disabled:hover, a.ibkLink.disabled:active",
+      "prop": "text-decoration-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    }
+  ],
+  "list": [
+    {
+      "selector": "ul.prominent",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    }
+  ],
+  "menu": [
+    {
+      "selector": "button.ibkButton.ibkButton-menu:hover",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": "button.ibkButton.ibkButton-menu:active",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": "button.ibkButton.ibkButton-menu:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    }
+  ],
+  "meter": [
+    {
+      "selector": ".ibkMeter .ibkMeterLabelText",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor, #2E2E2E), var(--ibk-neutral-grey-82, #D1D1D1))"
+    },
+    {
+      "selector": ".ibkMeter .ibkMeterTrack",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkMeter-decent .ibkMeterTrack",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkMeter.level-max .ibkMeterFill",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-18))"
+    },
+    {
+      "selector": ".ibkMeter.disabled .ibkMeterLabelText, .ibkMeter.disabled .ibkIcon.label-info",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkMeter.disabled .ibkMeterTrack",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkMeter.disabled .ibkMeterFill",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18))"
+    }
+  ],
+  "navigation-menu-item": [
+    {
+      "selector": "button.ibkButton.ibkButton-menu.ibkNavigationMenuItem:not(.selected):not(:disabled)",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": "button.ibkButton.ibkButton-menu.ibkNavigationMenuItem:not(.selected):not(:disabled):hover",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    }
+  ],
+  "pagination": [
+    {
+      "selector": ".ibkPagination",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkPagination button.ibkButton.ibkPagination-button",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkPagination button.ibkButton.ibkPagination-button:not(.current):not(:disabled):hover",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkPagination button.ibkButton.ibkPagination-button:not(.current):not(:disabled):hover",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkPagination button.ibkButton.ibkPagination-button:not(.current):not(:disabled):active",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkPagination button.ibkButton.ibkPagination-button:not(.current):not(:disabled):active",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkPagination button.ibkButton.ibkPagination-button:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkPagination.disabled button.ibkButton.ibkPagination-button.current:disabled",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkPagination.disabled button.ibkButton.ibkPagination-button.current:disabled",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkPagination-ellipsis",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    }
+  ],
+  "paginationdots": [
+    {
+      "selector": ".ibkPaginationDots button.single",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-42))"
+    },
+    {
+      "selector": ".ibkPaginationDots button.single:not(.selected):not(:disabled):hover",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-50))"
+    },
+    {
+      "selector": ".ibkPaginationDots button.single:not(.selected):not(:disabled):active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-34))"
+    },
+    {
+      "selector": ".ibkPaginationDots button.single:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18))"
+    }
+  ],
+  "progress": [
+    {
+      "selector": ".ibkProgress .ibkProgressLabelText",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor, #2e2e2e), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkProgress .ibkProgressTrack",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkProgress .ibkProgressCircleTrack",
+      "prop": "stroke",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkProgress-spinner .ibkProgressCircleFill",
+      "prop": "stroke",
+      "value": "light-dark(var(--standard-fontcolor, #2e2e2e), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkProgress.disabled .ibkProgressLabelText, .ibkProgress.disabled .ibkIcon.label-info",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkProgress.disabled .ibkProgressTrack",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkProgress.disabled .ibkProgressFill",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18))"
+    },
+    {
+      "selector": ".ibkProgress.disabled .ibkProgressCircleTrack",
+      "prop": "stroke",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkProgress.disabled .ibkProgressCircleFill",
+      "prop": "stroke",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18))"
+    }
+  ],
+  "radio": [
+    {
+      "selector": ".ibkRadio label .ibk-radio-label",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkRadio label input[disabled], .ibkRadio:hover label input[disabled]",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkRadio label.ibkRadio-disabled .ibk-radio-label",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkRadio label input[disabled]::before, .ibkRadio:hover label input[disabled]::before",
+      "prop": "box-shadow",
+      "value": "inset 1em 1em light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkRadio label.alert input:not([disabled]), .ibkRadio:hover label.alert input:not([disabled]), .ibkRadio:active label.alert input:not([disabled])",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkRadio label.alert input:not([disabled])::before, .ibkRadio:hover label.alert input:not([disabled])::before, .ibkRadio:active label.alert input:not([disabled])::before",
+      "prop": "box-shadow",
+      "value": "inset 1em 1em light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    }
+  ],
+  "range-slider": [
+    {
+      "selector": ".ibkRangeSlider .ibkLabel .ibkLabelText",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkRangeSlider .ibkLabel .ibkIcon.label-info",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-info-34), var(--ibk-info-26))"
+    },
+    {
+      "selector": ".ibkRangeSlider .ibkRangeSliderLeading .ibkIcon, .ibkRangeSlider .ibkRangeSliderTrailing .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkRangeSlider .ibkRangeSliderBoundText",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkRangeSlider .ibkRangeSliderRail",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkRangeSlider-decent .ibkRangeSliderRail",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-86), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkRangeSlider-decent .ibkRangeSliderThumb",
+      "prop": "border-color",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    },
+    {
+      "selector": ".ibkRangeSlider.disabled .ibkLabel, .ibkRangeSlider.disabled .ibkLabel .ibkLabelText, .ibkRangeSlider.disabled .ibkLabel .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkRangeSlider.disabled .ibkLabel .ibkIcon:hover, .ibkRangeSlider.disabled .ibkLabel .ibkIcon:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkRangeSlider.disabled .ibkRangeSliderLeading .ibkIcon, .ibkRangeSlider.disabled .ibkRangeSliderTrailing .ibkIcon, .ibkRangeSlider.disabled .ibkRangeSliderBoundText",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkRangeSlider.disabled .ibkRangeSliderRail",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkRangeSlider.disabled .ibkRangeSliderProgress",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18))"
+    },
+    {
+      "selector": ".ibkRangeSlider.disabled .ibkRangeSliderThumb",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkRangeSlider.disabled .ibkRangeSliderThumb",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkRangeSlider-decent.disabled .ibkRangeSliderThumb",
+      "prop": "border-color",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    },
+    {
+      "selector": ".ibkRangeSlider.disabled .supportingText, .ibkRangeSlider.disabled .supportingText .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    }
+  ],
+  "rating": [
+    {
+      "selector": ".ibkRating .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkRating-disabled .ibkRating-starFill",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    }
+  ],
+  "segmented-control": [
+    {
+      "selector": ".ibkSegmentedControl",
+      "prop": "background",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    },
+    {
+      "selector": ".ibkSegmentedControl",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkSegmentedControl .ibkSegmentedControl-thumb",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-petrol-32), var(--ibk-petrol-26))"
+    },
+    {
+      "selector": ".ibkSegmentedControl button.ibkSegmentedControl-segment",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkSegmentedControl button.ibkSegmentedControl-segment:not(.selected):hover:not(:disabled)",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkSegmentedControl button.ibkSegmentedControl-segment:not(.selected):active:not(:disabled)",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkSegmentedControl button.ibkSegmentedControl-segment:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    }
+  ],
+  "select": [
+    {
+      "selector": ".ibkSelect select",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkSelect select",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-34))"
+    },
+    {
+      "selector": ".ibkSelect select",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkSelect:not(.alert):not(.warning):not(.success) select:hover:not([disabled])",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-18))"
+    },
+    {
+      "selector": ".ibkSelect .ibkIcon.dropdown-icon",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkSelect .supportingText",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkSelect .supportingText .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(inherit, var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkSelect.disabled .ibkLabel, .ibkSelect.disabled .ibkLabel .ibkLabelText, .ibkSelect.disabled .ibkLabel .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkSelect.disabled .ibkLabel .ibkIcon:hover, .ibkSelect.disabled .ibkLabel .ibkIcon:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkSelect.disabled select[disabled]",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-2))"
+    },
+    {
+      "selector": ".ibkSelect.disabled select[disabled]",
+      "prop": "border",
+      "value": "var(--ibk-spacing-2, 2px) solid light-dark(var(--select-disable-b, var(--ibk-neutral-grey-82)), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkSelect.disabled select[disabled]",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkSelect.disabled .ibkSelectWrapper .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkSelect.disabled .supportingText, .ibkSelect.disabled .supportingText .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkSelect.alert select",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-alert-94), var(--ibk-alert-6))"
+    },
+    {
+      "selector": ".ibkSelect.alert select",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkSelect.warning select",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22))"
+    },
+    {
+      "selector": ".ibkSelect.success select",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-18))"
+    }
+  ],
+  "step-button": [
+    {
+      "selector": ".ibkStepButton-prominent:disabled",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkStepButton-prominent:disabled",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkStepButton-prominent:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkStepButton-regular",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-petrol-32), var(--ibk-petrol-26))"
+    },
+    {
+      "selector": ".ibkStepButton-regular",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-petrol-32), var(--ibk-petrol-26))"
+    },
+    {
+      "selector": ".ibkStepButton-regular:hover:not(:disabled)",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-petrol-40, #52697a), var(--ibk-petrol-32))"
+    },
+    {
+      "selector": ".ibkStepButton-regular:hover:not(:disabled)",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-petrol-40, #52697a), var(--ibk-petrol-32))"
+    },
+    {
+      "selector": ".ibkStepButton-regular:active:not(:disabled)",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-petrol-26), var(--ibk-petrol-18))"
+    },
+    {
+      "selector": ".ibkStepButton-regular:active:not(:disabled)",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-petrol-26), var(--ibk-petrol-18))"
+    },
+    {
+      "selector": ".ibkStepButton-regular:disabled",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkStepButton-regular:disabled",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkStepButton-regular:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkStepButton-decent",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkStepButton-decent:hover:not(:disabled)",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkStepButton-decent:hover:not(:disabled)",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkStepButton-decent:active:not(:disabled)",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkStepButton-decent:active:not(:disabled)",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkStepButton-decent:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkStepButtonBarFramed",
+      "prop": "background",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    },
+    {
+      "selector": ".ibkStepButtonBarFramed",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26))"
+    }
+  ],
+  "supportingtext": [
+    {
+      "selector": ".supportingText",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".supportingText.disabled",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    }
+  ],
+  "switch": [
+    {
+      "selector": ".ibkSwitch label .ibk-switch-toggle",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-42))"
+    },
+    {
+      "selector": ".ibkSwitch label .ibk-switch-toggle",
+      "prop": "border",
+      "value": "0.125rem solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-42))"
+    },
+    {
+      "selector": ".ibkSwitch label .ibk-switch-label",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkSwitch label .checkbox[disabled] + .ibk-switch-toggle, .ibkSwitch:hover label .checkbox[disabled] + .ibk-switch-toggle",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkSwitch label .checkbox[disabled] + .ibk-switch-toggle, .ibkSwitch:hover label .checkbox[disabled] + .ibk-switch-toggle",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkSwitch label .checkbox[disabled] + .ibk-switch-toggle::after, .ibkSwitch:hover label .checkbox[disabled] + .ibk-switch-toggle::after",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18)) !important"
+    },
+    {
+      "selector": ".ibkSwitch label .checkbox[disabled] + .ibk-switch-toggle::after, .ibkSwitch:hover label .checkbox[disabled] + .ibk-switch-toggle::after",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18))"
+    },
+    {
+      "selector": ".ibkSwitch label .checkbox[disabled]:checked + .ibk-switch-toggle, .ibkSwitch:hover label .checkbox[disabled]:checked + .ibk-switch-toggle",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkSwitch label .checkbox[disabled]:checked + .ibk-switch-toggle, .ibkSwitch:hover label .checkbox[disabled]:checked + .ibk-switch-toggle",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkSwitch label .checkbox[disabled]:checked + .ibk-switch-toggle::after, .ibkSwitch:hover label .checkbox[disabled]:checked + .ibk-switch-toggle::after",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18)) !important"
+    },
+    {
+      "selector": ".ibkSwitch label .checkbox[disabled]:checked + .ibk-switch-toggle::after, .ibkSwitch:hover label .checkbox[disabled]:checked + .ibk-switch-toggle::after",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18))"
+    },
+    {
+      "selector": ".ibkSwitch label.ibkSwitch-disabled .ibk-switch-label",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkSwitch:hover label .checkbox:not([disabled]):not(:checked) + .ibk-switch-toggle",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-50))"
+    },
+    {
+      "selector": ".ibkSwitch:hover label .checkbox:not([disabled]):not(:checked) + .ibk-switch-toggle",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-50))"
+    },
+    {
+      "selector": ".ibkSwitch:active label .checkbox:not([disabled]):not(:checked) + .ibk-switch-toggle",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-34))"
+    },
+    {
+      "selector": ".ibkSwitch:active label .checkbox:not([disabled]):not(:checked) + .ibk-switch-toggle",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-34))"
+    },
+    {
+      "selector": ".ibkSwitch label.alert .checkbox:not([disabled]):checked + .ibk-switch-toggle, .ibkSwitch:hover label.alert .checkbox:not([disabled]):checked + .ibk-switch-toggle, .ibkSwitch:active label.alert .checkbox:not([disabled]):checked + .ibk-switch-toggle",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkSwitch label.alert .checkbox:not([disabled]):checked + .ibk-switch-toggle, .ibkSwitch:hover label.alert .checkbox:not([disabled]):checked + .ibk-switch-toggle, .ibkSwitch:active label.alert .checkbox:not([disabled]):checked + .ibk-switch-toggle",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkSwitch + .supportingText.disabled",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    }
+  ],
+  "table": [
+    {
+      "selector": ".ibkTable",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor, #2E2E2E), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkTable caption",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor, #2E2E2E), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkTable th",
+      "prop": "border-bottom",
+      "value": "1px solid light-dark(var(--ibk-neutral-grey-86, #DBDBDB), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkTable th",
+      "prop": "background",
+      "value": "light-dark(var(--white-100, #FFF), var(--ibk-neutral-grey-2))"
+    },
+    {
+      "selector": ".ibkTable td",
+      "prop": "border-top",
+      "value": "1px solid light-dark(var(--ibk-neutral-grey-94, #F0F0F0), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkTable td",
+      "prop": "background-color",
+      "value": "light-dark(var(--white-100, #FFF), var(--ibk-neutral-grey-2))"
+    },
+    {
+      "selector": ".ibkTable tfoot td",
+      "prop": "background",
+      "value": "light-dark(var(--white-100, #FFF), var(--ibk-neutral-grey-2))"
+    },
+    {
+      "selector": ".ibkTable tfoot td",
+      "prop": "border-top",
+      "value": "1px solid light-dark(var(--standard-fontcolor, #2E2E2E), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkTable-zebra tbody tr:nth-child(odd)>td",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-98, #FAFAFA), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkTable-zebra tbody tr:nth-child(even)>td",
+      "prop": "background-color",
+      "value": "light-dark(var(--white-100, #FFF), var(--ibk-neutral-grey-2))"
+    },
+    {
+      "selector": ".ibkTable tbody tr:hover>td",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94, #F0F0F0), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkTable tbody tr:active>td",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90, #E6E6E6), var(--ibk-neutral-grey-18))"
+    },
+    {
+      "selector": ".ibkTable td.hovered-col, .ibkTable th.hovered-col",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94, #F0F0F0), var(--ibk-neutral-grey-14)) !important"
+    },
+    {
+      "selector": ".ibkTable td:hover",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90, #E6E6E6), var(--ibk-neutral-grey-18)) !important"
+    },
+    {
+      "selector": ".ibkTable thead th:hover",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-neutral-grey-90, #E6E6E6), var(--ibk-neutral-grey-18))"
+    }
+  ],
+  "tabs": [
+    {
+      "selector": ".ibkTabs button.ibkTab",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkTabs button.ibkTab:not(.selected):not(:disabled):hover",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkTabs button.ibkTab:not(.selected):not(:disabled):active",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26))"
+    },
+    {
+      "selector": ".ibkTabs button.ibkTab:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkTabs .ibkTabs-content",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82))"
+    }
+  ],
+  "textarea": [
+    {
+      "selector": ".ibkTextarea textarea::placeholder",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkTextarea textarea",
+      "prop": "background",
+      "value": "light-dark(var(--white-100), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkTextarea textarea",
+      "prop": "border",
+      "value": "2px solid light-dark(var(--ibk-neutral-grey-58), var(--ibk-neutral-grey-34))"
+    },
+    {
+      "selector": ".ibkTextarea textarea",
+      "prop": "color",
+      "value": "light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82))"
+    },
+    {
+      "selector": ".ibkTextarea .supportingText",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkTextarea.disabled .counter, .ibkTextarea.readonly .counter",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkTextarea.disabled .ibkLabel, .ibkTextarea.disabled .ibkLabel .ibkLabelText, .ibkTextarea.disabled .ibkLabel .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkTextarea.disabled .ibkLabel .ibkIcon:hover, .ibkTextarea.disabled .ibkLabel .ibkIcon:active",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkTextarea.disabled textarea[disabled]",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94), transparent)"
+    },
+    {
+      "selector": ".ibkTextarea.disabled textarea[disabled]",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkTextarea.disabled textarea[disabled]",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkTextarea.disabled textarea[disabled]::placeholder",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkTextarea.disabled .supportingText, .ibkTextarea.disabled .supportingText .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important"
+    },
+    {
+      "selector": ".ibkTextarea.alert textarea",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-alert-94), var(--ibk-alert-6))"
+    },
+    {
+      "selector": ".ibkTextarea.alert textarea",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-alert-34), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkTextarea.alert textarea::placeholder",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkTextarea.warning textarea",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-warning-34), var(--ibk-warning-22))"
+    },
+    {
+      "selector": ".ibkTextarea.readonly textarea",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-neutral-grey-58), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkTextarea.readonly textarea",
+      "prop": "background-color",
+      "value": "light-dark(var(--ibk-neutral-grey-94), transparent)"
+    },
+    {
+      "selector": ".ibkTextarea.readonly textarea",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-14))"
+    },
+    {
+      "selector": ".ibkTextarea.readonly textarea::placeholder",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkTextarea.readonly .supportingText",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkTextarea.success textarea",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-18))"
+    }
+  ],
+  "toast": [
+    {
+      "selector": ".ibkToast.regular.success",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-18))"
+    },
+    {
+      "selector": ".ibkToast.regular.warning",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-warning-26), var(--ibk-warning-22))"
+    },
+    {
+      "selector": ".ibkToast.regular.alert",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-alert-26), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkToast.decent",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-petrol-94), var(--ibk-petrol-10))"
+    },
+    {
+      "selector": ".ibkToast.decent",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-petrol-26), var(--white-100))"
+    },
+    {
+      "selector": ".ibkToast.decent.success",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-success-98), var(--ibk-success-10))"
+    },
+    {
+      "selector": ".ibkToast.decent.success",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-success-26), var(--ibk-success-18))"
+    },
+    {
+      "selector": ".ibkToast.decent.success",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-success-26), var(--white-100))"
+    },
+    {
+      "selector": ".ibkToast.decent.warning",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-warning-98), var(--ibk-warning-10))"
+    },
+    {
+      "selector": ".ibkToast.decent.warning",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-warning-26), var(--ibk-warning-22))"
+    },
+    {
+      "selector": ".ibkToast.decent.warning",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-warning-26), var(--white-100))"
+    },
+    {
+      "selector": ".ibkToast.decent.alert",
+      "prop": "background",
+      "value": "light-dark(var(--ibk-alert-98), var(--ibk-alert-10))"
+    },
+    {
+      "selector": ".ibkToast.decent.alert",
+      "prop": "border-color",
+      "value": "light-dark(var(--ibk-alert-26), var(--ibk-alert-22))"
+    },
+    {
+      "selector": ".ibkToast.decent.alert",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-alert-26), var(--white-100))"
+    }
+  ],
+  "tooltip": [
+    {
+      "selector": ".ibkTooltip",
+      "prop": "background",
+      "value": "light-dark(var(--black-0), var(--white-100))"
+    },
+    {
+      "selector": ".ibkTooltip",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    },
+    {
+      "selector": ".ibkTooltip .ibkTooltip-text",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    },
+    {
+      "selector": ".ibkTooltip.ibkTooltip-toggletip .ibkButton-close .ibkIcon",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    },
+    {
+      "selector": ".ibkTooltip.ibkTooltip-toggletip .ibkButton-close:hover i",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10))"
+    },
+    {
+      "selector": ".ibkTooltip.ibkTooltip-toggletip .ibkButton-close:active i",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18))"
+    },
+    {
+      "selector": ".ibkTooltip.ibkTooltip-toggletip .ibkButton-close:focus-visible i",
+      "prop": "color",
+      "value": "light-dark(var(--white-100), var(--black-0))"
+    }
+  ],
+  "top-navigation": [
+    {
+      "selector": ".ibkTopNavigation .ibkTopNavigation-item",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-10), var(--ibk-neutral-grey-94))"
+    },
+    {
+      "selector": ".ibkTopNavigation .ibkTopNavigation-item:hover:not(:disabled)",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-26), var(--ibk-neutral-grey-74))"
+    },
+    {
+      "selector": ".ibkTopNavigation .ibkTopNavigation-item:active:not(:disabled)",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-2), var(--ibk-neutral-grey-58))"
+    },
+    {
+      "selector": ".ibkTopNavigation .ibkTopNavigation-item:disabled",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22))"
+    },
+    {
+      "selector": ".ibkTopNavigation .ibkTopNavigation-item.selected, .ibkTopNavigation .ibkTopNavigation-item.selected:hover:not(:disabled), .ibkTopNavigation .ibkTopNavigation-item.selected:active:not(:disabled)",
+      "prop": "color",
+      "value": "light-dark(var(--ibk-red-41), var(--ibk-red-73))"
+    }
+  ]
+}

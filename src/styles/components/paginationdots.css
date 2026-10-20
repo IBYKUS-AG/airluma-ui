@@ -1,0 +1,78 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+.ibkPaginationDots {
+    --ibk-pagination-dots-button-size: 1.25rem;
+    --ibk-pagination-dots-icon-size: var(--ibk-spacing-16, 1rem);
+    --ibk-pagination-dots-selected-color: var(--ibk-petrol-32);
+
+    align-items: center;
+    display: inline-flex;
+    gap: var(--ibk-spacing-8, 8px);
+}
+
+.ibkPaginationDots.small {
+    --ibk-pagination-dots-icon-size: var(--ibk-spacing-12, 0.75rem);
+}
+
+.ibkPaginationDots.large {
+    --ibk-pagination-dots-icon-size: var(--ibk-pagination-dots-button-size);
+}
+
+.ibkPaginationDots.prominent {
+    --ibk-pagination-dots-selected-color: var(--ibk-red-41);
+}
+
+.ibkPaginationDots button.single {
+    align-items: center;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-radius: var(--ibk-radius-4, 4px);
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-42));
+    cursor: pointer;
+    display: inline-flex;
+    flex: 0 0 auto;
+    height: var(--ibk-pagination-dots-button-size);
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: var(--ibk-pagination-dots-button-size);
+}
+
+.ibkPaginationDots button.single .ibkIcon {
+    color: currentColor;
+    display: block;
+    font-size: var(--ibk-pagination-dots-icon-size);
+    font-style: normal;
+    line-height: 1;
+    margin: 0;
+}
+
+.ibkPaginationDots button.single:not(.selected):not(:disabled):hover {
+    color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-50));
+}
+
+.ibkPaginationDots button.single:not(.selected):not(:disabled):active {
+    color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-34));
+}
+
+.ibkPaginationDots button.single.selected {
+    color: var(--ibk-pagination-dots-selected-color);
+}
+
+.ibkPaginationDots button.single:focus-visible {
+    outline: solid var(--ibk-spacing-2, 2px) var(--ibk-focusstroke);
+    outline-offset: 0;
+}
+
+.ibkPaginationDots button.single:disabled {
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18));
+    cursor: default;
+}
+
+.ibkPaginationDots.disabled button.single.selected:disabled {
+    color: var(--ibk-pagination-dots-selected-color);
+}

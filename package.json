@@ -1,0 +1,137 @@
+{
+  "name": "@ides/webcomponents",
+  "version": "0.0.0-dev",
+  "type": "module",
+  "description": "IBYKUS Design System - Lit Web Components und CSS-Framework",
+  "workspaces": [
+    "packages/fonts",
+    "packages/iconset"
+  ],
+  "main": "./dist/ibykus-design-system.umd.js",
+  "module": "./dist/ibykus-design-system.es.js",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/ibykus-design-system.es.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/ibykus-design-system.umd.js"
+      }
+    },
+    "./react": {
+      "types": "./dist/react.d.ts"
+    },
+    "./all": {
+      "types": "./src/all.d.ts",
+      "default": "./src/all.js"
+    },
+    "./styles": "./src/styles/ides.css",
+    "./styles/all": "./src/styles/all.js",
+    "./styles/*": "./src/styles/*",
+    "./custom-elements.json": "./custom-elements.json",
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src/all.js",
+    "src/all.d.ts",
+    "src/styles",
+    "custom-elements.json",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "THIRD-PARTY-NOTICES.txt"
+  ],
+  "sideEffects": [
+    "*.css",
+    "./src/**",
+    "./dist/*.js"
+  ],
+  "scripts": {
+    "dev": "vite --open",
+    "build:packages": "node scripts/check-workspace-links.js && npm run build --workspaces --if-present",
+    "build": "npm run build:packages && vite build",
+    "build:cdn": "node scripts/build-cdn.js",
+    "build:review": "vite build --config vite.review.config.ts",
+    "preview": "vite preview",
+    "demo:html": "npm run build && rm -rf demo-html && mkdir -p demo-html && cp dist/ibykus-design-system.es.js demo-html/ && node scripts/prepare-demo-html.js && vite --open /demo-html",
+    "storybook": "npm run build:packages && cem analyze --litelement && storybook dev -p 6006",
+    "build-storybook": "npm run build:packages && cem analyze --litelement && storybook build",
+    "test": "npx vitest --browser=chromium",
+    "test:css": "vitest run --config vitest.dark-mode.config.ts",
+    "analyze:components": "cem analyze --litelement",
+    "prepack": "npm run build && npm run analyze:components",
+    "pack:check": "npm pack --dry-run --workspaces --include-workspace-root"
+  },
+  "dependencies": {
+    "@ides/fonts": "*",
+    "@ides/iconset": "*",
+    "lit": "^3.1.0"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^4.1.3",
+    "@custom-elements-manifest/analyzer": "^0.11.0",
+    "@storybook/addon-a11y": "^10.1.11",
+    "@storybook/addon-decorator": "^6.2.9",
+    "@storybook/addon-docs": "^10.1.11",
+    "@storybook/addon-vitest": "^10.1.11",
+    "@storybook/builder-vite": "^10.1.11",
+    "@storybook/web-components-vite": "^10.1.11",
+    "@types/node": "^20.11.0",
+    "@vitest/browser-playwright": "^4.0.15",
+    "@vitest/coverage-v8": "^4.0.15",
+    "@wc-toolkit/cem-inheritance": "^1.2.2",
+    "@wc-toolkit/cem-utilities": "^1.5.4",
+    "@wc-toolkit/jsx-types": "^1.8.2",
+    "@wc-toolkit/storybook-helpers": "^10.0.0",
+    "@wc-toolkit/type-parser": "^1.2.0",
+    "cem-plugin-better-lit-types": "^0.2.1",
+    "esbuild": "^0.25.0",
+    "playwright": "^1.57.0",
+    "prettier": "^3.7.4",
+    "storybook": "^10.1.11",
+    "typescript": "^5.3.0",
+    "vite": "^5.0.0",
+    "vite-plugin-css-injected-by-js": "^3.3.0",
+    "vite-plugin-dts": "^3.7.0",
+    "vitest": "^4.0.15"
+  },
+  "customElements": "custom-elements.json",
+  "overrides": {
+    "lit": "^3.1.0",
+    "@lit/reactive-element": "^2.0.0",
+    "lit-element": "^4.0.0",
+    "lit-html": "^3.1.0",
+    "vite": "^5.0.0",
+    "yaml": "^2.4.2"
+  },
+  "license": "Apache-2.0",
+  "author": "IBYKUS AG fuer Informationstechnologie",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IBYKUS-AG/airluma-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IBYKUS-AG/airluma-ui/issues"
+  },
+  "keywords": [
+    "ibykus",
+    "ides",
+    "design-system",
+    "web-components",
+    "lit",
+    "css-framework"
+  ],
+  "engines": {
+    "node": ">=20.19"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "packageManager": "npm@10.8.2",
+  "homepage": "https://www.airluma.de"
+}

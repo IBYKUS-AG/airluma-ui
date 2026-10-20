@@ -1,0 +1,248 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Chips (ibkChip)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ *  State color ramp per style: enable = -34, hover = -42, pressed = -26
+ *  (success uses -26 / -34 / -26; standard uses grey 90 / 82 / 74).
+ * ***************************************************************************************/
+
+.ibkChip {
+	align-items: center;
+	background: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-26));
+	border: 1px solid light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-26));
+	border-radius: var(--ibk-radius-16);
+	color: light-dark(var(--standard-fontcolor), var(--white-100));
+	display: inline-flex;
+	gap: var(--ibk-spacing-4);
+	line-height: 0;
+	vertical-align: middle;
+}
+
+.ibkChip .ibkChipText {
+	font-size: 0.875rem;
+	font-style: normal;
+	font-weight: 500;
+	letter-spacing: 0.03125rem;
+	line-height: 0.875rem;
+	white-space: nowrap;
+}
+
+.ibkChip .ibkIcon {
+	color: inherit;
+	font-size: 1.25rem;
+	line-height: 1;
+}
+
+/* ***************************************************************************************
+ *  Regular (filled) style variants
+ * ***************************************************************************************/
+
+.ibkChip.info {
+	background: light-dark(var(--ibk-info-34), var(--ibk-info-26));
+	border-color: light-dark(var(--ibk-info-34), var(--ibk-info-26));
+	color: var(--white-100);
+}
+
+.ibkChip.success {
+	background: light-dark(var(--ibk-success-26), var(--ibk-success-18));
+	border-color: light-dark(var(--ibk-success-26), var(--ibk-success-18));
+	color: var(--white-100);
+}
+
+.ibkChip.warning {
+	background: light-dark(var(--ibk-warning-34), var(--ibk-warning-22));
+	border-color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22));
+	color: var(--white-100);
+}
+
+.ibkChip.alert {
+	background: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+	border-color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+	color: var(--white-100);
+}
+
+/* ***************************************************************************************
+ *  Decent (outlined) style variants
+ * ***************************************************************************************/
+
+.ibkChip.decent {
+	background: transparent;
+	border-color: light-dark(var(--ibk-neutral-grey-78), var(--ibk-neutral-grey-50));
+	color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-50));
+}
+
+.ibkChip.decent.info {
+	border-color: var(--ibk-info-34);
+	color: var(--ibk-info-34);
+}
+
+.ibkChip.decent.success {
+	border-color: light-dark(var(--ibk-success-26), var(--ibk-success-18));
+	color: light-dark(var(--ibk-success-26), var(--ibk-success-18));
+}
+
+.ibkChip.decent.warning {
+	border-color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22));
+	color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22));
+}
+
+.ibkChip.decent.alert {
+	border-color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+	color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+}
+
+/* ***************************************************************************************
+ *  Passive (non-interactive) - display only, no states
+ * ***************************************************************************************/
+
+.ibkChip.passive {
+	padding: 0.1875rem 0.5rem;
+}
+
+/* ***************************************************************************************
+ *  Active (interactive) - removable, reacts to hover / pressed / focus
+ * ***************************************************************************************/
+
+.ibkChip.active {
+	cursor: pointer;
+	padding: 0 0.25rem 0 0.5rem;
+}
+
+.ibkChip.active .ibkIcon {
+	cursor: pointer;
+}
+
+.ibkChip.active:focus-visible {
+	outline: solid 2px var(--ibk-focusstroke);
+	outline-offset: 1px;
+}
+
+/* ***************************************************************************************
+ *  Active regular - hover
+ * ***************************************************************************************/
+
+.ibkChip.active:hover {
+	background: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-34));
+	border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-34));
+}
+
+.ibkChip.active.info:hover {
+	background: var(--ibk-info-42);
+	border-color: var(--ibk-info-42);
+}
+
+.ibkChip.active.success:hover {
+	background: var(--ibk-success-34);
+	border-color: var(--ibk-success-34);
+}
+
+.ibkChip.active.warning:hover {
+	background: var(--ibk-warning-42);
+	border-color: var(--ibk-warning-42);
+}
+
+.ibkChip.active.alert:hover {
+	background: var(--ibk-alert-42);
+	border-color: var(--ibk-alert-42);
+}
+
+/* ***************************************************************************************
+ *  Active regular - pressed
+ * ***************************************************************************************/
+
+.ibkChip.active:active {
+	background: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-18));
+	border-color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-18));
+}
+
+.ibkChip.active.info:active {
+	background: var(--ibk-info-26);
+	border-color: var(--ibk-info-26);
+}
+
+.ibkChip.active.success:active {
+	background: var(--ibk-success-26);
+	border-color: var(--ibk-success-26);
+}
+
+.ibkChip.active.warning:active {
+	background: var(--ibk-warning-26);
+	border-color: var(--ibk-warning-26);
+}
+
+.ibkChip.active.alert:active {
+	background: var(--ibk-alert-26);
+	border-color: var(--ibk-alert-26);
+}
+
+/* ***************************************************************************************
+ *  Active decent - hover / pressed fill the chip and invert the text to white
+ *  (standard keeps its dark font on the light grey fill).
+ * ***************************************************************************************/
+
+.ibkChip.active.decent:hover {
+	background: light-dark(var(--ibk-neutral-grey-78), var(--ibk-neutral-grey-34));
+	border-color: light-dark(var(--ibk-neutral-grey-78), var(--ibk-neutral-grey-50));
+	color: light-dark(var(--standard-fontcolor), var(--white-100));
+}
+
+.ibkChip.active.decent:active {
+	background: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-18));
+	border-color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-50));
+	color: light-dark(var(--standard-fontcolor), var(--white-100));
+}
+
+.ibkChip.active.decent.info:hover {
+	background: var(--ibk-info-42);
+	border-color: light-dark(var(--ibk-info-34), var(--ibk-info-26));
+	color: var(--white-100);
+}
+
+.ibkChip.active.decent.info:active {
+	background: var(--ibk-info-26);
+	border-color: var(--ibk-info-26);
+	color: var(--white-100);
+}
+
+.ibkChip.active.decent.success:hover {
+	background: var(--ibk-success-34);
+	border-color: var(--ibk-success-26);
+	color: var(--white-100);
+}
+
+.ibkChip.active.decent.success:active {
+	background: var(--ibk-success-26);
+	border-color: var(--ibk-success-26);
+	color: var(--white-100);
+}
+
+.ibkChip.active.decent.warning:hover {
+	background: var(--ibk-warning-42);
+	border-color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22));
+	color: var(--white-100);
+}
+
+.ibkChip.active.decent.warning:active {
+	background: var(--ibk-warning-26);
+	border-color: var(--ibk-warning-26);
+	color: var(--white-100);
+}
+
+.ibkChip.active.decent.alert:hover {
+	background: var(--ibk-alert-42);
+	border-color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+	color: var(--white-100);
+}
+
+.ibkChip.active.decent.alert:active {
+	background: var(--ibk-alert-26);
+	border-color: var(--ibk-alert-26);
+	color: var(--white-100);
+}

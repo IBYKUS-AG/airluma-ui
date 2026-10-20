@@ -1,0 +1,49 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Supporting Text (additional infos below elements)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+.supportingText {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+}
+.supportingText .ibkIcon {
+	float: left !important;
+	font-size: 1.25rem !important;
+	margin: 0 0.25rem 0.5rem 0; 			/* added bottom margin to force correct flow of longer texts */
+	position: inherit !important;
+	text-align: inherit !important;
+	top: inherit !important;
+}
+.supportingText .content {
+	float: left;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	max-width: 90%;							/* bad fix to make the text break correct */
+}
+.supportingText .content br {
+	line-height: 1.0;
+}
+
+.supportingText.disabled {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+.supportingText.alert {
+	color: var(--ibk-alert-34);
+}
+.supportingText.warning {
+	color: var(--ibk-warning-34);
+}
+.supportingText.success {
+	color: var(--ibk-success-22);
+}

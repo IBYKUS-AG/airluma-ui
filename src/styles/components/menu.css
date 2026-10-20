@@ -1,0 +1,89 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Menu
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+.ibkMenu {}
+
+button.ibkButton.ibkButton-menu {
+	border-radius: 0.375rem !important;
+	-webkit-border-radius: 0.375rem !important;
+	-moz-border-radius: 0.375rem !important;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+button.ibkButton.ibkButton-menu.ibkIcon-leading {
+	padding: 0.500rem 1.00rem 0.500rem 0.500rem;
+}
+
+button.ibkButton.ibkButton-menu.ibkIcon-leading .ibkIcon {
+	margin-right: 0.500rem;
+}
+
+
+/* ***************************************************************************************
+ *  Regular unselected
+ * ***************************************************************************************/
+
+button.ibkButton.ibkButton-menu:hover {
+	background-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+}
+
+button.ibkButton.ibkButton-menu:active {
+	background-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-26));
+}
+
+button.ibkButton.ibkButton-menu:disabled {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+button.ibkButton.ibkButton-menu:disabled:hover {
+	background-color: transparent;
+}
+
+
+
+/* ***************************************************************************************
+ *  Regular selected
+ * ***************************************************************************************/
+
+button.ibkButton.ibkButton-menu.selected {
+	background-color: var(--ibk-petrol-32);
+	color: var(--white-100);
+}
+
+button.ibkButton.ibkButton-menu.selected:hover {
+	background-color: var(--ibk-petrol-32);
+}
+
+button.ibkButton.ibkButton-menu.selected:active {
+	background-color: var(--ibk-petrol-32);
+}
+
+
+
+/* ***************************************************************************************
+ *  Prominent selected
+ * ***************************************************************************************/
+
+button.ibkButton.ibkButton-menu.prominent.selected {
+	background-color: var(--ibk-red-41);
+	color: var(--white-100);
+}
+
+button.ibkButton.ibkButton-menu.prominent.selected:hover {
+	background-color: var(--ibk-red-41);
+}
+
+button.ibkButton.ibkButton-menu.prominent.selected:active {
+	background-color: var(--ibk-red-41);
+}

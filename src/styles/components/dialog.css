@@ -1,0 +1,155 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Dialog (ibkDialog)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Backdrop (modal overlay)
+ *  Hidden by default; the ibk-dialog component toggles the .open class based on its
+ *  `open` property.
+ * ***************************************************************************************/
+
+.ibkDialog-backdrop {
+	display: none;
+	position: fixed;
+	inset: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+	align-items: center;
+	justify-content: center;
+	padding: var(--ibk-spacing-16);
+}
+
+.ibkDialog-backdrop.open {
+	display: flex;
+}
+
+
+
+/* ***************************************************************************************
+ *  Dialog container (regular = ibk-card elevated, decent = plain div)
+ * ***************************************************************************************/
+
+.ibkDialog {
+	display: flex;
+	flex-direction: column;
+	padding: var(--ibk-spacing-24) var(--ibk-spacing-16) var(--ibk-spacing-16) var(--ibk-spacing-16);
+	background-color: light-dark(var(--white-100), var(--ibk-neutral-grey-10));
+}
+
+/* Regular variant reuses .ibkCard.elevated (shadow), but we override the card's
+ * default grey-94 background with the project's pure white. */
+.ibkDialog.regular {
+	background-color: light-dark(var(--white-100), var(--ibk-neutral-grey-10));
+}
+
+/* Decent variant: white background, no shadow, no border.
+ * A flat, borderless dialog sitting on top of the standard backdrop. */
+.ibkDialog.decent {
+	background-color: light-dark(var(--white-100), var(--ibk-neutral-grey-10));
+	border-radius: 0.625rem;
+	box-shadow: none;
+	border: 0;
+}
+
+
+/* ***************************************************************************************
+ *  Sizing: horizontal vs. vertical
+ * ***************************************************************************************/
+
+/* The widths are the design's target sizes, translated so a dialog still fits a
+   320px viewport at 200% zoom (WCAG 1.4.10 "Reflow", 1.4.4 "Resize Text"). Two
+   changes to the raw Figma numbers:
+   - rem instead of px, so the dialog grows with the user's font size.
+   - min() against 100%, because a hard min-inline-size wider than the viewport
+     cannot be satisfied and pushes the dialog off screen. The minimum is the
+     preferred width, capped by whatever space there actually is.
+   A dialog lies over the layout rather than in it, so it is not placed by a
+   primitive - but its content is a Stack. */
+.ibkDialog.horizontal {
+	min-inline-size: min(31.25rem, 100%);
+	max-inline-size: min(45rem, 100%);
+}
+
+.ibkDialog.vertical {
+	min-inline-size: min(16rem, 100%);
+	max-inline-size: min(31.1875rem, 100%);
+}
+
+
+/* ***************************************************************************************
+ *  Headline
+ * ***************************************************************************************/
+
+.ibkDialog > h4 {
+	color: var(--standard-fontcolor);
+	margin: 0 0 var(--ibk-spacing-16) 0;
+}
+
+
+/* ***************************************************************************************
+ *  Content — 16px gap between body text and action buttons
+ * ***************************************************************************************/
+
+.ibkDialog .ibkDialog-content {
+	color: var(--standard-fontcolor);
+	font-size: 1rem;
+	margin: 0 0 var(--ibk-spacing-32) 0;
+}
+
+
+/* ***************************************************************************************
+ *  Actions — slot for buttons, list in priority order (preferred first).
+ *  Horizontal: row, preferred on the right (row-reverse + flex-start).
+ *  Vertical:   column, preferred on top, each button full-width.
+ *  Gap between buttons = 16px in both.
+ * ***************************************************************************************/
+
+.ibkDialog .ibkDialog-actions {
+	display: flex;
+	gap: var(--ibk-spacing-16);
+}
+
+.ibkDialog.horizontal .ibkDialog-actions {
+	flex-direction: row-reverse;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+}
+
+.ibkDialog.vertical .ibkDialog-actions {
+	flex-direction: column;
+	align-items: stretch;
+}
+
+.ibkDialog.vertical .ibkDialog-actions > * {
+	width: 100%;
+}
+
+.ibkDialog.vertical .ibkDialog-actions button {
+	width: 100%;
+}
+
+
+/* ***************************************************************************************
+ *  Shake animation — used when the user tries to dismiss a persistent dialog
+ *  (via Escape or backdrop click). A subtle horizontal wobble signals that a
+ *  choice must be made from the slotted actions.
+ * ***************************************************************************************/
+
+@keyframes ibkDialogShake {
+	0%, 100% { transform: translateX(0); }
+	15%      { transform: translateX(-8px); }
+	30%      { transform: translateX(8px); }
+	45%      { transform: translateX(-6px); }
+	60%      { transform: translateX(6px); }
+	75%      { transform: translateX(-3px); }
+	90%      { transform: translateX(3px); }
+}
+
+.ibkDialog.shake {
+	animation: ibkDialogShake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}

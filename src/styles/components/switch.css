@@ -1,0 +1,249 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Switch (ibkSwitch)
+ *  barrier free
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+.ibkSwitch {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ibk-spacing-8, 8px);
+}
+
+.ibkSwitch label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ibk-spacing-8, 8px);
+    cursor: pointer;
+    height: 20px;
+}
+
+/* hide the native checkbox */
+
+.ibkSwitch label .checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+}
+
+/* the switch track */
+
+.ibkSwitch label .ibk-switch-toggle {
+    background-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-42));
+    border-radius: 6.25rem;
+    border: 0.125rem solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-42));
+    display: inline-block;
+    /* border-box: 2.5rem x 1.25rem is the outer track size incl. the 0.125rem border */
+    height: 1.25rem;
+    position: relative;
+    width: 2.5rem;
+    flex-shrink: 0;
+    transition: background-color var(--ibk-transition-default), border-color var(--ibk-transition-default);
+}
+
+/* the switch knob */
+
+.ibkSwitch label .ibk-switch-toggle::after {
+    border-radius: 6.25rem;
+    border: 0.25rem solid var(--white-100);
+    background-color: var(--white-100);
+    content: '';
+    /* border-box: 0.75rem is the outer knob size incl. the 0.25rem border */
+    height: 0.75rem;
+    margin: 0.125rem 0 0 0.125rem;
+    position: absolute;
+    width: 0.75rem;
+    transition: left var(--ibk-transition-default);
+    left: 0;
+}
+
+/* checked state */
+
+.ibkSwitch label .checkbox:checked + .ibk-switch-toggle {
+    background-color: var(--ibk-red-41);
+    border-color: var(--ibk-red-41);
+}
+
+.ibkSwitch label .checkbox:checked + .ibk-switch-toggle::after {
+    left: 1.25rem;
+}
+
+/* focus */
+
+.ibkSwitch label .checkbox:focus-visible + .ibk-switch-toggle {
+    outline: solid 2px var(--ibk-focusstroke);
+    outline-offset: 2px;
+}
+
+/* label text */
+
+.ibkSwitch label .ibk-switch-label {
+    font-weight: 500;
+    color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+}
+
+/* ***************************************************************************************
+ *  ibkSwitch variations
+ * ***************************************************************************************/
+
+/* ibkSwitch | disabled */
+
+.ibkSwitch label .checkbox[disabled] + .ibk-switch-toggle,
+.ibkSwitch:hover label .checkbox[disabled] + .ibk-switch-toggle {
+    background-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-26));
+    border-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-26));
+}
+
+.ibkSwitch label .checkbox[disabled] + .ibk-switch-toggle::after,
+.ibkSwitch:hover label .checkbox[disabled] + .ibk-switch-toggle::after {
+    background-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18)) !important;
+    border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18));
+}
+
+.ibkSwitch label .checkbox[disabled]:checked + .ibk-switch-toggle,
+.ibkSwitch:hover label .checkbox[disabled]:checked + .ibk-switch-toggle {
+    background-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-26));
+    border-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-26));
+}
+
+/* Same knob colour as the unchecked disabled switch above. The two used to differ in dark
+   mode - grey-18 off, grey-22 on - so flipping a disabled switch's value changed how its
+   knob read, which is the one thing a disabled control must not do. */
+
+.ibkSwitch label .checkbox[disabled]:checked + .ibk-switch-toggle::after,
+.ibkSwitch:hover label .checkbox[disabled]:checked + .ibk-switch-toggle::after {
+    background-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18)) !important;
+    border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18));
+}
+
+.ibkSwitch label.ibkSwitch-disabled .ibk-switch-label {
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkSwitch label.ibkSwitch-disabled {
+    cursor: not-allowed;
+}
+
+/* ibkSwitch | enabled | hover | unchecked */
+
+/*
+ * `:not([disabled])` on every pointer state, like the alert and success variants further down:
+ * the wrapper keeps matching :hover and :active while the input is disabled, and these rules
+ * are exactly as specific as the disabled rules above while sitting later in the file, so
+ * without the guard a disabled switch reacts to the pointer.
+ *
+ * The checked states need the guard too. Their disabled counterpart is a selector list whose
+ * specificity is that of its most specific *matching* selector - `[disabled]:checked` at
+ * (0,5,1) on its own, but (0,6,1) once the `:hover` half of the list matches as well. With a
+ * mouse that is always the case, since pressing implies hovering, and the disabled rule wins.
+ * Where :active can occur without :hover the list drops back to (0,5,1), ties with the rules
+ * below and loses on order - and a disabled switch flashes red.
+ */
+.ibkSwitch:hover label .checkbox:not([disabled]):not(:checked) + .ibk-switch-toggle {
+    background-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-50));
+    border-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-50));
+}
+
+.ibkSwitch:hover label .ibk-switch-toggle::after {
+    background-color: var(--white-100) !important;
+}
+
+/* ibkSwitch | enabled | hover | checked */
+
+.ibkSwitch:hover label .checkbox:not([disabled]):checked + .ibk-switch-toggle {
+    background-color: var(--ibk-red-49);
+    border-color: var(--ibk-red-49);
+}
+
+/* ibkSwitch | enabled | active | unchecked */
+
+.ibkSwitch:active label .checkbox:not([disabled]):not(:checked) + .ibk-switch-toggle {
+    background-color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-34));
+    border-color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-34));
+}
+
+.ibkSwitch:active label .ibk-switch-toggle::after {
+    background-color: var(--white-100) !important;
+}
+
+/* ibkSwitch | enabled | active | checked */
+
+.ibkSwitch:active label .checkbox:not([disabled]):checked + .ibk-switch-toggle {
+    background-color: var(--ibk-red-33);
+    border-color: var(--ibk-red-33);
+}
+
+/* ***************************************************************************************
+ *  ibkSwitch | leading label (label on left, switch on right)
+ * ***************************************************************************************/
+
+/* No special styling needed - DOM order naturally places label before input */
+
+/* ***************************************************************************************
+ *  ibkSwitch | State variations (alert, success)
+ * ***************************************************************************************/
+
+.ibkSwitch label.alert .checkbox:not([disabled]) + .ibk-switch-toggle,
+.ibkSwitch:hover label.alert .checkbox:not([disabled]) + .ibk-switch-toggle,
+.ibkSwitch:active label.alert .checkbox:not([disabled]) + .ibk-switch-toggle {
+    border-color: var(--ibk-alert-34);
+}
+
+.ibkSwitch label.alert .checkbox:not([disabled]):checked + .ibk-switch-toggle,
+.ibkSwitch:hover label.alert .checkbox:not([disabled]):checked + .ibk-switch-toggle,
+.ibkSwitch:active label.alert .checkbox:not([disabled]):checked + .ibk-switch-toggle {
+    background-color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+    border-color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+}
+
+.ibkSwitch label.success .checkbox:not([disabled]) + .ibk-switch-toggle,
+.ibkSwitch:hover label.success .checkbox:not([disabled]) + .ibk-switch-toggle,
+.ibkSwitch:active label.success .checkbox:not([disabled]) + .ibk-switch-toggle {
+    border-color: var(--ibk-success-22);
+}
+
+.ibkSwitch label.success .checkbox:not([disabled]):checked + .ibk-switch-toggle,
+.ibkSwitch:hover label.success .checkbox:not([disabled]):checked + .ibk-switch-toggle,
+.ibkSwitch:active label.success .checkbox:not([disabled]):checked + .ibk-switch-toggle {
+    background-color: var(--ibk-success-22);
+    border-color: var(--ibk-success-22);
+}
+
+/* ***************************************************************************************
+ *  Supporting Text
+ * ***************************************************************************************/
+
+.ibkSwitch + .supportingText {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ibk-spacing-8, 8px);
+}
+
+.ibkSwitch + .supportingText {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    max-width: stretch !important;
+}
+
+.ibkSwitch + .supportingText.disabled {
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkSwitch + .supportingText.alert {
+    color: var(--ibk-alert-34);
+}
+
+.ibkSwitch + .supportingText.success {
+    color: var(--ibk-success-22);
+}

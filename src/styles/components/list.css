@@ -1,0 +1,93 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  List (unordered - cicle, disc)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+ul {
+	color: var(--standard-fontcolor);
+	padding-left: 0.5rem;
+}
+ul li {
+	font-weight: 500;
+	line-height: 1.5rem;
+	list-style: none;
+	padding-left: 0.0625rem; 		/* 1px */
+	letter-spacing: 0.01563rem;
+}
+ul li::marker {
+	font-weight: 400;
+}
+ul li:before {
+	font-family: "IBYKUS-Iconset";
+	font-size: 1.25rem;
+	margin-right: 0.3125rem; 		/* 5px */
+	vertical-align: middle;
+	padding-bottom: 0.1875rem;  /* 3px fix */
+}
+ul li .liText {
+	display: inline-block;
+	line-height: 1.5rem;
+	vertical-align: middle;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Variants
+ * ***************************************************************************************/
+
+ul.circle li:before {
+	content: '\26aa'; /* IdesCSS Unicode */
+}
+ul.disc li:before {
+	content: '\26ab'; /* IdesCSS Unicode */
+}
+ul.square li:before {
+	content: '\2bc0'; /* IdesCSS Unicode */
+}
+
+
+
+
+/* ***************************************************************************************
+ *  List (unordered prominent)
+ * ***************************************************************************************/
+
+ul.prominent {
+	color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+}
+ul.prominent li:before {
+	color: var(--ibk-red-41);
+	content: '\e91a'; /* FontAwesome Unicode */
+	font-family: "IBYKUS-Iconset";
+	margin-right: 1.0rem; 		/* 16px */
+}
+
+
+
+
+/* ***************************************************************************************
+ *  List (ordered)
+ * ***************************************************************************************/
+
+ol {
+	color: var(--standard-fontcolor);
+	padding-left: 1.0rem;
+}
+ol li {
+	font-weight: 500;
+	padding-left: 0.0625rem; /* 1px */
+	line-height: 1.75rem;
+}
+ol li::marker {
+	font-weight: 400;
+}

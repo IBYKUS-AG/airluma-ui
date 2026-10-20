@@ -1,0 +1,86 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Tooltip (ibkTooltip)
+ * ***************************************************************************************/
+
+.ibkTooltip {
+	display: inline-flex;
+	width: 13.75rem;
+	padding: var(--ibk-spacing-4) var(--ibk-spacing-8);
+	align-items: flex-start;
+	gap: var(--ibk-spacing-16);
+	border-radius: var(--ibk-radius-4);
+	background: light-dark(var(--black-0), var(--white-100));
+	color: light-dark(var(--white-100), var(--black-0));
+}
+
+
+/* ***************************************************************************************
+ *  Text
+ * ***************************************************************************************/
+
+.ibkTooltip .ibkTooltip-text {
+	flex: 1 1 auto;
+	min-width: 0;
+	font-size: var(--text-l, 1rem);
+	line-height: var(--text-l-lh, 1.5rem);
+	color: light-dark(var(--white-100), var(--black-0));
+	word-break: break-word;
+}
+
+
+/* ***************************************************************************************
+ *  Type: Toggletip
+ *  Only the toggletip carries the close button (X), a tooltip is read-only text.
+ *  enabled  -> white-100
+ *  hover    -> grey-90
+ *  pressed  -> grey-82
+ * ***************************************************************************************/
+
+.ibkTooltip.ibkTooltip-toggletip .ibkButton-close {
+	background: transparent;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	border-radius: var(--ibk-radius-2);
+}
+
+.ibkTooltip.ibkTooltip-toggletip .ibkButton-close .ibkIcon {
+	display: flex;
+	height: 1.5rem;
+	flex-direction: column;
+	justify-content: center;
+	flex-shrink: 0;
+	align-self: flex-start;
+	aspect-ratio: 1/1;
+	color: light-dark(var(--white-100), var(--black-0));
+	text-align: center;
+	font-size: var(--icon-button, 1.5rem);
+	font-style: normal;
+	font-weight: 400;
+	line-height: var(--icon-button-lh, 1.5rem);
+}
+
+.ibkTooltip.ibkTooltip-toggletip .ibkButton-close:hover i {
+	color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+}
+
+.ibkTooltip.ibkTooltip-toggletip .ibkButton-close:active i {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-18));
+}
+
+.ibkTooltip.ibkTooltip-toggletip .ibkButton-close:focus-visible {
+	outline-offset: 0;
+}
+
+.ibkTooltip.ibkTooltip-toggletip .ibkButton-close:focus-visible i {
+	color: light-dark(var(--white-100), var(--black-0));
+}

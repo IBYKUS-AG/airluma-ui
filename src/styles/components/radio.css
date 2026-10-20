@@ -1,0 +1,181 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Radio (ibkRadio)
+ *  barrier free
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Radio Group - horizontal layout
+ * ***************************************************************************************/
+
+.ibkRadioGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--ibk-spacing-8, 8px);
+}
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+.ibkRadio {
+    display: inline-flex;
+    align-items: center;
+    height: 20px;
+}
+
+.ibkRadio label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--ibk-spacing-8, 8px);
+    cursor: pointer;
+    height: 20px;
+}
+
+/* outer line of the radio */
+
+.ibkRadio label input {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 0.125rem solid var(--ibk-red-41);
+    border-radius: 50%;
+    display: inline-grid;
+    place-content: center;
+    flex-shrink: 0;
+    /* The UA stylesheet sets `cursor: auto` on `input`, so the circle would keep the arrow
+       while the label next to it already shows the hand. */
+    cursor: pointer;
+}
+
+/* the inner circle of the radio */
+
+.ibkRadio label input::before {
+    content: '';
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    transform: scale(0);
+    box-shadow: inset 1em 1em var(--ibk-red-41);
+}
+
+.ibkRadio label input:checked::before {
+    transform: scale(1);
+}
+
+.ibkRadio label .ibk-radio-label {
+    font-weight: 500;
+    color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+}
+
+/* ***************************************************************************************
+ *  ibkRadio variations
+ * ***************************************************************************************/
+
+/* ibkRadio | disabled */
+
+.ibkRadio label input[disabled],
+.ibkRadio:hover label input[disabled] {
+    border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+    cursor: not-allowed;
+}
+
+.ibkRadio label.ibkRadio-disabled .ibk-radio-label {
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkRadio label input[disabled]::before,
+.ibkRadio:hover label input[disabled]::before {
+    box-shadow: inset 1em 1em light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkRadio label.ibkRadio-disabled {
+    cursor: not-allowed;
+}
+
+/* ibkRadio | enabled | hover */
+
+.ibkRadio:hover label input {
+    border-color: var(--ibk-red-49);
+}
+.ibkRadio:hover label input::before {
+    box-shadow: inset 1em 1em var(--ibk-red-49);
+}
+
+/* ibkRadio | enabled | active */
+
+.ibkRadio:active label input {
+    border-color: var(--ibk-red-33);
+}
+.ibkRadio:active label input::before {
+    box-shadow: inset 1em 1em var(--ibk-red-33);
+}
+
+/* ***************************************************************************************
+ *  ibkRadio | leading label (label on left, radio on right)
+ * ***************************************************************************************/
+
+/* No special styling needed - DOM order naturally places label before input */
+
+/* ***************************************************************************************
+ *  ibkRadio | State variations (alert, success)
+ * ***************************************************************************************/
+
+/* The inner circle below already pairs to alert-22 on a dark surface; the border was left
+   on the flat light value, so the two halves of the same radio disagreed in dark mode. */
+
+.ibkRadio label.alert input:not([disabled]),
+.ibkRadio:hover label.alert input:not([disabled]),
+.ibkRadio:active label.alert input:not([disabled]) {
+    border-color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+}
+
+.ibkRadio label.alert input:not([disabled])::before,
+.ibkRadio:hover label.alert input:not([disabled])::before,
+.ibkRadio:active label.alert input:not([disabled])::before {
+    box-shadow: inset 1em 1em light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+}
+
+.ibkRadio label.success input:not([disabled]),
+.ibkRadio:hover label.success input:not([disabled]),
+.ibkRadio:active label.success input:not([disabled]) {
+    border-color: var(--ibk-success-22);
+}
+
+.ibkRadio label.success input:not([disabled])::before,
+.ibkRadio:hover label.success input:not([disabled])::before,
+.ibkRadio:active label.success input:not([disabled])::before {
+    box-shadow: inset 1em 1em var(--ibk-success-22);
+}
+
+/* ***************************************************************************************
+ *  Supporting Text
+ * ***************************************************************************************/
+
+.supportingText {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ibk-spacing-8, 8px);
+}
+
+.supportingText {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    max-width: stretch !important;
+}
+
+.supportingText.alert {
+    color: var(--ibk-alert-34);
+}
+
+.supportingText.success {
+    color: var(--ibk-success-22);
+}

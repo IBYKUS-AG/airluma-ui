@@ -1,0 +1,51 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Label (<label>)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+.ibkLabel {
+	display: block;
+	line-height: 1.25rem;
+}
+
+label .ibkLabelText,
+.ibkLabel .ibk-switch-label {
+	color: var(--standard-fontcolor);
+	font-weight: 500 !important;
+	line-height: 1.25rem;
+	letter-spacing: var(--label-l-ls, 0.01563rem);
+}
+
+.ibkLabel .ibkLabelText {
+	display: inline-block;
+	line-height: 1.5rem;
+	vertical-align: middle;
+}
+
+.ibkLabel .ibkIcon {
+	color: light-dark(var(--ibk-info-34), var(--ibk-info-26));
+	cursor: pointer;
+	display: inline-block;
+	/* margin-left: 0.25rem; */
+	position: inherit;
+	vertical-align: middle;
+}
+.ibkLabel .ibkIcon:hover {
+	color: var(--ibk-info-42) !important;
+}
+.ibkLabel .ibkIcon:focus-visible {
+	border-radius: 0.0625rem;
+	color: var(--ibk-info-34);
+	outline-offset: 0;
+}
+.ibkLabel .ibkIcon:active {
+	color: var(--ibk-info-26) !important;
+}

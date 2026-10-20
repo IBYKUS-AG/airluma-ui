@@ -1,0 +1,150 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Accordion (ibkAccordion)
+ *  A vertically stacked list of collapsible sections. Each section is a legend
+ *  (h4) plus a chevron; the panel below reveals the section content when opened.
+ *  Colours, spacing and typography follow the "Accordion" tokens from Figma and
+ *  map onto the global IDES custom properties.
+ * ***************************************************************************************/
+
+.ibkAccordion {
+    display: block;
+}
+
+/* ***************************************************************************************
+ *  Item — dividers between sections (accordion/enable-b = grey-74)
+ * ***************************************************************************************/
+
+.ibkAccordion-item {
+    border-top: 1px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-22));
+    transition:
+        background-color var(--ibk-transition-default),
+        border-color var(--ibk-transition-default);
+}
+
+.ibkAccordion-item:last-child {
+    border-bottom: 1px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-22));
+}
+
+/* ***************************************************************************************
+ *  Trigger — the clickable legend row (legend + icon)
+ * ***************************************************************************************/
+
+.ibkAccordion-trigger {
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    display: flex;
+    gap: var(--ibk-spacing-12);
+    padding: var(--ibk-spacing-16);
+    text-align: left;
+    width: 100%;
+}
+
+/* Leading icon variant: chevron sits before the legend. */
+.ibkAccordion-trigger.ibkAccordion-leading .ibkAccordion-icon {
+    order: -1;
+}
+
+.ibkAccordion-trigger:focus-visible {
+    outline: 2px solid var(--ibk-focusstroke);
+    outline-offset: -2px;
+}
+
+.ibkAccordion-trigger:disabled {
+    cursor: not-allowed;
+}
+
+/* Legend — <h4> Headline S (Asap SemiBold, 21px / 24px), accordion/enable-c */
+.ibkAccordion-legend {
+    color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+    flex: 1 0 0;
+    font-size: 1.3125rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    min-width: 0;
+}
+
+/* Chevron — Button Icon (24px), accordion/enable-c */
+.ibkAccordion-icon {
+    color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+    flex: 0 0 auto;
+}
+
+/* ***************************************************************************************
+ *  Panel — content revealed when the section is open. The slide uses the shared
+ *  --ibk-transition-default (same easing as the switch): the grid row animates
+ *  from 0fr to 1fr while the inner wrapper clips the overflow, so the panel eases
+ *  open/closed to its natural height.
+ * ***************************************************************************************/
+
+.ibkAccordion-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--ibk-transition-default);
+}
+
+.ibkAccordion-item.active .ibkAccordion-panel {
+    grid-template-rows: 1fr;
+}
+
+.ibkAccordion-panelInner {
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Baseline text (Asap Regular, 16px / 24px). The 8px top padding stacks on the
+ * trigger's 16px bottom padding to give the 24px legend-to-content gap from Figma. */
+.ibkAccordion-content {
+    color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    padding: var(--ibk-spacing-8) var(--ibk-spacing-16) var(--ibk-spacing-24);
+}
+
+/* Respect users who prefer reduced motion — collapse/expand instantly. */
+@media (prefers-reduced-motion: reduce) {
+    .ibkAccordion-item,
+    .ibkAccordion-panel {
+        transition: none;
+    }
+}
+
+/* ***************************************************************************************
+ *  Opened state — accordion/enable-bg = grey-98; dividers blend into the fill
+ * ***************************************************************************************/
+
+.ibkAccordion-item.active {
+    background-color: light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-10));
+    border-top-color: light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-10));
+}
+
+.ibkAccordion-item.active:last-child {
+    border-bottom-color: light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-10));
+}
+
+/* ***************************************************************************************
+ *  Disabled state — accordion/disable-c = grey-82; disabled fill is transparent
+ * ***************************************************************************************/
+
+.ibkAccordion-item.disabled .ibkAccordion-legend,
+.ibkAccordion-item.disabled .ibkAccordion-icon,
+.ibkAccordion-item.disabled .ibkAccordion-content {
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkAccordion-item.active.disabled {
+    background-color: transparent;
+    border-top-color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-22));
+}
+
+.ibkAccordion-item.active.disabled:last-child {
+    border-bottom-color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-22));
+}

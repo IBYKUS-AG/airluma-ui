@@ -1,0 +1,220 @@
+/*
+ * Styles for the Iconset Preview docs page (src/stories/IconsetPreview.tsx).
+ * Ported from the standalone index.html / detail.html preview pages. This is a
+ * Storybook-only page, so the styles live next to the story instead of in the
+ * shipped `src/styles/ides.css` bundle.
+ */
+
+.ibkIconsetPreview {
+    background: light-dark(var(--white-100), var(--black-0));
+    padding: 0 var(--ibk-spacing-16) var(--ibk-spacing-16);
+}
+
+/*
+ * Storybook's docs stylesheet styles bare `td`/`th`/`a`/`code` inside `.sbdocs` (link-blue
+ * text, striped rows, monospace accents). Reset those here so the page keeps the ides look
+ * of the standalone preview rather than Storybook's documentation typography.
+ */
+.ibkIconsetPreview table.info-table,
+.ibkIconsetPreview table.info-table tr,
+.ibkIconsetPreview table.info-table th,
+.ibkIconsetPreview table.info-table td {
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+    background: light-dark(var(--white-100), var(--black-0));
+    color: var(--standard-fontcolor);
+    border: 0;
+}
+
+.ibkIconsetPreview .icon-name,
+.ibkIconsetPreview .icon-symbol {
+    color: var(--standard-fontcolor);
+    text-decoration: none;
+}
+
+/* **********************************************************************************
+ *  Overview: filter bar
+ * *********************************************************************************/
+
+/*
+ * .ibk-cluster supplies display, wrapping, centring and gap. The Cluster wraps on its
+ * own once the row runs out of room, so the two breakpoints the standalone page used to
+ * switch between a column and a row are gone: no media query, and the row reflows at any
+ * width down to 320px (WCAG 1.4.10).
+ */
+.ibkIconsetPreview #formular {
+    position: sticky;
+    top: 0;
+    z-index: 10; /* keeps the filter bar above the grid while scrolling */
+
+    padding-block: var(--ibk-spacing-12);
+    /* Half-transparent so the grid stays visible through the blur. `rgb(var(--token) / 0.5)`
+       cannot do this: the tokens are whole `rgb(...)` values, not bare channel triplets. */
+    background: color-mix(
+        in srgb,
+        light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-2)) 50%,
+        transparent
+    );
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid light-dark(var(--ibk-neutral-grey-98), var(--ibk-neutral-grey-2));
+}
+
+/*
+ * The four controls have to stay on one line. The Cluster still wraps as a last resort
+ * (WCAG 1.4.10), but everything below is sized so the row fits long before that: the
+ * search field is the only item that absorbs slack, so it starts from a small basis
+ * while the select and the buttons keep their natural width.
+ */
+.ibkIconsetPreview #formular > .ibk-cluster-grow {
+    flex: 1 1 6rem;
+}
+
+/* The buttons shrink down to their label before the row is allowed to wrap; the label
+   itself never breaks across two lines. */
+.ibkIconsetPreview #formular .ibkButton {
+    inline-size: 10rem;
+    min-inline-size: fit-content;
+    white-space: nowrap;
+}
+
+.ibkIconsetPreview .ibkSelect {
+    width: fit-content;
+}
+
+.ibkIconsetPreview .filter-separator {
+    color: var(--standard-fontcolor);
+}
+
+/*
+ * The ides input reserves ~2.9rem below itself for a supporting-text slot. This page has no
+ * supporting text, and inside the flex filter bar that reserved space makes the element taller
+ * than the bar, so `align-items: center` lifts the input above the bar's top edge. Drop the
+ * margin and let the input size to its own height.
+ */
+.ibkIconsetPreview .ibkInputText {
+    margin-bottom: 0;
+}
+
+.ibkIconsetPreview .ibkInputText input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ibkIconsetPreview .ibkIcon.reset-icon {
+    cursor: pointer;
+    color: var(--standard-fontcolor);
+}
+
+/* **********************************************************************************
+ *  Overview: icon grid
+ * *********************************************************************************/
+
+/*
+ * .ibk-auto-grid-fill supplies display, columns and gap; the tile minimum matches the
+ * card's own min-width (.ibkCard, 8rem) so the grid track never fights the component's
+ * declared floor. auto-fill, not auto-fit, so a short filter result keeps the tile size
+ * of a full row instead of stretching a few icons across the whole width.
+ */
+.ibkIconsetPreview .grid {
+    --ibk-auto-grid-min: 8rem;
+}
+
+.ibkIconsetPreview .scroll-sentinel {
+    height: 1px;
+}
+
+/*
+ * The card surface (background, padding, radius, min-size) comes entirely from
+ * <ibk-card variant="filled" delta="2">; only the grid-item behaviour is added here.
+ */
+.ibkIconsetPreview .icon-card {
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+/*
+ * Hover steps the card one level up the neutral grey ramp: delta 2 at rest, delta 6 on
+ * hover. `background-color`, not the `background` shorthand — the shorthand also resets
+ * `background-clip` to `border-box`, which paints the colour across the card's 1px
+ * transparent border and squares off the rounded corners.
+ */
+.ibkIconsetPreview .icon-card:hover {
+    background-color: light-dark(var(--ibk-neutral-grey-94), var(--ibk-neutral-grey-6));
+    background-clip: padding-box;
+}
+
+.ibkIconsetPreview .icon-symbol {
+    font-family: 'IBYKUS-Iconset' !important;
+    font-size: 2rem;
+    display: block;
+    margin-bottom: var(--ibk-spacing-12);
+}
+
+.ibkIconsetPreview .icon-name {
+    font-family: 'Asap', sans-serif;
+    font-size: clamp(0.75rem, 1vw, 2rem);
+    word-break: break-word;
+}
+
+/* **********************************************************************************
+ *  Detail view
+ * *********************************************************************************/
+
+.ibkIconsetPreview .big-preview {
+    font-family: 'IBYKUS-Iconset';
+    /* Sized against the aside, not the viewport, so it shrinks with the column. */
+    font-size: clamp(2rem, 18vw, 16rem);
+    line-height: 1;
+    text-align: center;
+}
+
+.ibkIconsetPreview .detail-title {
+    margin-top: var(--ibk-spacing-16);
+}
+
+/*
+ * .ibk-sidebar puts the preview beside the table and drops it above the table on its own
+ * once the two minimums stop fitting - the job the two breakpoints used to do by hand.
+ * The preview is the aside so it keeps a target width while the table takes the rest.
+ */
+.ibkIconsetPreview .detail-layout {
+    --ibk-sidebar-aside-size: 18rem;
+    --ibk-sidebar-main-min: 20rem;
+    align-items: center;
+    margin-block: var(--ibk-spacing-16);
+}
+
+.ibkIconsetPreview table.info-table {
+    border-collapse: collapse;
+    width: 100%;
+    color: var(--standard-fontcolor);
+}
+
+.ibkIconsetPreview table.info-table th {
+    text-align: left;
+    padding: var(--ibk-spacing-8);
+    width: 11rem;
+    border-bottom: 1px solid light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+}
+
+.ibkIconsetPreview table.info-table td {
+    padding: var(--ibk-spacing-8);
+    border-bottom: 1px solid light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+}
+
+.ibkIconsetPreview .copy-badge {
+    color: #fff;
+}
+
+.ibkIconsetPreview .ibkChip {
+    visibility: hidden;
+    transition: visibility 0.5s ease;
+}
+
+/* Show the chip while hovering anywhere in the cell */
+.ibkIconsetPreview td:hover .ibkChip {
+    visibility: visible;
+    cursor: pointer;
+}

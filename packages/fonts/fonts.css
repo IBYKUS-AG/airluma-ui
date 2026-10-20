@@ -1,0 +1,36 @@
+/* ***************************************************************************************
+ *	 Asap - the document font of the IBYKUS Design System.
+ *
+ *	 Copyright 2018 The Asap Project Authors (https://github.com/Omnibus-Type/Asap)
+ *
+ *	 This Font Software is licensed under the SIL Open Font License, Version 1.1.
+ *	 The full license text ships with this package as OFL.txt (and as LICENSE) and
+ *	 is also available with a FAQ at https://scripts.sil.org/OFL
+ *
+ *	 Asap declares no Reserved Font Name, so a converted or subsetted copy may keep
+ *	 the family name - but any such Modified Version stays under the OFL and must
+ *	 carry OFL.txt with it. Whatever ships the fonts ships the license: that is the
+ *	 one rule this package exists to keep.
+ *
+ *	 'Asap' ships as two variable faces of one family: upright and italic. The browser
+ *	 picks the italic face automatically for font-style: italic, so italic text never
+ *	 needs a different font-family and is never synthesised (faux italic).
+ * ***************************************************************************************/
+
+@font-face {
+	font-family: 'Asap';
+	src: url('./assets/Asap_wdth-wght.ttf') format('truetype');
+	font-weight: 100 900;
+	font-stretch: 75% 125%;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Asap';
+	src: url('./assets/Asap-Italic_wdth-wght.ttf') format('truetype');
+	font-weight: 100 900;
+	font-stretch: 75% 125%;
+	font-style: italic;
+	font-display: swap;
+}

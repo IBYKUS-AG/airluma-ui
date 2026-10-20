@@ -1,0 +1,23 @@
+<!-- The manager is its own document and never loads `ides.css`, so the 'Asap'
+     faces declared in `src/styles/components/global.css` have to be repeated
+     here for the theme's `fontBase` to resolve. Paths point at the static dir
+     mapping from `main.ts` (`../packages/fonts` -> `/resources/fonts`). -->
+<style>
+  @font-face {
+    font-family: 'Asap';
+    src: url('resources/fonts/assets/Asap_wdth-wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-stretch: 75% 125%;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Asap';
+    src: url('resources/fonts/assets/Asap-Italic_wdth-wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-stretch: 75% 125%;
+    font-style: italic;
+    font-display: swap;
+  }
+</style>

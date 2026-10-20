@@ -1,0 +1,54 @@
+{
+  "name": "@ides/fonts",
+  "version": "0.0.0-dev",
+  "description": "Asap variable fonts (SIL Open Font License 1.1) for the IBYKUS Design System",
+  "license": "OFL-1.1",
+  "author": "The Asap Project Authors (https://github.com/Omnibus-Type/Asap)",
+  "type": "module",
+  "ides": {
+    "fontFamily": "Asap",
+    "upstream": "https://github.com/Omnibus-Type/Asap",
+    "axes": [
+      "wght 100..900",
+      "wdth 75..125"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IBYKUS-AG/airluma-ui.git",
+    "directory": "packages/fonts"
+  },
+  "bugs": {
+    "url": "https://github.com/IBYKUS-AG/airluma-ui/issues"
+  },
+  "keywords": [
+    "ibykus",
+    "ides",
+    "asap",
+    "variable-font",
+    "webfont",
+    "ofl"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "exports": {
+    "./fonts.css": "./fonts.css",
+    "./assets/*": "./assets/*",
+    "./OFL.txt": "./OFL.txt",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "fonts.css",
+    "assets/Asap_wdth-wght.ttf",
+    "assets/Asap-Italic_wdth-wght.ttf",
+    "OFL.txt",
+    "LICENSE",
+    "README.md"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "homepage": "https://www.airluma.de"
+}

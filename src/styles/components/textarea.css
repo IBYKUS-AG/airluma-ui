@@ -1,0 +1,265 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+
+/* ***************************************************************************************
+ *	 Textarea (ibkTextarea)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Initial definitions
+ * ***************************************************************************************/
+
+.ibkTextarea {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	gap: var(--ibk-spacing-6, 6px);
+	position: relative;
+	width: 100%;
+}
+
+.ibkTextareaWrapper {
+	position: relative;
+	width: 100%;
+}
+
+.ibkTextarea label {
+	color: var(--standard-fontcolor);
+	display: block;
+}
+
+.ibkTextarea .ibkLabel .ibkIcon.label-info {
+	color: var(--ibk-info-34);
+}
+
+.ibkTextarea textarea::placeholder {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+	opacity: 1;
+	/* Firefox fix */
+}
+
+.ibkTextarea textarea {
+	background: light-dark(var(--white-100), var(--ibk-neutral-grey-10));
+	border-radius: var(--ibk-radius-6, 6px) 0 var(--ibk-radius-6, 6px) 0;
+	border: 2px solid light-dark(var(--ibk-neutral-grey-58), var(--ibk-neutral-grey-34));
+	color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+	display: inline-block;
+	font-family: inherit;
+	font-size: inherit;
+	min-height: 6rem;
+	padding: var(--ibk-spacing-6, 6px) var(--ibk-spacing-8, 8px);
+	position: relative;
+	resize: none;
+	width: 100%;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  fixed (default) - uses full border-radius
+ *  resize - keeps the bottom-right corner squared so the resize grip shows
+ * ***************************************************************************************/
+
+.ibkTextarea.resize textarea {
+	border-radius: var(--ibk-radius-6, 6px) 0 0 0;
+	resize: vertical;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Supporting text
+ * ***************************************************************************************/
+
+.ibkTextarea .supportingText {
+	align-items: flex-start;
+	display: flex;
+	gap: var(--ibk-spacing-4, 4px);
+	margin-top: -0.25rem;
+	width: 100%;
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+}
+
+.ibkTextarea .supportingText .ibkIcon {
+	color: inherit;
+	float: none !important;
+	margin: 0;
+}
+
+.ibkTextarea .supportingText .content {
+	float: none;
+}
+
+
+
+
+/* ***************************************************************************************
+ *  Counter - right of the supporting text, below the field
+ * ***************************************************************************************/
+
+/* The row takes over the negative top margin of the supporting text, so the supporting text
+   and the counter start on the same line. */
+
+.ibkTextarea .supportingRow {
+	align-items: flex-start;
+	display: flex;
+	gap: var(--ibk-spacing-16, 1rem);
+	justify-content: flex-end;
+	margin-top: -0.25rem;
+	width: 100%;
+}
+
+.ibkTextarea .supportingRow .supportingText {
+	flex: 1;
+	margin-top: 0;
+	min-width: 0;
+}
+
+/* The 3px top padding centres the 14px counter line on the first 20px line of the supporting
+   text. */
+
+.ibkTextarea .counter {
+	color: var(--standard-fontcolor);
+	flex-shrink: 0;
+	font-size: 0.875rem;
+	font-weight: 500;
+	letter-spacing: 0.03125rem;
+	line-height: 0.875rem;
+	padding-top: 0.1875rem;
+	white-space: nowrap;
+}
+
+/* The counter keeps the text colour in the alert, warning and success states - only the
+   supporting text carries the state colour. Disabled and read-only fields grey it out. */
+
+.ibkTextarea.disabled .counter,
+.ibkTextarea.readonly .counter {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+
+
+
+/* ***************************************************************************************
+ *  ibkTextarea variations
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  disabled
+ * ***************************************************************************************/
+
+.ibkTextarea.disabled .ibkLabel,
+.ibkTextarea.disabled .ibkLabel .ibkLabelText,
+.ibkTextarea.disabled .ibkLabel .ibkIcon {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+/* label.css paints the info icon blue on hover and press and gives it a hand cursor, and it
+   marks the two colours !important - which outranks the disabled grey above no matter how
+   specific that is. So on a disabled field the icon still lit up under the pointer. The two
+   rules below take it back out of the interaction, matching what range-slider.css does. */
+
+.ibkTextarea.disabled .ibkLabel .ibkIcon.label-info {
+	cursor: default;
+}
+
+.ibkTextarea.disabled .ibkLabel .ibkIcon:hover,
+.ibkTextarea.disabled .ibkLabel .ibkIcon:active {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+}
+
+.ibkTextarea.disabled textarea[disabled] {
+	background-color: light-dark(var(--ibk-neutral-grey-94), transparent);
+	border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-14));
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+	resize: none;
+}
+
+.ibkTextarea.disabled textarea[disabled]::placeholder {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+.ibkTextarea.disabled .supportingText,
+.ibkTextarea.disabled .supportingText .ibkIcon {
+	color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+}
+
+
+/* ***************************************************************************************
+ *  alert
+ * ***************************************************************************************/
+
+.ibkTextarea.alert textarea {
+	background-color: light-dark(var(--ibk-alert-94), var(--ibk-alert-6));
+	border-color: light-dark(var(--ibk-alert-34), var(--ibk-alert-22));
+}
+
+.ibkTextarea.alert textarea::placeholder {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+}
+
+.ibkTextarea.alert .supportingText {
+	color: var(--ibk-alert-34);
+}
+
+.ibkTextarea.alert .supportingText .ibkIcon {
+	color: var(--ibk-alert-34);
+}
+
+
+/* ***************************************************************************************
+ *  warning
+ * ***************************************************************************************/
+
+.ibkTextarea.warning textarea {
+	border-color: light-dark(var(--ibk-warning-34), var(--ibk-warning-22));
+}
+
+.ibkTextarea.warning .supportingText {
+	color: var(--ibk-warning-34);
+}
+
+.ibkTextarea.warning .supportingText .ibkIcon {
+	color: var(--ibk-warning-34);
+}
+
+
+/* ***************************************************************************************
+ *  read-only
+ * ***************************************************************************************/
+
+.ibkTextarea.readonly textarea {
+	border-color: light-dark(var(--ibk-neutral-grey-58), var(--ibk-neutral-grey-14));
+	background-color: light-dark(var(--ibk-neutral-grey-94), transparent);
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-14));
+}
+
+.ibkTextarea.readonly textarea::placeholder {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+}
+
+.ibkTextarea.readonly .supportingText {
+	color: light-dark(var(--ibk-neutral-grey-42), var(--ibk-neutral-grey-58));
+}
+
+
+/* ***************************************************************************************
+ *  success
+ * ***************************************************************************************/
+
+.ibkTextarea.success textarea {
+	border-color: light-dark(var(--ibk-success-26), var(--ibk-success-18));
+}
+
+.ibkTextarea.success .supportingText {
+	color: var(--ibk-success-22);
+}
+
+.ibkTextarea.success .supportingText .ibkIcon {
+	color: var(--ibk-success-22);
+}

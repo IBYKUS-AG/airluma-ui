@@ -1,0 +1,39 @@
+/* ***************************************************************************************
+ *	 IBYKUS-Iconset - the icon webfont of the IBYKUS Design System.
+ *
+ *	 Icons are rendered as *ligatures*, not as class names: put the ligature in the
+ *	 element's text content and give it the .ibkIcon class.
+ *
+ *	     <i class="ibkIcon">ChevRBig</i>
+ *
+ *	 This is the stylesheet for <link> and CDN delivery. The browser walks the src
+ *	 list from left to right and stops at the first format it supports, so the
+ *	 sources are ordered most modern and most compact first: woff2 (~30% smaller
+ *	 than woff), then woff, then ttf as a last resort.
+ * ***************************************************************************************/
+
+@font-face {
+	font-family: "IBYKUS-Iconset";
+	src: url('./assets/IBYKUS-Iconset.woff2') format('woff2'),
+	     url('./assets/IBYKUS-Iconset.woff') format('woff'),
+	     url('./assets/IBYKUS-Iconset.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
+:root {
+	--ides-iconset-version: "2.0";
+}
+
+/* No display, float or font-size here: this rule has to work on its own for a
+   consumer who only wants the iconset, so it carries exactly what makes a glyph
+   render. Sizing and layout belong to the design system (see global.css) or to
+   the component. */
+.ibkIcon {
+	font-family: "IBYKUS-Iconset" !important;
+	font-style: inherit;
+	line-height: 1.0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

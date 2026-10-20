@@ -1,0 +1,55 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+import { html } from 'lit';
+import { IbkSelect, SELECT_STATES } from './ibk-select';
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+import './ibk-select';
+
+const meta: Meta<IbkSelect> = {
+  title: 'Components/Select',
+  component: 'ibk-select',
+  argTypes: {
+    state: {
+      control: { type: 'select' },
+      options: SELECT_STATES,
+    },
+    disabled: { control: 'boolean' },
+    options: { control: 'object' },
+  },
+  tags: ['autodocs'],
+};
+
+const { events, args, argTypes, template } =
+  getStorybookHelpers<IbkSelect>("ibk-select");
+
+export default meta;
+type Story = StoryObj<IbkSelect>;
+
+export const Primary: Story = {
+  args: {
+    label: 'Select an Option',
+    value: '',
+    disabled: false,
+    state: '',
+    supportingText: 'Helper text',
+    labelIcon: '',
+    supportingIcon: '',
+    options: [
+      { value: '', label: 'Choose...' },
+      { value: 'opt1', label: 'Option 12' },
+      { value: 'opt2', label: 'Option 22' },
+      { value: 'opt3', label: 'Option 32' },
+    ]
+  },
+  render: (args) => html`
+    <ibk-select
+      label="${args.label}"
+      value="${args.value}"
+      ?disabled="${args.disabled}"
+      state="${args.state}"
+      supporting-text="${args.supportingText}"
+      label-icon="${args.labelIcon}"
+      supporting-icon="${args.supportingIcon}"
+      .options="${args.options}"
+    ></ibk-select>
+  `,
+};

@@ -1,0 +1,282 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ *
+ * Author:       Christian Dinse, IBYKUS AG fuer Informationstechnologie
+ * Description:  The main CSS file of IBYKUS-Designsystem (IDES) CSS-Framework
+ * Rights:       (C) 2023-2025 IBYKUS AG fuer Informationstechnologie
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Button (<button>)
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Initial settings
+ * ***************************************************************************************/
+
+button.ibkButton {
+    -webkit-border-top-left-radius: var(--ibk-radius-6, 6px);
+    -webkit-border-bottom-right-radius: var(--ibk-radius-6, 6px);
+    -moz-border-radius-topleft: var(--ibk-radius-6, 6px);
+    -moz-border-radius-bottomright: var(--ibk-radius-6, 6px);
+    border-top-left-radius: var(--ibk-radius-6, 6px);
+    border-bottom-right-radius: var(--ibk-radius-6, 6px);
+    position: relative;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ibk-spacing-8, 8px);
+    font-size: var(--text-button, 1rem);
+    font-weight: 500;
+    line-height: var(--text-button-lh, 24px);
+    min-height: 40px;
+    font-style: normal;
+    cursor: pointer;
+}
+
+/* ***************************************************************************************
+ *   Button focus on keyboard navigation
+ *	 It's the same for all button types instead of Button decent primary
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *   Button active because clicked
+ *	 Remove the focus border globally for all button versions
+ * ***************************************************************************************/
+
+button.ibkButton:active {
+    outline: 0;
+}
+
+/* *************************************************************************************** 
+ *	 Icons inside buttons
+ *	 fixes if icons available to place them correct 
+ * ***************************************************************************************/
+
+button.ibkButton.ibkIcon-leading {
+    padding: var(--ibk-spacing-6, 6px) var(--ibk-spacing-14, 14px) var(--ibk-spacing-6, 6px)
+        var(--ibk-spacing-10, 10px);
+}
+button.ibkButton.ibkIcon-trailing {
+    padding: var(--ibk-spacing-6, 6px) var(--ibk-spacing-10, 10px) var(--ibk-spacing-6, 6px)
+        var(--ibk-spacing-14, 14px);
+}
+button.ibkButton {
+    padding: var(--ibk-spacing-6, 6px) var(--ibk-spacing-14, 14px) var(--ibk-spacing-6, 6px)
+        var(--ibk-spacing-14, 14px);
+}
+button.ibkButton.ibkIcon-button-only {
+    padding: var(--ibk-spacing-6, 6px) var(--ibk-spacing-10, 10);
+    border: 0px;
+}
+
+button.ibkButton .ibkIcon {
+    text-align: center;
+    font-size: var(--text-button-lh, 24px);
+    font-style: inherit;
+}
+
+button.ibkButton.ibkIcon-leading .ibkIcon {
+    order: 0;
+}
+
+button.ibkButton.ibkIcon-trailing .ibkIcon {
+    order: 1;
+}
+
+button.ibkButton .ibkButtonText {
+    font-weight: 500;
+}
+
+/* ***************************************************************************************
+ *	 Button (<button>)
+ *	 All buttons versions
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 BUTTON REGULAR PRIMARY
+ * ***************************************************************************************/
+
+/*   Text Button regular primary */
+.ibkButton.ibkButton-regular.ibkButton-primary {
+    background-color: var(--ibk-red-41);
+    color: var(--white-100);
+    border: 2px solid var(--ibk-red-41);
+}
+/* 	 Button regular primary disabled */
+.ibkButton.ibkButton-regular.ibkButton-primary:disabled {
+    color: light-dark(var(--white-100), var(--ibk-neutral-grey-22));
+    background-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important;
+    border: 2px solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important;
+}
+/* 	 Text Button regular primary hover */
+.ibkButton.ibkButton-regular.ibkButton-primary:hover {
+    background-color: var(--ibk-red-49);
+    border: 2px solid var(--ibk-red-49);
+}
+
+/* 	 Button regular primary active */
+.ibkButton.ibkButton-regular.ibkButton-primary:active {
+    background-color: var(--ibk-red-33);
+    border: 2px solid var(--ibk-red-33);
+}
+
+/* ***************************************************************************************
+ *	 BUTTON REGULAR SECONDARY
+ * ***************************************************************************************/
+
+/* 	 Text Button regular secondary */
+.ibkButton.ibkButton-regular.ibkButton-secondary {
+    background-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-66));
+    color: var(--ibk-neutral-grey-18);
+    border: 2px solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-66));
+}
+
+/* 	 Button regular secondary disabled */
+.ibkButton.ibkButton-regular.ibkButton-secondary:disabled {
+    background-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important;
+    color: light-dark(var(--white-100), var(--ibk-neutral-grey-22));
+    border: 2px solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important;
+}
+
+/* 	 Text Button regular secondary hover */
+.ibkButton.ibkButton-regular.ibkButton-secondary:hover {
+    background-color: var(--ibk-neutral-grey-90);
+    border: 2px solid var(--ibk-neutral-grey-90);
+}
+
+/* 	 Button regular secondary active */
+.ibkButton.ibkButton-regular.ibkButton-secondary:active {
+    background-color: var(--ibk-neutral-grey-74);
+    border: 2px solid var(--ibk-neutral-grey-74);
+}
+
+/* ***************************************************************************************
+ *	 BUTTON DECENT PRIMARY
+ * ***************************************************************************************/
+
+/* 	 Text Button decent primary*/
+.ibkButton.ibkButton-decent.ibkButton-primary {
+    background-color: transparent;
+    border: 2px solid light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-22));
+    color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+}
+
+/* 	 Button decent primary disabled */
+.ibkButton.ibkButton-decent.ibkButton-primary:disabled {
+    background-color: transparent !important;
+    border: 2px solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+    color: light-dark(var(--ibk-neutral-grey-78), var(--ibk-neutral-grey-22));
+}
+/* 	 Text Button decent primary hover */
+.ibkButton.ibkButton-decent.ibkButton-primary:hover {
+    background-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+    border: 2px solid light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-22));
+}
+
+/* 	 Button decent primary active */
+.ibkButton.ibkButton-decent.ibkButton-primary:active {
+    background-color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26));
+}
+/* 	 Button decent primary icon-solo */
+.ibkButton.ibkButton-decent.ibkButton-primary.ibkIcon-solo {
+    padding: var(--ibk-spacing-6, 6px);
+}
+
+/* ***************************************************************************************
+ *	 BUTTON DECENT SECONDARY
+ * ***************************************************************************************/
+
+/* 	 Text Button decent secondary*/
+.ibkButton.ibkButton-decent.ibkButton-secondary {
+    background-color: transparent;
+    color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+    border: 2px solid transparent;
+}
+/* 	 Button decent secondary disabled */
+.ibkButton.ibkButton-decent.ibkButton-secondary:disabled {
+    background-color: light-dark(var(--white-100), transparent) !important;
+    color: light-dark(var(--ibk-neutral-grey-78), var(--ibk-neutral-grey-22)) !important;
+    border: 2px solid light-dark(var(--white-100), transparent) !important;
+}
+/* 	 Text Button decent secondary hover */
+.ibkButton.ibkButton-decent.ibkButton-secondary:hover {
+    background-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+    border: 2px solid light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+}
+/* 	 Button decent primary active */
+.ibkButton.ibkButton-decent.ibkButton-secondary:active {
+    background-color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26));
+    border: 2px solid light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26));
+}
+/* 	 Button decent secondary icon-solo */
+.ibkButton.ibkButton-decent.ibkButton-secondary.ibkIcon-solo {
+    padding: var(--ibk-spacing-6, 6px);
+}
+
+/* ***************************************************************************************
+ *	 BUTTON DESTRUCTIVE
+ * ***************************************************************************************/
+
+/*   Text Button destructive */
+.ibkButton.ibkButton-destructive {
+    background-color: var(--ibk-alert-34);
+    color: var(--white-100);
+    border: 2px solid var(--ibk-alert-34);
+}
+/* 	 Button destructive disabled */
+.ibkButton.ibkButton-destructive:disabled {
+    color: light-dark(var(--white-100), var(--ibk-neutral-grey-22));
+    background-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important;
+    border: 2px solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important;
+}
+/* 	 Text Button destructive hover */
+.ibkButton.ibkButton-destructive:hover {
+    background-color: var(--ibk-alert-42);
+    border: 2px solid var(--ibk-alert-42);
+}
+
+/* 	 Button destructive active */
+.ibkButton.ibkButton-destructive:active {
+    background-color: var(--ibk-alert-26);
+    border: 2px solid var(--ibk-alert-26);
+}
+
+/* ***************************************************************************************
+ *	 BUTTON SUCCESS
+ * ***************************************************************************************/
+
+/*   Text Button success */
+.ibkButton.ibkButton-success {
+    background-color: light-dark(var(--ibk-success-22), var(--ibk-success-18));
+    color: var(--white-100);
+    border: 2px solid light-dark(var(--ibk-success-22), var(--ibk-success-18));
+}
+/* 	 Button success disabled */
+.ibkButton.ibkButton-success:disabled {
+    color: light-dark(var(--white-100), var(--ibk-neutral-grey-22));
+    background-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important;
+    border: 2px solid light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-10)) !important;
+}
+/* 	 Text Button success hover */
+.ibkButton.ibkButton-success:hover {
+    background-color: light-dark(var(--ibk-success-34), var(--ibk-success-26));
+    border: 2px solid light-dark(var(--ibk-success-34), var(--ibk-success-26));
+}
+
+/* 	 Button success active */
+.ibkButton.ibkButton-success:active {
+    background-color: light-dark(var(--ibk-success-14), var(--ibk-success-10));
+    border: 2px solid light-dark(var(--ibk-success-14), var(--ibk-success-10));
+}
+
+/* ***************************************************************************************
+ *	 BUTTON ICON-SOLO
+ * ***************************************************************************************/
+
+/*   Button with a single icon and no text */
+button.ibkButton.ibkIcon-solo {
+    padding: var(--ibk-spacing-6, 6px);
+}

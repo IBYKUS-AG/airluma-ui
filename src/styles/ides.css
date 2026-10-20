@@ -1,0 +1,70 @@
+/*
+.___ __________ _____.___. ____  __. ____ ___  _________   .___ ________   ___________  _________
+|   |\______   \\__  |   ||    |/ _||    |   \/   _____/   |   |\______ \  \_   _____/ /   _____/ 
+|   | |    |  _/ /   |   ||      <  |    |   /\_____  \    |   | |    |  \  |    __)_  \_____  \ 
+|   | |    |   \ \____   ||    |  \ |    |  / /        \   |   | |    `   \ |        \ /        \
+|___| |______  / / ______||____|__ \|______/ /_______  /   |___|/_______  //_______  //_______  /
+             \/  \/               \/                 \/                 \/         \/         \/
+
+							     IBYKUS-Designsystem CSS-Framework
+
+Framework:    IdesFramework
+Path:         ibykus-ides
+Version:      0.7.0 alpha
+
+Author:       IBYKUS AG fuer Informationstechnologie
+Description:  The main CSS file of IBYKUS-Designsystem (IdesFramework)
+Rights:       (C) 2023-2026 IBYKUS AG fuer Informationstechnologie
+*/
+
+
+
+/* **********************************************************************************
+ * 	Import of components
+ * *********************************************************************************/
+
+@import url("components/global.css");
+@import url("components/htmlelements.css");
+@import url("components/layout.css");
+
+@import url("components/accordion.css");
+@import url("components/badge.css");
+@import url("components/banner.css");
+@import url("components/bottom-navigation.css");
+@import url("components/breadcrumb.css");
+@import url("components/button.css");
+@import url("components/card.css");
+@import url("components/checkbox.css");
+@import url("components/chip.css");
+@import url("components/dialog.css");
+@import url("components/dropdown.css");
+@import url("components/eib.css");
+@import url("components/fieldset.css");
+@import url("components/headlines.css");
+@import url("components/input.password.css");
+@import url("components/input.text.css");
+@import url("components/label.css");
+@import url("components/list.css");
+@import url("components/link.css");
+@import url("components/menu.css");
+@import url("components/navigation-menu-item.css");
+@import url("components/meter.css");
+@import url("components/overline.css");
+@import url("components/pagination.css");
+@import url("components/paginationdots.css");
+@import url("components/progress.css");
+@import url("components/radio.css");
+@import url("components/range-slider.css");
+@import url("components/rating.css");
+@import url("components/section.css");
+@import url("components/segmented-control.css");
+@import url("components/select.css");
+@import url("components/step-button.css");
+@import url("components/supportingtext.css");
+@import url("components/switch.css");
+@import url("components/tabs.css");
+@import url("components/textarea.css");
+@import url("components/toast.css");
+@import url("components/top-navigation.css");
+@import url("components/table.css");
+@import url("components/tooltip.css");

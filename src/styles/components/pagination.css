@@ -1,0 +1,153 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Pagination
+ * ***************************************************************************************/
+
+.ibkPagination {
+    --ibk-pagination-active-bg: var(--ibk-petrol-32);
+
+    align-items: center;
+    color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--ibk-spacing-4, 4px);
+}
+
+.ibkPagination.prominent {
+    --ibk-pagination-active-bg: var(--ibk-red-41);
+}
+
+.ibkPagination button.ibkButton.ibkPagination-button {
+    background-color: transparent;
+    border: var(--ibk-spacing-2, 2px) solid transparent;
+    border-radius: var(--ibk-radius-6, 6px);
+    color: light-dark(var(--ibk-neutral-grey-18), var(--ibk-neutral-grey-82));
+    flex: 0 0 auto;
+    font-size: var(--text-button, 1rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: 500;
+    height: var(--ibk-spacing-40, 40px);
+    line-height: var(--text-button-lh, 24px);
+    min-height: var(--ibk-spacing-40, 40px);
+    min-width: var(--ibk-spacing-40, 40px);
+    padding: var(--ibk-spacing-6, 6px) var(--ibk-spacing-10, 10px);
+}
+
+.ibkPagination button.ibkButton.ibkPagination-arrow {
+    padding: var(--ibk-spacing-6, 6px);
+    width: var(--ibk-spacing-40, 40px);
+}
+
+.ibkPagination button.ibkButton.ibkPagination-button .ibkIcon {
+    color: currentColor;
+    display: block !important;
+    font-size: var(--text-button-lh, 24px);
+    font-style: normal;
+    line-height: 1;
+    margin: 0;
+}
+
+.ibkPagination button.ibkButton.ibkPagination-button:not(.current):not(:disabled):hover {
+    background-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+    border-color: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+}
+
+.ibkPagination button.ibkButton.ibkPagination-button:not(.current):not(:disabled):active {
+    background-color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26));
+    border-color: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-26));
+}
+
+.ibkPagination button.ibkButton.ibkPagination-button.current {
+    background-color: var(--ibk-pagination-active-bg);
+    border-color: var(--ibk-pagination-active-bg);
+    color: var(--white-100);
+}
+
+.ibkPagination button.ibkButton.ibkPagination-button:disabled {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+    cursor: default;
+}
+
+.ibkPagination.disabled button.ibkButton.ibkPagination-button.current:disabled {
+    background-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+    border-color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22)) !important;
+    color: var(--white-100) !important;
+}
+
+.ibkPagination-ellipsis {
+    align-items: center;
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+    display: inline-flex;
+    flex: 0 0 auto;
+    font-size: var(--text-button, 1rem);
+    font-weight: 500;
+    height: var(--ibk-spacing-40, 40px);
+    justify-content: center;
+    line-height: var(--text-button-lh, 24px);
+    min-width: var(--ibk-spacing-40, 40px);
+    padding: var(--ibk-spacing-6, 6px) var(--ibk-spacing-8, 8px);
+    user-select: none;
+}
+
+.ibkPagination-ellipsis .ibkIcon {
+    color: currentColor;
+    display: block;
+    float: none;
+    font-size: var(--text-button-lh, 24px);
+    font-style: normal;
+    line-height: 1;
+    margin: 0;
+}
+
+/* ***************************************************************************************
+ *  Compact size in tight space (opt-in)
+ *
+ *  Keyed to the width the pagination was actually given, not to the viewport: the
+ *  same bar can sit under a wide table or inside a 20rem aside, and the viewport
+ *  says nothing about which. The previous @media (max-width: 480px) shrank the bar
+ *  in a narrow window while leaving it oversized in a narrow column on a large
+ *  screen - the exact assumption the layout primitives exist to avoid.
+ *
+ *  This needs .ibk-query-container on an ANCESTOR, and it cannot be provided from
+ *  in here. An element cannot query itself, and neither the host nor .ibkPagination
+ *  can be the container: inline-size containment sizes a box as if it had no
+ *  content, so any box that is sized BY its content - a shrink-to-fit inline-flex
+ *  nav, or a host used as a flex item - would collapse to zero width and the
+ *  buttons would overlap whatever sits beside them. Containment and shrink-to-fit
+ *  are mutually exclusive, so the container has to be a block-level ancestor whose
+ *  width comes from the layout:
+ *
+ *      <div class="ibk-query-container">
+ *          <ibk-pagination ...></ibk-pagination>
+ *      </div>
+ *
+ *  Without that wrapper the buttons stay at 40px and the bar wraps onto a second
+ *  line instead - which is what .ibkPagination's flex-wrap already does, and what
+ *  keeps 320px usable (WCAG 1.4.10 "Reflow"). Wrapping 40px hit areas is the
+ *  better trade against 32px ones that do not (WCAG 2.5.8 "Target Size").
+ *
+ *  30rem is the previous 480px breakpoint, in rem so it also triggers at 200% text
+ *  zoom, where 40px hit areas genuinely stop fitting.
+ * ***************************************************************************************/
+
+@container (inline-size < 30rem) {
+    .ibkPagination button.ibkButton.ibkPagination-button {
+        height: var(--ibk-spacing-32, 32px);
+        min-height: var(--ibk-spacing-32, 32px);
+        min-width: var(--ibk-spacing-32, 32px);
+        padding: var(--ibk-spacing-4, 4px) var(--ibk-spacing-8, 8px);
+    }
+
+    .ibkPagination button.ibkButton.ibkPagination-arrow,
+    .ibkPagination-ellipsis {
+        height: var(--ibk-spacing-32, 32px);
+        min-width: var(--ibk-spacing-32, 32px);
+        width: var(--ibk-spacing-32, 32px);
+    }
+}

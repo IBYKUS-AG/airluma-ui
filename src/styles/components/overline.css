@@ -1,0 +1,18 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *  Overline - additional element to headlines
+ * ***************************************************************************************/
+
+.ibkOverline {
+	border: 0;
+	color: var(--ibk-red-41);
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.125rem;
+	line-height: 1.0rem;
+	text-transform: uppercase;
+}

@@ -1,0 +1,190 @@
+/* ***************************************************************************************
+ *  IBYKUS-Designsystem - IdesFramework
+ *  This file contains component individual definitions. Do not use individually!
+ * ***************************************************************************************/
+
+/* ***************************************************************************************
+ *	 Bottom Navigation (ibkBottomNavigation)
+ *	 A bar of primary destinations pinned to the bottom of a view. Each item stacks an
+ *	 icon over its label; exactly one item is the current destination and carries the
+ *	 selected fill, which `dominance` picks - regular (petrol) or prominent (red).
+ *
+ *	 Two bar variants, differing only in the size of their items:
+ *	   regular - 120x66 items, 8px gap  (roomier bar, e.g. desktop)
+ *	   decent  -  84x52 items, 4px gap  (compact bar, e.g. mobile)
+ *
+ *	 The bar itself has no background of its own: it inherits whatever surface it is
+ *	 placed on, so an app can put it on a card, an app bar or the page directly.
+ *	 Hover, pressed and disabled apply to unselected items only - in Figma the selected
+ *	 item keeps the same fill across enabled, hover and pressed, and has no disabled
+ *	 state of its own.
+ * ***************************************************************************************/
+
+/* The bar is a block-level strip: it spans its container and centres its items. */
+ibk-bottom-navigation {
+    display: block;
+}
+
+/* ***************************************************************************************
+ *	 Bar
+ *	 Transparent by design (see above). The 2px padding is the clearance the item focus
+ *	 ring needs at the outer edges of the bar.
+ * ***************************************************************************************/
+
+.ibkBottomNavigation .ibkBottomNavigation-list {
+    align-items: stretch;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: var(--ibk-spacing-2, 0.125rem);
+}
+
+.ibkBottomNavigation-regular .ibkBottomNavigation-list {
+    gap: var(--ibk-spacing-8, 0.5rem);
+}
+
+.ibkBottomNavigation-decent .ibkBottomNavigation-list {
+    gap: var(--ibk-spacing-4, 0.25rem);
+}
+
+/* Carries no styling of its own - it is here so the bar stays a real list for screen
+   readers, which announce the item count and position from it. */
+.ibkBottomNavigation .ibkBottomNavigation-listItem {
+    display: flex;
+}
+
+/* ***************************************************************************************
+ *	 Single item (<button>)
+ *	 Sizes live in the variant blocks below; everything shared sits here.
+ * ***************************************************************************************/
+
+.ibkBottomNavigation .ibkBottomNavigation-item {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    border-radius: var(--ibk-radius-4, 0.25rem);
+    color: light-dark(var(--standard-fontcolor), var(--ibk-neutral-grey-82));
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: column;
+    font-family: inherit;
+    justify-content: center;
+    text-align: center;
+    transition:
+        background-color var(--ibk-transition-default, 0.2s ease-in-out),
+        color var(--ibk-transition-default, 0.2s ease-in-out);
+}
+
+.ibkBottomNavigation .ibkBottomNavigation-item .ibkIcon {
+    color: currentColor;
+    display: block;
+    font-style: normal;
+    text-align: center;
+}
+
+.ibkBottomNavigation .ibkBottomNavigation-label {
+    white-space: nowrap;
+}
+
+/* ***************************************************************************************
+ *	 Variant: regular
+ *	 66px tall - 0.75rem above the 1.5rem icon, 0.125rem between icon and label, the
+ *	 1.5rem label line and 0.25rem below it. The label is button text (16/24, medium).
+ * ***************************************************************************************/
+
+.ibkBottomNavigation-regular .ibkBottomNavigation-item {
+    gap: var(--ibk-spacing-2, 0.125rem);
+    min-height: 4.125rem;
+    min-width: 7.5rem;
+    padding: var(--ibk-spacing-12, 0.75rem) var(--ibk-spacing-8, 0.5rem) var(--ibk-spacing-4, 0.25rem);
+}
+
+.ibkBottomNavigation-regular .ibkBottomNavigation-item .ibkIcon {
+    font-size: var(--icon-button, 1.5rem);
+    line-height: var(--icon-button-lh, 1.5rem);
+}
+
+.ibkBottomNavigation-regular .ibkBottomNavigation-label {
+    font-size: var(--text-button, 1rem);
+    font-weight: 500;
+    line-height: var(--text-button-lh, 1.5rem);
+}
+
+/* ***************************************************************************************
+ *	 Variant: decent
+ *	 52px tall - 0.5rem above the 1.25rem icon, the 1.25rem label line and 0.25rem below
+ *	 it. No gap between icon and label: the support line heights already carry it. The
+ *	 label is support text (14/20, regular), which has no token of its own - the same
+ *	 literal values supportingtext.css uses.
+ * ***************************************************************************************/
+
+.ibkBottomNavigation-decent .ibkBottomNavigation-item {
+    min-height: 3.25rem;
+    min-width: 5.25rem;
+    padding: var(--ibk-spacing-8, 0.5rem) var(--ibk-spacing-8, 0.5rem) var(--ibk-spacing-4, 0.25rem);
+}
+
+.ibkBottomNavigation-decent .ibkBottomNavigation-item .ibkIcon {
+    font-size: var(--icon-support, 1.25rem);
+    line-height: var(--icon-support-lh, 1.25rem);
+}
+
+.ibkBottomNavigation-decent .ibkBottomNavigation-label {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+}
+
+/* ***************************************************************************************
+ *	 Unselected states
+ * ***************************************************************************************/
+
+.ibkBottomNavigation .ibkBottomNavigation-item:not(.selected):hover:not(:disabled) {
+    background: light-dark(var(--ibk-neutral-grey-90), var(--ibk-neutral-grey-10));
+}
+
+.ibkBottomNavigation .ibkBottomNavigation-item:not(.selected):active:not(:disabled) {
+    background: light-dark(var(--ibk-neutral-grey-74), var(--ibk-neutral-grey-14));
+}
+
+.ibkBottomNavigation .ibkBottomNavigation-item:disabled {
+    background: transparent;
+    cursor: not-allowed;
+}
+
+.ibkBottomNavigation .ibkBottomNavigation-item:disabled,
+.ibkBottomNavigation .ibkBottomNavigation-item:disabled .ibkIcon {
+    color: light-dark(var(--ibk-neutral-grey-82), var(--ibk-neutral-grey-22));
+}
+
+/* ***************************************************************************************
+ *	 Item focus on keyboard navigation
+ *	 Same 2px ring and same colour as the shared rule in global.css, but drawn inside
+ *	 the item (negative offset) instead of around it. The design puts the focus stroke
+ *	 on the item border, and the bar only leaves a 4px gap between two decent items -
+ *	 the default +2px offset would make two neighbouring rings touch.
+ * ***************************************************************************************/
+
+.ibkBottomNavigation .ibkBottomNavigation-item:focus-visible {
+    outline: solid 2px var(--ibk-focusstroke);
+    outline-offset: -2px;
+}
+
+/* ***************************************************************************************
+ *	 Selected item
+ *	 Keeps its fill on hover and pressed, and has no disabled state - only the focus
+ *	 ring is ever added on top.
+ * ***************************************************************************************/
+
+.ibkBottomNavigation .ibkBottomNavigation-item.selected {
+    color: var(--white-100);
+}
+
+.ibkBottomNavigation-dominance-regular .ibkBottomNavigation-item.selected {
+    background: light-dark(var(--ibk-petrol-32), var(--ibk-petrol-26));
+}
+
+.ibkBottomNavigation-dominance-prominent .ibkBottomNavigation-item.selected {
+    background: var(--ibk-red-41);
+}
