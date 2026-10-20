@@ -1,5 +1,5 @@
 {
-  "name": "@ides/webcomponents",
+  "name": "@airluma/webcomponents",
   "version": "0.0.0-dev",
   "type": "module",
   "description": "IBYKUS Design System - Lit Web Components und CSS-Framework",
@@ -67,8 +67,8 @@
     "pack:check": "npm pack --dry-run --workspaces --include-workspace-root"
   },
   "dependencies": {
-    "@ides/fonts": "*",
-    "@ides/iconset": "*",
+    "@airluma/fonts": "*",
+    "@airluma/iconset": "*",
     "lit": "^3.1.0"
   },
   "devDependencies": {

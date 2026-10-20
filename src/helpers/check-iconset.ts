@@ -15,8 +15,8 @@ export function warnIfIconsetMissing(): void {
     if (!version.trim()) {
       console.warn(
         "[ides] The IBYKUS-Iconset stylesheet is not loaded, icons will render as text. " +
-          "Add import '@ides/webcomponents/styles/all' (or '@ides/iconset/iconset.css'), " +
-          "or import '@ides/webcomponents/all' instead of '@ides/webcomponents'."
+          "Add import '@airluma/webcomponents/styles/all' (or '@airluma/iconset/iconset.css'), " +
+          "or import '@airluma/webcomponents/all' instead of '@airluma/webcomponents'."
       );
     }
   };

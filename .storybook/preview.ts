@@ -8,8 +8,8 @@ import { spyOn } from 'storybook/test';
 import manifest from "../custom-elements.json" with { type: "json" };
 import '../src/index';
 import { DocPage } from '../src/stories/DocumentationTemplate';
-import '@ides/fonts/fonts.css';
-import '@ides/iconset/iconset.css';
+import '@airluma/fonts/fonts.css';
+import '@airluma/iconset/iconset.css';
 import '../src/styles/ides.css';
 import '../src/styles/dev.css'; // FIXME, Das ist nur for Entwiklung
 

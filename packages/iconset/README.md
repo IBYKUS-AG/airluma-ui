@@ -1,4 +1,4 @@
-# @ides/iconset
+# @airluma/iconset
 
 Das IBYKUS-Iconset als Icon-Webfont, plus das kuratierte Icon-Manifest.
 
@@ -14,8 +14,8 @@ steht im Textinhalt, die Klasse `.ibkIcon` schaltet die Schriftart um.
 ### npm
 
 ```js
-import '@ides/iconset/iconset.css';        // woff2 -> woff -> ttf
-import '@ides/iconset/iconset.woff2.css';  // nur woff2, deutlich weniger zu hosten
+import '@airluma/iconset/iconset.css';        // woff2 -> woff -> ttf
+import '@airluma/iconset/iconset.woff2.css';  // nur woff2, deutlich weniger zu hosten
 ```
 
 Das Paket ist reines CSS plus Font-Dateien, ohne JS-Einstieg. Die Font wird als

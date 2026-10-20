@@ -386,7 +386,7 @@ button, input, select, textarea, optgroup { font: inherit; }
 kbd { font-family: inherit; }
 
 /* Only the size token lives here. What actually makes a glyph render -- the
-   font-family, the smoothing, the @font-face itself -- is in @ides/iconset's
+   font-family, the smoothing, the @font-face itself -- is in @airluma/iconset's
    iconset.css, so that a consumer who wants nothing but the icons gets a working
    .ibkIcon from that package alone. The two halves are order-independent: they
    do not overlap, and font-family carries !important there as it did here.
@@ -526,15 +526,15 @@ kbd { font-family: inherit; }
 
 /* ***************************************************************************************
  *	 Global font definitions
- *	 The 'Asap' @font-face rules live in the @ides/fonts package, not here: they carry
+ *	 The 'Asap' @font-face rules live in the @airluma/fonts package, not here: they carry
  *	 their own relative url()s and the font files' SIL OFL 1.1 license has to travel
- *	 with them. Load them with `import '@ides/fonts/fonts.css'` (or the CDN
+ *	 with them. Load them with `import '@airluma/fonts/fonts.css'` (or the CDN
  *	 stylesheet); :root below only *uses* the family and falls back to sans-serif.
  * ***************************************************************************************/
 
-/* The IBYKUS-Iconset @font-face lives in the @ides/iconset package for the same
-   reason the Asap one lives in @ides/fonts: it owns its files and its relative
-   url()s. Load it with `import '@ides/iconset/iconset.css'` (or the CDN
+/* The IBYKUS-Iconset @font-face lives in the @airluma/iconset package for the same
+   reason the Asap one lives in @airluma/fonts: it owns its files and its relative
+   url()s. Load it with `import '@airluma/iconset/iconset.css'` (or the CDN
    stylesheet). */
 
 /* ***************************************************************************************

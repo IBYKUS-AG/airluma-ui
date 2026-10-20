@@ -10,22 +10,22 @@ Dokumentation, Gestaltungsregeln und Beispiele: **[www.airluma.de](https://www.a
 
 | Paket | Inhalt | Lizenz |
 |---|---|---|
-| `@ides/webcomponents` | Web Components und CSS-Framework | Apache 2.0 |
-| `@ides/fonts` | Schrift Asap als variable Schrift | SIL OFL 1.1 |
-| `@ides/iconset` | Iconset als Webfont und `icons.json` | Apache 2.0 |
+| `@airluma/webcomponents` | Web Components und CSS-Framework | Apache 2.0 |
+| `@airluma/fonts` | Schrift Asap als variable Schrift | SIL OFL 1.1 |
+| `@airluma/iconset` | Iconset als Webfont und `icons.json` | Apache 2.0 |
 
 Die Pakete werden zum Start von Airluma auf [npmjs.com](https://www.npmjs.com/) veröffentlicht.
 
 ## Verwendung
 
 ```bash
-npm install @ides/webcomponents
+npm install @airluma/webcomponents
 ```
 
 Ein Import registriert alle Komponenten und lädt Styles, Schrift und Icons:
 
 ```js
-import '@ides/webcomponents/all';
+import '@airluma/webcomponents/all';
 ```
 
 ```html
@@ -35,21 +35,21 @@ import '@ides/webcomponents/all';
 Der Import braucht einen Bundler, der CSS-Importe aus JavaScript versteht (z. B. Vite, webpack, Rollup, Parcel oder esbuild). Ohne einen solchen Bundler, z. B. mit Angular CLI, geht es in zwei Schritten:
 
 ```js
-import '@ides/webcomponents';             // Komponenten registrieren
-import '@ides/webcomponents/styles/all';  // CSS-Framework, Schrift und Iconset
+import '@airluma/webcomponents';             // Komponenten registrieren
+import '@airluma/webcomponents/styles/all';  // CSS-Framework, Schrift und Iconset
 ```
 
 Die einzelnen Teile lassen sich auch getrennt einbinden:
 
 ```js
-import '@ides/webcomponents/styles';      // nur das CSS-Framework
-import '@ides/fonts/fonts.css';           // nur die Schrift Asap
-import '@ides/iconset/iconset.css';       // nur das Iconset
+import '@airluma/webcomponents/styles';      // nur das CSS-Framework
+import '@airluma/fonts/fonts.css';           // nur die Schrift Asap
+import '@airluma/iconset/iconset.css';       // nur das Iconset
 ```
 
 Das JavaScript-Bundle enthält keine Schriften. Fehlt das Iconset, erscheinen Icons als Klartext (z. B. „ChkM“ statt eines Häkchens), und die Komponenten melden das einmal in der Browser-Konsole.
 
-**TypeScript und React (19+):** `import type {} from '@ides/webcomponents/react';` einmal im Projekt liefert JSX-Typen für alle `<ibk-*>`-Elemente.
+**TypeScript und React (19+):** `import type {} from '@airluma/webcomponents/react';` einmal im Projekt liefert JSX-Typen für alle `<ibk-*>`-Elemente.
 
 ## Komponenten
 

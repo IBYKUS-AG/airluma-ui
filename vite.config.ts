@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 // The library build sees no CSS and no font files: consumers load the styles
-// and fonts as stylesheets (@ides/webcomponents/styles/all). That is why there
+// and fonts as stylesheets (@airluma/webcomponents/styles/all). That is why there
 // is no CSS plugin and no assetsInlineLimit here.
 export default defineConfig({
   plugins: [

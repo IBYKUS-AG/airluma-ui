@@ -50,11 +50,11 @@ const config: StorybookConfig = {
   "framework": "@storybook/web-components-vite",
   "staticDirs": [
     { from: '../src/styles', to: '/resources/styles' },
-    // The Asap faces live in the @ides/fonts package. The preview iframe imports
+    // The Asap faces live in the @airluma/fonts package. The preview iframe imports
     // them through Vite (preview.ts), but the manager is its own document and can
     // only reach them through this static mapping.
     { from: '../packages/fonts', to: '/resources/fonts' },
-    // Only the font files, not the whole @ides/iconset package: the preloads in
+    // Only the font files, not the whole @airluma/iconset package: the preloads in
     // preview-head.html / manager-head.html need a static URL, everything else the
     // Iconset page uses (icons.json included) goes through Vite.
     { from: '../packages/iconset/assets', to: '/resources/iconset/assets' },

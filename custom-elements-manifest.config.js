@@ -57,7 +57,7 @@ export default {
     debug: true,
   }),
     cemInheritancePlugin(),
-    // JSX types for React 19+ consumers, shipped as the `@ides/webcomponents/react` entry.
+    // JSX types for React 19+ consumers, shipped as the `@airluma/webcomponents/react` entry.
     // Written next to the build output, so it runs after `vite build` (see prepack and build-release).
     jsxTypesPlugin({
       outdir: './dist',

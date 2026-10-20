@@ -6,8 +6,8 @@
  *
  *   dist-cdn/webcomponents/  ides.min.css, ides.bundle.min.css,
  *                           assets/<fonts>, the two JS bundles, a demo page
- *   dist-cdn/iconset/        exactly what @ides/iconset publishes
- *   dist-cdn/fonts/          exactly what @ides/fonts publishes
+ *   dist-cdn/iconset/        exactly what @airluma/iconset publishes
+ *   dist-cdn/fonts/          exactly what @airluma/fonts publishes
  *
  * The asset packages are copied verbatim, filtered by their own package.json
  * "files" list -- the same rule that decides what npm ships, so the .eot and the

@@ -1,4 +1,4 @@
-Third-party notices for @ides/webcomponents
+Third-party notices for @airluma/webcomponents
 ===========================================
 
 The published JavaScript bundles (dist/ibykus-design-system.es.js and
@@ -9,7 +9,7 @@ redistribution; it is reproduced here.
 
 This file covers only third-party code. For the licence of the IBYKUS Design
 System itself see LICENSE; the Asap fonts and the IBYKUS-Iconset ship as
-separate packages (@ides/fonts, @ides/iconset) and carry their own.
+separate packages (@airluma/fonts, @airluma/iconset) and carry their own.
 
 
 -------------------------------------------------------------------------------

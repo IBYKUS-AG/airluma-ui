@@ -19,10 +19,10 @@ for (const css of ['iconset.css', 'iconset.woff2.css']) {
   const m = read(css).match(/--ides-iconset-version:\s*"([^"]+)"/);
   if (!m || m[1] !== VERSION) {
     console.error(
-      `\n@ides/iconset: ${css} declares --ides-iconset-version ${m ? `"${m[1]}"` : '(none)'}, ` +
+      `\n@airluma/iconset: ${css} declares --ides-iconset-version ${m ? `"${m[1]}"` : '(none)'}, ` +
         `but package.json says ides.fontVersion "${VERSION}". package.json is authoritative; update the CSS.\n`
     );
     process.exit(1);
   }
 }
-console.log(`@ides/iconset: font version ${VERSION} ok`);
+console.log(`@airluma/iconset: font version ${VERSION} ok`);

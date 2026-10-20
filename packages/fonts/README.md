@@ -1,4 +1,4 @@
-# @ides/fonts
+# @airluma/fonts
 
 Asap als Variable Font für das IBYKUS Design System — zwei Schnitte einer Familie
 (aufrecht und kursiv), jeweils mit den Achsen `wght 100..900` und `wdth 75..125`.
@@ -8,7 +8,7 @@ Asap als Variable Font für das IBYKUS Design System — zwei Schnitte einer Fam
 ### npm
 
 ```js
-import '@ides/fonts/fonts.css';
+import '@airluma/fonts/fonts.css';
 ```
 
 Die `@font-face`-Regeln laden die Dateien relativ aus `./assets/`; jeder Bundler

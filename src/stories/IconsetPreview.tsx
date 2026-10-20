@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import iconData from '@ides/iconset/icons.json';
-import iconsJsonUrl from '@ides/iconset/icons.json?url';
+import iconData from '@airluma/iconset/icons.json';
+import iconsJsonUrl from '@airluma/iconset/icons.json?url';
 import '../components/ibk-card';
 import './IconsetPreview.css';
 
