@@ -14,7 +14,7 @@ Dokumentation, Gestaltungsregeln und Beispiele: **[www.airluma.de](https://www.a
 | `@airluma/fonts` | Schrift Asap als variable Schrift | SIL OFL 1.1 |
 | `@airluma/iconset` | Iconset als Webfont und `icons.json` | Apache 2.0 |
 
-Die Pakete werden zum Start von Airluma auf [npmjs.com](https://www.npmjs.com/) veröffentlicht.
+Alle drei Pakete gibt es auf [npmjs.com](https://www.npmjs.com/org/airluma).
 
 ## Verwendung
 
@@ -49,6 +49,21 @@ import '@airluma/iconset/iconset.css';       // nur das Iconset
 
 Das JavaScript-Bundle enthält keine Schriften. Fehlt das Iconset, erscheinen Icons als Klartext (z. B. „ChkM“ statt eines Häkchens), und die Komponenten melden das einmal in der Browser-Konsole.
 
+### Ohne Build-Werkzeug
+
+Die Pakete lassen sich auch direkt über ein öffentliches CDN wie [jsDelivr](https://www.jsdelivr.com/) einbinden, ohne Installation:
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@airluma/fonts@0.32/fonts.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@airluma/iconset@0.32/iconset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@airluma/webcomponents@0.32/src/styles/ides.css">
+<script type="module" src="https://cdn.jsdelivr.net/npm/@airluma/webcomponents@0.32/dist/ibykus-design-system.es.js"></script>
+
+<ibk-button label="Speichern" type="primary"></ibk-button>
+```
+
+Die Versionsangabe `@0.32` lädt immer die neueste 0.32.x. Für den Produktivbetrieb empfiehlt sich eine feste Version wie `@0.32.1`.
+
 **TypeScript und React (19+):** `import type {} from '@airluma/webcomponents/react';` einmal im Projekt liefert JSX-Typen für alle `<ibk-*>`-Elemente.
 
 ## Komponenten
@@ -69,6 +84,10 @@ npm run build       # baut Asset-Pakete und Library nach dist/
 npm run build:cdn   # eigenständiger CDN-Build nach dist-cdn/
 npm test            # Tests mit Vitest im Browser
 ```
+
+## Sicherheit
+
+Sicherheitslücken bitte nicht öffentlich melden, sondern wie in [SECURITY.md](SECURITY.md) beschrieben.
 
 ## Lizenz
 
