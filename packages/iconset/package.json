@@ -1,7 +1,7 @@
 {
   "name": "@airluma/iconset",
   "version": "0.0.0-dev",
-  "description": "Iconset von Airluma, dem offenen Designsystem: Webfont mit Ligaturen und icons.json.",
+  "description": "Iconset von AIRLUMA, dem offenen Designsystem: Webfont mit Ligaturen und icons.json.",
   "license": "Apache-2.0",
   "author": "IBYKUS AG fuer Informationstechnologie",
   "type": "module",
@@ -20,7 +20,7 @@
     "directory": "packages/iconset"
   },
   "bugs": {
-    "url": "https://www.airluma.de/mitmachen.html"
+    "url": "https://ibykus-ag.github.io/airluma-web/mitmachen.html"
   },
   "keywords": [
     "airluma",
@@ -58,5 +58,5 @@
     "build": "node check-version.js",
     "prepack": "node check-version.js"
   },
-  "homepage": "https://www.airluma.de"
+  "homepage": "https://ibykus-ag.github.io/airluma-web"
 }

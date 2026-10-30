@@ -2,7 +2,7 @@
   "name": "@airluma/webcomponents",
   "version": "0.0.0-dev",
   "type": "module",
-  "description": "Web Components und CSS-Framework von Airluma, dem offenen Designsystem. Gebaut mit Lit, nutzbar in jedem Webprojekt.",
+  "description": "Web Components und CSS-Framework von AIRLUMA, dem offenen Designsystem. Gebaut mit Lit, nutzbar in jedem Webprojekt.",
   "workspaces": [
     "packages/fonts",
     "packages/iconset"
@@ -115,7 +115,7 @@
     "url": "git+https://github.com/IBYKUS-AG/airluma-ui.git"
   },
   "bugs": {
-    "url": "https://www.airluma.de/mitmachen.html"
+    "url": "https://ibykus-ag.github.io/airluma-web/mitmachen.html"
   },
   "keywords": [
     "airluma",
@@ -133,5 +133,5 @@
     "registry": "https://registry.npmjs.org/"
   },
   "packageManager": "npm@10.8.2",
-  "homepage": "https://www.airluma.de"
+  "homepage": "https://ibykus-ag.github.io/airluma-web"
 }

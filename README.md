@@ -1,10 +1,10 @@
-# Airluma Web Components
+# AIRLUMA Web Components
 
-Die Web Components von **Airluma**, dem offenen Designsystem. Sie sind mit [Lit](https://lit.dev/) gebaut und laufen in jedem Webprojekt, unabhängig vom Framework.
+Die Web Components von **AIRLUMA**, dem offenen Designsystem. Sie sind mit [Lit](https://lit.dev/) gebaut und laufen in jedem Webprojekt, unabhängig vom Framework.
 
-Dokumentation, Gestaltungsregeln und Beispiele: **[www.airluma.de](https://www.airluma.de)**
+Dokumentation, Gestaltungsregeln und Beispiele: **[Website von AIRLUMA](https://ibykus-ag.github.io/airluma-web/)**
 
-> **Hinweis:** Dieses Repository ist ein öffentlicher Spiegel. Entwickelt wird in einem internen Repository; bei jedem Release wird der Stand hierher übertragen. Änderungen direkt in diesem Repository werden dabei überschrieben. Wie du Fehler meldest oder etwas beiträgst, steht künftig auf [www.airluma.de](https://www.airluma.de).
+> **Hinweis:** Dieses Repository ist ein öffentlicher Spiegel. Entwickelt wird in einem internen Repository; bei jedem Release wird der Stand hierher übertragen. Änderungen direkt in diesem Repository werden dabei überschrieben. Beiträge von außen können wir deshalb im Moment noch nicht annehmen. Wie du Fehler meldest oder etwas beiträgst, beschreiben wir, sobald der Ablauf feststeht. Sicherheitslücken meldest du schon jetzt wie in [SECURITY.md](SECURITY.md) beschrieben.
 
 ## Pakete
 
@@ -70,7 +70,7 @@ Die Versionsangabe `@0.32` lädt immer die neueste 0.32.x. Für den Produktivbet
 
 Accordion, Badge, Banner, Bottom Navigation, Breadcrumb, Button, Card, Checkbox, Chip, Dialog, Dropdown, Fieldset, Figure, Input, Link, Meter, Navigation Menu Item, Pagination, Pagination Dots, Progress, Radio, Range Slider, Rating, Segmented Control, Select, Step Button, Step Button Bar, Switch, Table, Tabs, Textarea, Toast, Tooltip, Top Navigation.
 
-Der Quellcode jeder Komponente liegt unter [`src/components/`](src/components/) als `ibk-<name>.ts`. Wie eine Komponente gestaltet ist und wann man sie einsetzt, beschreibt die jeweilige Seite auf [www.airluma.de](https://www.airluma.de).
+Der Quellcode jeder Komponente liegt unter [`src/components/`](src/components/) als `ibk-<name>.ts`. Wie eine Komponente gestaltet ist und wann man sie einsetzt, beschreibt die jeweilige Seite unter [Komponenten](https://ibykus-ag.github.io/airluma-web/komponenten.html) auf der Website.
 
 ## Lokal entwickeln
 

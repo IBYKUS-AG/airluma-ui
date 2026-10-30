@@ -1,7 +1,7 @@
 {
   "name": "@airluma/fonts",
   "version": "0.0.0-dev",
-  "description": "Schrift Asap als variable Webfont für Airluma, das offene Designsystem (SIL Open Font License 1.1).",
+  "description": "Schrift Asap als variable Webfont für AIRLUMA, das offene Designsystem (SIL Open Font License 1.1).",
   "license": "OFL-1.1",
   "author": "The Asap Project Authors (https://github.com/Omnibus-Type/Asap)",
   "type": "module",
@@ -19,7 +19,7 @@
     "directory": "packages/fonts"
   },
   "bugs": {
-    "url": "https://www.airluma.de/mitmachen.html"
+    "url": "https://ibykus-ag.github.io/airluma-web/mitmachen.html"
   },
   "keywords": [
     "airluma",
@@ -49,5 +49,5 @@
   "sideEffects": [
     "*.css"
   ],
-  "homepage": "https://www.airluma.de"
+  "homepage": "https://ibykus-ag.github.io/airluma-web"
 }
